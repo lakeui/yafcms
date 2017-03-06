@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 引入Vue -->
+<script src="//v1.vuejs.org/js/vue.min.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
+<!-- 引入组件库 -->
+<script src="//unpkg.com/iview/dist/iview.min.js"></script>
+    </head>
+    <body>
+    <div id="app">
+    <i-button @click="show">Click me!</i-button>
+    <Modal :visible.sync="visible" title="Welcome">欢迎使用 iView</Modal>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            visible: false
+        },
+        methods: {
+            show: function () {
+                this.visible = true;
+            }
+        }
+    });
+   
+  </script>
+
+    </body>
+</html>

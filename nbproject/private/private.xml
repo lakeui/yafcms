@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/private/var/www/web/www.xixizai.com/application/views/index/detail.html</file>
-            <file>file:/private/var/www/web/www.xixizai.com/application/views/index/footer.html</file>
-            <file>file:/private/var/www/web/www.xixizai.com/application/controllers/Index.php</file>
+            <file>file:/private/var/www/web/yafcms/application/library/Model.php</file>
+            <file>file:/private/var/www/web/yafcms/application/library/Db/Pdo.php</file>
+            <file>file:/private/var/www/web/yafcms/application/controllers/Index.php</file>
+            <file>file:/private/var/www/web/yafcms/application/models/Cate.php</file>
+            <file>file:/private/var/www/web/yafcms/conf/application.ini</file>
+            <file>file:/private/var/www/web/yafcms/application/library/Db.php</file>
         </group>
     </open-files>
 </project-private>

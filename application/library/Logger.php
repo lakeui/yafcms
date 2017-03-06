@@ -1,0 +1,257 @@
+<?php
+
+/**
+ * Logger 日志记录 
+ * @author lakeui 
+ * @example
+ * Logger::write($msg, $level = 'NOTICE')//快速写入
+ * Logger::log($level, $message [, array $context = array()])
+ * Logger::emergency($message [,array $context=null])
+ * Logger::alert($message [,array $context=null])
+ * Logger::critical($message [,array $context=null])
+ * Logger::error($message [,array $context=null])
+ * Logger::warning($message [,array $context=null])
+ * Logger::warn($message [,array $context=null])
+ * Logger::notice($message [,array $context=null])
+ * Logger::info($message [,array $context=null])
+ * Logger::debug($message [,array $context=null])
+ */
+class Logger { 
+    /**
+     * 日志监控回调,可以修改message和level
+     *
+     * @var callable
+     */
+    public static $listener = null;
+
+    /**
+     * 配置
+     *
+     * @var array
+     */
+    private static $_conf = null;
+
+    /**
+     * 写入文件或者位置
+     *
+     * @var array
+     */
+    private static $_files = null;
+
+    /**
+     * 写入日志
+     * @param string $msg   [消息]
+     * @param string $level [日志级别]
+     * @return bool         [写入状态]
+     */
+    public static function write($msg, $level = 'NOTICE') {
+        $level = strtoupper($level);
+        if ($listener = &self::$listener) {
+            //日志监控回调
+            assert('is_callable($listener)');
+            call_user_func_array($listener, array(&$level, &$msg));
+        } 
+        if (!$config = &self::$_conf) {
+            //读取配置信息
+            $config = \Yaf\Registry::get("config")->log->toArray();
+            $config['type'] = strtolower($config['type']);
+            $config['allow'] = explode(',', strtoupper($config['allow']));
+            isset($config['timezone']) && date_default_timezone_set($config['timezone']);
+        }
+        if (in_array($level, $config['allow'])) {
+            switch ($config['type']) {
+                case 'system': // 系统日志
+                    return error_log($level . ': ' . $msg);
+                case 'file':  //文件日志
+                    return file_put_contents(
+                            self::getFile($level), date('[d-M-Y H:i:s e] (') . $_SERVER['REQUEST_URI'] . ') ' . $msg . PHP_EOL, FILE_APPEND);
+                default:
+                    throw new Exception('未知日志类型' . $config['type']);
+            }
+        }
+    }
+
+    /**
+     * 清空日志(仅对文件模式有效)
+     */
+    public static function clear() { 
+        $type = \Yaf\Registry::get("config")->log->type;
+        $logdir = \Yaf\Registry::get("config")->sys->runtime. 'log'.DIRECTORY_SEPARATOR;    
+        if ('file' === $type) {
+            clean_dir($logdir);
+        } elseif ('system' == $type) {
+            if ($file = ini_get('error_log')) {
+                file_put_contents($file, '');
+            }
+        }
+    }
+
+    /**
+     * System is unusable. 
+     * @param string $message
+     * @param array  $context 
+     * @return bool [写入状态]
+     */
+    public static function emergency($message, array $context = array()) {
+        return static::log('EMERGENCY', $message, $context);
+    }
+
+    /**
+     * Action must be taken immediately.
+     *
+     * Example: Entire website down, database unavailable, etc. This should
+     * trigger the SMS alerts and wake you up.
+     *
+     * @param string $message
+     * @param array  $context
+     *
+     * @return bool [写入状态]
+     */
+    public static function alert($message, array $context = null) {
+        return static::log('ALERT', $message, $context);
+    }
+
+    /**
+     * Critical conditions.
+     *
+     * Example: Application component unavailable, unexpected exception.
+     *
+     * @param string $message
+     * @param array  $context
+     *
+     * @return bool [写入状态]
+     */
+    public static function critical($message, array $context = null) {
+        return static::log('CRITICAL', $message, $context);
+    }
+
+    /**
+     * Runtime errors that do not require immediate action but should typically
+     * be logged and monitored.
+     *
+     * @param string $message
+     * @param array  $context
+     *
+     * @return bool [写入状态]
+     */
+    public static function error($message, array $context = null) {
+        return static::log('ERROR', $message, $context);
+    }
+
+    /**
+     * Exceptional occurrences that are not errors.
+     *
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things
+     * that are not necessarily wrong.
+     *
+     * @param string $message
+     * @param array  $context
+     *
+     * @return bool [写入状态]
+     */
+    public static function warning($message, array $context = null) {
+        return static::log('WARN', $message, $context);
+    }
+
+    /**
+     * Exceptional occurrences that are not errors.
+     *
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things
+     * that are not necessarily wrong.
+     *
+     * @param string $message
+     * @param array  $context
+     *
+     * @return bool [写入状态]
+     */
+    public static function warn($message, array $context = null) {
+        return static::log('WARN', $message, $context);
+    }
+
+    /**
+     * Normal but significant events.
+     *
+     * @param string $message
+     * @param array  $context
+     *
+     * @return null
+     */
+    public static function notice($message, array $context = null) {
+        return static::log('NOTICE', $message, $context);
+    }
+
+    /**
+     * Interesting events.
+     *
+     * Example: User logs in, SQL logs.
+     *
+     * @param string $message
+     * @param array  $context
+     *
+     * @return null
+     */
+    public static function info($message, array $context = null) {
+        return static::log('INFO', $message, $context);
+    }
+
+    /**
+     * Detailed debug information.
+     *
+     * @param string $message
+     * @param array  $context
+     *
+     * @return null
+     */
+    public static function debug($message, array $context = null) {
+        return static::log('DEBUG', $message, $context);
+    }
+
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed  $level
+     * @param string $message
+     * @param array  $context
+     *
+     * @return null
+     */
+    public static function log($level, $message, array $context = null) {
+        if ($context) {
+            $replace = array();
+            foreach ($context as $key => &$val) {
+                $replace['{' . $key . '}'] = is_scalar($val) || method_exists($val, '__toString') ? $val : json_endcode($val, 256);
+            }
+            $message = strtr($message, $replace);
+        } elseif (!(is_scalar($message) || method_exists($message, '__toString'))) {
+            //无法之间转成字符的数据json格式化
+            $message = json_encode($message, 256); //256isJSON_UNESCAPED_UNICODE 兼容php5.3
+        }
+        return self::write($message, $level);
+    }
+
+    /**
+     * 获取写入流 
+     * @param string $tag [日志级别] 
+     * @return string 写入的文件
+     */
+    private static function getFile($tag) {
+        $files = &self::$_files;
+        if (!isset($files[$tag])) {
+            /* 打开文件流 */
+            if (!isset($files['_dir'])) {
+                //日志目录 
+                $logdir = \Yaf\Registry::get("config")->sys->runtime. 'log'; 
+                if (!is_dir($logdir)) {
+                    mkdir($logdir, 0777, true);
+                }
+                $files['_dir'] = $logdir . DIRECTORY_SEPARATOR . date('y-m-d-'); 
+                //如果没有设置REQUEST_URI[命令行模式],自动补为null
+                isset($_SERVER['REQUEST_URI']) || $_SERVER['REQUEST_URI'] = null;
+            } 
+            $file = $files['_dir'] . $tag . '.log';
+            $files[$tag] = $file;
+        }
+        return $files[$tag];
+    }
+
+}
