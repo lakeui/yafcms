@@ -67,8 +67,8 @@ final class Zone
         }
 
         $ak = $token[0];
-        $policy = base64_urlSafeDecode($token[2]);
-        $policy = json_decode($policy, true);
+        $policy = Tool::base64_urlSafeDecode($token[2]);
+        $policy = Tool::json_decode($policy, true);
 
         $scope = $policy['scope'];
         $bucket = $scope;

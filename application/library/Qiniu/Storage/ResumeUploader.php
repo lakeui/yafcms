@@ -113,13 +113,13 @@ final class ResumeUploader
     private function fileUrl()
     {
         $url = $this->host . '/mkfile/' . $this->size;
-        $url .= '/mimeType/' . \Qiniu\base64_urlSafeEncode($this->mime);
+        $url .= '/mimeType/' . \Qiniu\Tool::base64_urlSafeEncode($this->mime);
         if ($this->key != null) {
-            $url .= '/key/' . \Qiniu\base64_urlSafeEncode($this->key);
+            $url .= '/key/' . \Qiniu\Tool::base64_urlSafeEncode($this->key);
         }
         if (!empty($this->params)) {
             foreach ($this->params as $key => $value) {
-                $val =  \Qiniu\base64_urlSafeEncode($value);
+                $val =  \Qiniu\Tool::base64_urlSafeEncode($value);
                 $url .= "/$key/$val";
             }
         }

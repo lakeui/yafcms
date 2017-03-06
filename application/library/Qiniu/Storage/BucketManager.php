@@ -182,8 +182,8 @@ final class BucketManager
      */
     public function changeMime($bucket, $key, $mime)
     {
-        $resource = \Qiniu\entry($bucket, $key);
-        $encode_mime = \Qiniu\base64_urlSafeEncode($mime);
+        $resource = \Qiniu\Tool::entry($bucket, $key);
+        $encode_mime = \Qiniu\Tool::base64_urlSafeEncode($mime);
         $path = '/chgm/' . $resource . '/mime/' .$encode_mime;
         list(, $error) = $this->rsPost($path);
         return $error;
@@ -214,8 +214,8 @@ final class BucketManager
     public function fetch($url, $bucket, $key = null)
     {
 
-        $resource = \Qiniu\base64_urlSafeEncode($url);
-        $to = \Qiniu\entry($bucket, $key);
+        $resource = \Qiniu\Tool::base64_urlSafeEncode($url);
+        $to = \Qiniu\Tool::entry($bucket, $key);
         $path = '/fetch/' . $resource . '/to/' . $to;
 
         $ak = $this->auth->getAccessKey();
