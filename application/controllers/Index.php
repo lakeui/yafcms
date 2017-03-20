@@ -8,7 +8,7 @@ class IndexController extends Yaf\Controller_Abstract {
       
         // dump($obj->select());
       
-        return false;
+//        return false;
         $this->getView()->assign("content", "Hello Yaf");
     }
 
