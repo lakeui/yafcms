@@ -1,9 +1,19 @@
 <?php
 
-class CateModel extends Model {
+class LinkModel extends BaseModel{
 
-    public function __construct($str = '') {
-        parent::__construct($str);
+    private $table = 'wt_friendlink';
+    
+    public function select($condition='',$field="*"){ 
+        return $this->db->select($this->table,$field,$condition); 
     }
-
+    
+    
+    public function insert($data){
+        return $this->db->insert($this->table,$data);
+    }
+    
+    
+    
+    
 }

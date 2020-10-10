@@ -30,9 +30,10 @@ class Db {
      */
     public function __construct(array $options = [],$write=false) {
         $this->config = \Yaf\Registry::get('config')->db->toArray();
+        $this->debug_mode = $this->config['debug'];
         if (!empty($options)) {
             $this->config = array_merge($this->config, $options);
-        }
+        }  
         $this->initConnect($write); 
     }
     
@@ -55,7 +56,7 @@ class Db {
                 }
                 $this->linkID = $this->linkRead;
             }
-        } elseif (!$this->linkID) { 
+        } elseif (!$this->linkID) {  
             $this->linkID = $this->connect();
         }
     }
@@ -98,24 +99,27 @@ class Db {
      * @return array
      */
     private function parseDsn($dsnStr){ 
-        $info = parse_url($dsnStr); 
-        if (!$info) {
-            return [];
-        }  
+        //   mysql://lakeui:6&Ho998$#yabc@127.0.0.1:3306/lakeui_blog#utf8
+        
+       $arr  = explode(':', $dsnStr);
+       $type = $arr[0];  
+       $uname = ltrim($arr[1],'//');
+       list($passwd,$host) = explode('@', $arr[2]);
+       
+       $temp = explode('/', $arr[3]);
+       $port = $temp[0];
+       list($dbname,$charset) = explode('#', $temp[1]);
+        
         $dsn = [
-            'type'     => $info['scheme'],
-            'user' => isset($info['user']) ? $info['user'] : '',
-            'pass' => isset($info['pass']) ? $info['pass'] : '',
-            'host' => isset($info['host']) ? $info['host'] : '',
-            'port' => isset($info['port']) ? $info['port'] : '',
-            'dbname' => !empty($info['path']) ? ltrim($info['path'], '/') : '',
-            'charset'  => isset($info['fragment']) ? $info['fragment'] : 'utf8',
+            'type'     => $type,
+            'user' => $uname,
+            'pass' => $passwd,
+            'host' => $host,
+            'port' => $port,
+            'dbname' =>$dbname,
+            'charset'  => $charset?$charset : 'utf8',
+            'params'=>[]
         ]; 
-        if (isset($info['query'])) {
-            parse_str($info['query'], $dsn['params']);
-        } else {
-            $dsn['params'] = [];
-        }
         return $dsn;
     }
                     
@@ -150,7 +154,8 @@ class Db {
         }
         if (empty($options)) { 
             $options = $this->parseDsn($this->config['dsn']); 
-        }  
+        }
+        $this->type = $this->type?:$options['type'];
         try {
             if (isset($options['prefix']) && $options['prefix']) {
                 $this->prefix = $options['prefix'];
@@ -170,6 +175,7 @@ class Db {
                 $port = $options['port'];
             }
             $is_port = isset($port);
+            $attr = [];
             switch ($this->type) {
                 case 'mariadb':
                 case 'mysql':
@@ -250,7 +256,7 @@ class Db {
                     $this->links[$linkNum] = new PDO('sqlite:' . $options['database_file'], null, null, $params);
                     return $this;
                 
-            }
+            } 
             $driver = $attr['driver'];
             unset($attr['driver']);
             $stack = [];
@@ -326,15 +332,18 @@ class Db {
             return false;
         }
         if ($this->debug_mode) {
-            echo $query;
-
-            $this->debug_mode = false;
-
-            return false;
+            \Logger::log('SQL', $query);
         }
-
         $this->logs[] = $query;
-        return $this->linkID->query($query);
+        try {
+            $res = $this->linkID->query($query);
+        } catch (\Exception $exc) {
+            $res = false;
+            \Logger::log('SQL_ERR', $exc->getMessage());
+        }
+        return $res;
+
+        
     }
 
     public function exec($query) {
@@ -343,15 +352,16 @@ class Db {
             return false;
         }
         if ($this->debug_mode) {
-            echo $query;
-
-            $this->debug_mode = false;
-
-            return false;
-        }
-
+            \Logger::log('SQL', $query); 
+        } 
         $this->logs[] = $query;
-        return $this->linkID->exec($query);
+        try {
+            $res = $this->linkID->exec($query);
+        } catch (\Exception $exc) {
+            $res = false;
+            \Logger::log('SQL_ERR', $exc->getMessage());
+        }
+        return $res;
     }
 
     public function quote($string) {

@@ -1,31 +1,117 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>欢迎注册加入XZ-Blog</title>
+        <title>会员注册 - <?php echo $config['cfg_website'];?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-        <link rel="stylesheet" href="/css/admin.css">
+        <link rel="stylesheet" href="/<?php echo $theme;?>/css/admin.css">
+        <style type="text/css">
+            [v-cloak] {
+                display:none;
+            }
+        </style>
     </head>
     <body class="xz-bg-gray"> 
-    	<div class="login">
-    		<h3 class="title">欢迎使用 XZ-Blog</h3>
-            <p class="sub-title">创建一个您的账户</p> 
+    	<div class="login" id='reg'>
+    		<h3 class="title">
+                 <a href="/" class="logo"><img src="/<?php echo $theme;?>/images/logo_notxt.png" alt="<?php echo $config['cfg_website'];?>会员注册" ></a> <br/>
+                <?php echo $config['cfg_website'];?>会员注册
+            </h3>
+            <p class="sub-title">创建新账户</p> 
     		<form  action="index.html">
                 <div class="xz-form-group">
-                    <input type="phone" class="xz-input" placeholder="手机号码" required="true">
+                    <input type="phone" class="xz-input" v-model="phone" placeholder="手机号码" required="true">
                 </div>
                 <div class="xz-form-group">
-                    <input type="text" class="xz-input xz-wd-180 fl" placeholder="验证码" required="true">
-                    <input type="button" class="xz-btn xz-wd-110 fr" value="发送验证码">
+                    <input type="number" class="xz-input xz-wd-180 fl" v-model="code"  placeholder="验证码" required="true"> 
+                    
+                    <span class="send_btn send_disabled"  v-if="isSend" v-cloak>{{seconds}}s 后重获</span>
+                    <span class="send_btn" v-else @click="send($event)" v-bind:class="{'send_disabled': !isPhone}">发送验证码</span>
+
                 </div>
                 <div class="xz-form-group">
-                    <input type="password" class="xz-input" placeholder="密码" required="">
+                    <input type="password" v-model="password" class="xz-input" placeholder="密码" required="">
                 </div> 
                 <div class="xz-form-group">
-                    <button type="submit" class="xz-btn xz-btn-primary">注 册</button> 
+                    <button type="button" class="xz-btn xz-btn-primary" @click="reg($event)" v-bind:class="{'d': !correct}" v-text="regtxt">注 册</button> 
                     <p class="reg-botm"> <i>已有账号</i><a href="/login.html">立即登录</a></p> 
                 </div> 
             </form> 
         </div>
     </body>
 </html>
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/layer/layer.js"></script> 
+<script src="/libs/md5.js"></script> 
+<script src="/libs/vue.min.js"></script>
+<script src="/<?php echo $theme;?>/js/xz.js"></script>
+<script> 
+var Sign = new Vue({
+    el: '#reg',
+    data:{
+        phone: '',          //手机号
+        code: '',           //验证码
+        password:'',
+        seconds: 0,         //时间
+        correct: false,     //参数是否正确
+        isPhone: false,     //是否为正确的手机
+        isSend: false,      //是否发送手机验证码
+        regtxt: "注 册",
+        sn:'<?php echo $sn;?>'           
+    }, 
+    watch:{
+        'phone': function(){
+            this.correct = this.phone.length && this.code.length==6 && this.password.length>=6; 
+            var re = /^((\(\d{3}\))|(\d{3}\-))?(13\d{9}$)|(15\d{9}$)|(17\d{9}$)|(18\d{9}$)|(14\d{9}$)/; 
+            if(this.phone.length==11 && re.test(this.phone)){
+                this.isPhone = true
+            }else{
+                this.isPhone = false
+            }
+        },
+        'code': function(){
+            this.correct = this.phone.length && this.code.length==6 && this.password.length>=6;
+        },
+        'password': function(){
+            this.correct = this.phone.length && this.code.length==6 && this.password.length>=6;
+        }
+    },
+    methods:{
+        reg: function(e){ 
+            if(e.target.classList.contains('disabled')) return false;
+            if(!this.phone) { layer.msg('请输入手机号！'); return false;}
+            if(!this.code) { layer.msg('请输入验证码！'); return false;}
+            var _self = this;
+            _self.regtxt = '处理中...';
+            xz.ajaxPost(xz.api.reg,{'phone': _self.phone,'code': _self.code,'passwd':md5(_self.password)},function(json){
+
+                    if(json.status==0){
+                        _self.regtxt = '跳转中...';
+                        top.window.location.href = "/";
+                    }else{
+                        _self.regtxt = '注 册';
+                        layer.msg(json.info);
+                    }
+            })
+        },
+        send:function(e) {
+            if(this.isSend || !this.isPhone) { 
+                return false;
+            } 
+            var _self = this; 
+            xz.ajaxPost(xz.api.getCode,{'phone': _self.phone,'sn': _self.sn},function(json){
+                if(json.status==0){
+                    _self.isSend = true; 
+                    _self.seconds = 60;
+                    xz.listenTimer(_self,function(){
+                        _self.isSend = false;
+                    });
+                    layer.msg('验证码发生成功');
+                }else{ 
+                    layer.msg(json.info);
+                }
+            })
+        }
+    }
+});
+</script>

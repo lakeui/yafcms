@@ -1,44 +1,105 @@
-<footer id="master-footer">
-		<div class="wrap">
-			<div class="column4 social">
-				<a href="" class="logo">
-					<img src="images/logo@2x.png" alt="" width="144">
-				</a>
-				<p class="introduce">
-					爱生活，爱技术，爱编程！<br>
-					<small>Love life, love technology, love programming!</small>
-				</p> 
-			</div>
-			<div class="column6 links">
-				<ul>
-					<li><a href=""><i class="fa fa-info-circle"></i> 关于细仔</a></li>
-					<li><a href=""><i class="fa fa-commenting"></i> 给我留言</a></li>
-					<li><a href=""><i class="fa fa-heart"></i> 捐赠</a></li>
-					<li><a href=""><i class="fa fa-audio-description"></i> 广告服务</a></li>
-					<li><a href=""><i class="fa fa-link"></i> 友情链接</a></li>
-					<li><a href=""><i class="fa fa-code"></i> 定制开发服务</a></li>  
-				</ul>
-			</div>
+    
+    <?php if(empty($hideFooter)):?>
+    <footer id="master-footer">
+        <div class="wrap">
+            <div class="column4 social">
+                <a href="" class="logo">
+                    <img src="/<?php echo $theme;?>/images/logo@2x.png" alt="" width="144">
+                </a>
+                <p class="introduce">
+                    <?php echo $config['cfg_slogan'];?><br>
+                    <small><?php echo $config['cfg_slogan_en'];?></small>
+                </p> 
+            </div>
+            <div class="column6 links">
+                <ul>
+                    <?php 
+                    if($fmenu){
+                        foreach($fmenu as $vo){                 
+                            echo '<li><a href="/page/'.$vo['flag'].'"><i class="fa '.$vo["css"].'"></i> '.$vo["title"].'</a></li>';
+                        }
+                    }
+                    ?> 
+                </ul>
+            </div>
 
-			<div class="column2 contact">
-				<ul>
-					<li><img src="http://www.alloyteam.com/wp-content/uploads/2017/01/weixin.png" alt=""><br>
-					扫码关注微信</li>
-					<li><img src="http://www.alloyteam.com/wp-content/uploads/2017/01/qun.png" alt=""><br>扫码加QQ群</li>
-				</ul>
-			</div>  
-		</div>  
-		<div class="copyright"> 
-			<p class="wrap">2017 ALL RIGHTS RESERVED. ｜ 粤ICP备06047857号 </p>
-		</div>
+            <div class="column2 contact">
+                <ul>
+                    <?php if(!empty($config['cfg_wxcode'])): ?>
+                    <li><img src="<?php echo handle_img($config['cfg_wxcode']);?>" alt="微信二维码"><br>扫码关注微信</li>
+                    <?php endif;?>
 
-	</footer>
-	<script src="/js/layui-v1.0.7/layui.js" type="text/javascript"></script>
-	<script>
-		layui.use('util', function(){
-			var util = layui.util; 
-			util.fixbar();
-		});
-	</script>
+                    <?php if(!empty($config['cfg_qqcode'])): ?>
+                    <li><img src="<?php echo handle_img($config['cfg_qqcode']);?>" alt="QQ二维码"><br>扫码加QQ群</li>
+                    <?php endif;?>
+                </ul>
+            </div>  
+        </div>  
+        <div class="copyright"> 
+            <p class="wrap">建议使用 Safari, Chrome 浏览器访问本站  
+                <?php if(!empty($config['cfg_qqs'])):?>
+                <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=9c16723d27cd07a9938bd34cf495febbc96279621b94850aaa07a0765747f195">PHP实战开发QQ群 :<?php echo $config['cfg_qqs'];?></a> 
+                <?php endif;?>
+            </p>
+            <p class="wrap"><?php echo $config['cfg_copyright'];?></p>
+        </div> 
+    </footer>
+    <?php endif;?>
+
+
+    <script src="/libs/jquery.min.js" type="text/javascript"></script>
+    <script src="/libs/layui-v1.0.9/layui.js" type="text/javascript"></script>
+    <script src="/libs/scrollfix.js" type="text/javascript"></script>
+    <script src="/<?php echo $theme;?>/js/xz.js" type="text/javascript"></script>
+    <?php echo isset($js)?$js:'';?>
+    <script>
+
+        $(function(){
+            $('.header').scrollFix({
+                zIndex: 998
+            });
+
+            layui.use('util', function(){
+                var util = layui.util; 
+                util.fixbar();
+            });  
+            $(".userlist").hover(function(){
+                event.stopPropagation();
+                $('.dropdown-menu').show();
+            },function(){
+                event.stopPropagation();
+                $('.dropdown-menu').hide();
+            });
+
+            $(".logout").click(function(){
+                xz.ajaxPost(xz.api.logout,{},function(json){
+                    if(json.status==0){
+                        top.window.location.href = "/";
+                    }
+                });
+            });
+
+
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                $(".dev").on('click',function(){
+                    layer.msg('小哥在努力加班中...');
+                });
+            });  
+            
+        });
+
+
+    </script>
 </body>
 </html>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4549f3e9e510379eff4af8373eedfe25";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+

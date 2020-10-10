@@ -4,8 +4,8 @@
         <title>开始使用XZ-Blog</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/css/admin.css">
+        <link href="/libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/<?php echo $theme;?>/css/admin.css">
     </head>
     <body class="xz-bg-gray"> 
     	<div class="login">
@@ -36,7 +36,7 @@
                         <span>其他方式登录</span>
                     </p>
                     <ul class="open-login">
-                        <li><a href="" class="weixin"><i class="fa fa-weixin"></i></a></li>
+                        <li><a href="javascript:" class="weixin"><i class="fa fa-weixin"></i></a></li>
                         <li><a href="" class="qq"><i class="fa fa-qq"></i></a></li>
                         <li><a href="" class="weibo"><i class="fa fa-weibo"></i></a></li>
                         <li><a href="" class="github"><i class="fa fa-github"></i></a></li>
@@ -47,3 +47,25 @@
     	</div> 
     </body>
 </html>
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/layer/layer.js"></script> 
+<script src="/<?php echo $theme;?>/js/xz.js"></script>
+<script>
+    $('.weixin').on('click', function(event) {
+        xz.ajaxPost(xz.api.wxcode,{'sn':'<?php echo $sn;?>'},function(json){
+            if(json.status==0){
+                layer.open({
+                  type: 1,
+                  title: false,
+                  closeBtn: 0,
+                  area: '516px',
+                  skin: 'layui-layer-nobg', //没有背景色
+                  shadeClose: true,
+                  content: '<img src="" />'
+                });
+            }else{
+                layer.msg(json.info);
+            }
+        });
+    }); 
+</script>

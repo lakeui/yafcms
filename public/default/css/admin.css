@@ -23,10 +23,15 @@ em,i{font-style:normal;}
 
 /* 表单 */
 .xz-form-group{ overflow: hidden; clear: both; padding: 5px 0; } 
-.xz-input{ border-radius: 4px; width: 300px; padding:6px 0px;font-size:14px;text-indent:10px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ddd;}
+.xz-input{border-radius: 4px;width: 300px;padding:6px 0px;font-size:14px;text-indent:10px;line-height: 1.6;color:#555;background-color:#fff;background-image:none;border:1px solid #ddd;}
 .xz-btn{width: 100%;border-radius: 4px;background:#d0d0d0;color:#676565;padding:5px 0px;margin-bottom:0;font-size:14px;font-weight:400;text-align:center;cursor:pointer;line-height:1.6;border:1px solid #eee;}
-.xz-btn-primary{background-color:#1ab394;border-color:#1ab394;color:#FFF;}
-.xz-btn-primary.active,.xz-btn-primary:focus,.xz-btn-primary:hover{background-color:#18a689;border-color:#18a689;color:#FFF;}
+.xz-btn-primary,.disabled{background-color: #4CAF50;border-color: #4CAF50;color:#FFF;}
+.xz-btn-primary.active,.xz-btn-primary:focus,.xz-btn-primary:hover{background-color: #398e3c;border-color: #378e3b;color:#FFF;}
+.xz-btn-normal{ background-color: #FF5722; border-color:#f35b2b;color:#FFF; }
+.disabled{ background-color: #ccc; color: #666; border-color: #bababa; cursor: not-allowed; }
+.disabled.active,.disabled:focus,.disabled:hover{background-color: #ccc; color: #666; border-color: #c2c2c2;}
+
+
 /* 宽高度 */
 .xz-wd{width:1080px;}
 .xz-wd-100{width:100px;}
@@ -45,7 +50,7 @@ em,i{font-style:normal;}
 
 /*******登录注册页面*******/
 .login{ width:302px;overflow: hidden; position: absolute; top:50%; left: 50%; margin-top: -200px; margin-left: -151px; }
-.login .title{text-align:center;padding:10px 0;color:#444;font-size:20px;}
+.login .title{text-align:center;padding: 12px 0;color:#444;font-size: 24px;}
 .login .sub-title{text-align:center;font-size:12px;color:#666; margin-bottom: 30px;}
 .reg-botm{line-height:30px;color:#666;text-align:center;font-size:13px;padding:10px 0;}
 .reg-botm a{color:#337ab7;} 
@@ -66,7 +71,8 @@ em,i{font-style:normal;}
 .open-login li a.windows:hover{ background-color: #00b0fb }
 .o-title{ background-color: #c9c9c9; height: 1px;  position: relative;     margin: 20px 0 25px 0;}
 .o-title span{padding: 0 20px; position: absolute; background-color: #eee; top: -9px;left: 88px;font-size: 14px; color: #9B9B9B;}
-
+.send_btn{float:right;cursor: pointer;background: #FF9800;border-radius: 4px;display: inline-block;font-size: 12px;color: #fff;height: 33px;line-height: 33px;width: 100px;text-align: center;}
+.send_disabled{ background-color: #ccc; color: #666; }
 
 
 

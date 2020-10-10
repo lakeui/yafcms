@@ -1,16 +1,294 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?php include $viewPath.'/header.html';?>
+ 
+<?php echo $crumb; ?>
+
+<div class="wrap contain nopad">
+	
+	<div class="contents"> 
+		<div class="main"> 
+			<div class="blog-heading">
+				<h1 class="title">
+					<?php
+					$html='';
+					if($row['original']==1){
+						$html.='<span class="status-tag original" title="原创博客">原</span>';
+					}elseif($row['original']==2){
+						$html.='<span class="status-tag original" title="转载博客">转</span>';
+					}
+					if($row['index']){
+						$html.'<span class="status-tag recommend" title="首页推荐过的博客">荐</span>';
+					} 
+					$html.=$row['title'];
+					echo $html;
+					?>
+				</h1>
+				<div class="blog-o-info"> 
+				    
+				    <span class="b-time">By <a href="/u/<?php echo $row['user_id'];?>" class="b-author" rel="nofollow"><?php echo $row['nickname'];?></a> / <?php echo date('M n, Y',$row['create_time']);?></span> 
+				    <span class="b-watch">阅读 <i id="view_num">0</i></span>
+				    <span class="b-comment">评论 <i class="cmt_num">0</i></span> 
+				    <span class="b-comment">发表于 <a href="/<?php echo $row['url'];?>"><?php echo $row['typename'];?></a></span> 
+				    <span class="b-watch">字数：<i id="view_num"><?php echo $txt_num;?></i></span>
+				    <span class="b-watch">阅读时间：<i id="view_num"><?php echo $read_time;?></i></span>
+				</div> 
+				<p class="tags">
+					<?php echo handle_tag($row['tags']);?> 
+		        </p>
+			</div>
+
+			<?php if(!empty($row['shortdesc'])): ?>
+			<p class="blog-summary">
+			    <em>摘要：</em><?php echo $row['shortdesc'];?>
+			</p>
+			<?php endif;?>
+
+			
+
+			
+
+			<?php if($row['fck']==2):?> 
+			<div id="doc-content" class="markdown-body editormd-html-preview"> 
+				<?php echo $row['contents'];?>
+			</div>
+			<?php elseif($row['fck']==3):?>
+			<div id="doc-content"> 
+    			<textarea style="display:none;"><?php echo $row['markdown'];?></textarea>
+			</div>
+			<?php else:?> 
+			<div class="blog-body">
+				<div class="blog-content"><?php echo $row['contents'];?></div>
+			</div> 
+			<?php endif;?>
+
+	<!-- 		<div class="code">
+				<img src="/qrcode/index/<?php echo $row['uuid'];?>" style="width: 144px; height:144px">
+				<p>手机扫码阅读，舒服~</p>
+			</div> -->
+
+		
+
+			<div class="blog-footer"> 
+			   <a href="#comment" class="cmtbtn"><i class="fa fa-comment-o"></i> 评论  (<i class="cmt_num">0</i>)</a>
+			    <span id="vote_btn"  title="喜欢" class="opt-btn "><i class="fa fa-thumbs-o-up"></i> (<span id="good_num">0</span>)</span>
+			    <span id="mark_btn"  title="收藏" class="opt-btn "><i class="fa fa-heart-o"></i> (<span id="fav_num">0</span>)</span>
+			    <dl class="share-to">
+			        <dt>分享到 : </dt>
+			        <dd>
+			            <a href="" target="_blank" class="weibo"><i class="fa fa-weibo"></i></a>
+			            <div class="wechat">
+			                <i class="fa fa-weixin"></i>
+			                <img src="https://yqfile.alicdn.com/e77cd6c7dd7335ca7d21a57bb14a19db.png" alt="">
+			            </div>
+			        </dd>
+			    </dl>
+			</div>
+
+<!-- 			<div class="about-content">
+				<h3 class="title-info">相关文章</h3>
+				<ul class="about-c-list">
+			        <li><a href=""> </a></li> 
+	            </ul>
+			</div> -->
+
+		</div>
+
+	</div>
+
+
+	<div class="aside1 pdl15"> 
+
+			
+		<?php if(!empty($author)):?>
+		<div class="aside_detail">
+			<div class="user-info">
+				<a class="user-face" href="/u/<?php echo $author['user_id'];?>" target="_blank">
+					<img src="<?php echo showImgStr($user['face']);?>">
+				</a>
+
+				<div class="user-con">
+					<div class="user-name">
+						<a href="/u/<?php echo $author['user_id'];?>" target="_blank"><?php echo $author['nickname'];?></a>
+
+						<button type="button" data-id="<?php echo $author['user_id'];?>" class="follow-btn "><span>关注</span></button>
+
+					</div>
+					<div class="user-num">
+						文章数量：<?php echo $author['article_num'];?>
+					</div>
+				</div>
+			</div>
+
+
+			<?php if(!empty($authorAritcle)):?>
+			<div class="user-article">
+				<ul class="article-list">
+					<?php 
+					foreach($authorAritcle as $vo){
+						echo '<li><a href="/p/'.$vo['uuid'].'">'.$vo['title'].'</a> <span>'.$vo['view_num'].'阅读</span></li>';
+					} 
+				    ?> 
+				</ul>
+			</div>
+			<?php endif;?>
+
+		</div>
+		<?php endif;?>
+
+
+
+		<?php if(!empty($recomAritcle)):?>
+		<div class="recom_detail">
+			<h3 class="widget-title1">推荐阅读</h3>
+			<ul class="article-list">
+				<?php 
+					foreach($recomAritcle as $vo){
+						echo '<li><a href="/p/'.$vo['uuid'].'">'.$vo['title'].'</a> <span>'.$vo['view_num'].'阅读</span></li>';
+					} 
+				?> 
+			</ul>
+		</div>
+		<?php endif;?>
+
+	</div>
+	 
+
+	
+
+
+	
+</div>
+
+<?php include $viewPath.'/footer.html';?>
+<script>
+$(function () {
+<?php if($row['fck']==3):?>
+var testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id 
+    htmlDecode: "style,script,iframe",
+    emoji: true,
+    taskList: true,
+    tocm: true,
+    tex: true, // 默认不解析
+    flowChart: true, // 默认不解析
+    sequenceDiagram: true, // 默认不解析
+    codeFold: true
+});
+<?php endif;?>
+
+
+$('.recom_detail').scrollFix({
+    distanceTop: $(".header").outerHeight() + 10,
+    endPos:350,
+    zIndex: 50
+});
+
+
+
+
+
+
+ 
+//关注
+$(".follow-btn").click(function(){
+	var obj = this;
+	var user_id = $(this).data("id"),
+		type = $(this).data('type');
+	if(!user_id){
+		return;
+	}
+	xz.ajaxPost(xz.api.follow,{user_id,type},function(json){
+		if(json.status==0){
+			var msg = '关注成功';
+			if(type=='unfollow'){
+				msg = '取消关注成功';
+			}
+			xz.success(msg,function(){
+				if(type=='unfollow'){
+					$(obj).removeClass('followed');
+					$(obj).find('span').text('关注');
+					$('.follow-btn').data('type','');
+				}else{ 
+					$(obj).addClass('followed');
+					$(obj).find('span').text('已关注');
+					$('.follow-btn').data('type','unfollow');
+
+				}
+			});
+		}else if(json.status==2000){
+			xz.error(json.info,function(){
+				top.window.location.href="/login.html?backurl=<?php echo $url;?>"
+			});
+		}else{ 
+			xz.error(json.info);
+		}
+	});
+}).hover(function(){
+	if($(this).hasClass('followed')){
+		$(this).find('span').text('取消关注');
+	}
+	
+},function(){
+	if($(this).hasClass('followed')){
+		$(this).find('span').text(' 已关注');
+	}
+});
+
+
+//喜欢
+$("#vote_btn").click(function(event) {
+	xz.ajaxPost(xz.api.good,{'uuid':'<?php echo $row["uuid"];?>'},function(json){
+		if(json.status==0){
+			var num = parseInt($("#good_num").text())+1;
+			$("#good_num").text(num);
+		}else{
+			layer.msg(json.info);
+		}
+	});
+});
+
+
+//收藏
+$("#mark_btn").click(function(event) {
+	var obj = this;
+	var type = $(obj).data('type');
+	xz.ajaxPost(xz.api.fav,{'uuid':'<?php echo $row["uuid"];?>',type},function(json){
+		if(json.status==0){
+			if(type=='unfav'){
+				$(obj).data('type','fav');
+				$(obj).addClass('is_click');
+			}else{
+				$(obj).removeClass('is_click');
+				$(obj).data('type','unfav');
+			}
+			$("#fav_num").text(json.data);
+		}else{
+			xz.error(json.info);
+		}
+	});
+});
+
+  
+xz.ajaxPost(xz.api.countArticleView,{'uuid':'<?php echo $row["uuid"];?>'},function(json){});
+
+xz.ajaxPost(xz.api.getUserData,{'user_id':'<?php echo !empty($author['user_id'])?$author['user_id']:"";?>'},function(json){
+	if(json.status==0 && json.data.follow==1){
+		$(".follow-btn").addClass('followed');
+		$('.follow-btn').find('span').text('已关注');
+		$('.follow-btn').data('type','unfollow');
+	}
+});
+
+xz.ajaxPost(xz.api.getArticleNum,{'uuid':'<?php echo $row["uuid"];?>'},function(json){
+    if(json.status==0){
+        $('.cmt_num').text(json.data.cmt_num);
+        $('#view_num').text(json.data.view_num);
+        $('#fav_num').text(json.data.fav_num);
+        $('#good_num').text(json.data.good_num); 
+    }
+});
+}); 
+</script>
+
+
+ 
+
+

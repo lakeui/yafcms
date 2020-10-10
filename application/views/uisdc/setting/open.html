@@ -1,0 +1,20 @@
+<?php include $viewPath.'/header.html';?>
+  
+
+<div class="member_main">
+	
+	<?php include $viewPath.'/setting/left.html';?>
+
+	<div class="member_content">
+		<h2 class="member_title">第三方社交账号</h2>
+		<form action="/member/setting/save" method="post" id="form">
+	 	<ul class="table1"><?php echo $bind;?></ul>
+	 	</form>
+	</div>
+
+</div>
+ 
+	
+<?php include $viewPath.'/footer.html';?>
+
+

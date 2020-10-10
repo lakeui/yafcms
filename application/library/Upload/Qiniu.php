@@ -16,8 +16,8 @@ class Qiniu {
         if($config['qiniu']['callback']){ 
             $this->type = 2;
             $policy = array(
-                'callbackUrl' => $config['qiniu']['callback'],
-                'callbackBody' => 'key=$(key)&hash=$(etag)&filesize=$(fsize)&type=$(imageInfo.format)&height=$(imageInfo.height)&width=$(imageInfo.width)'
+//                'callbackUrl' => $config['qiniu']['callback'],
+//                'callbackBody' => 'key=$(key)&hash=$(etag)&filesize=$(fsize)&type=$(imageInfo.format)&height=$(imageInfo.height)&width=$(imageInfo.width)'
             ); 
             $this->token = $auth->uploadToken($config['qiniu']['bucket'],null,3600,$policy); 
         }else{
@@ -34,7 +34,7 @@ class Qiniu {
         if ($err !== null) { 
             $this->setError($err);
             return false;
-        } 
+        }  
         if($this->type==2){
             return $ret['data'];
         }else{

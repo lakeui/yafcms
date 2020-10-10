@@ -1,0 +1,43 @@
+<?php include $viewPath.'/header.html';?>
+  
+
+<div class="member_main">
+	
+	<?php include $viewPath.'/setting/left.html';?>
+
+	<div class="member_content">
+		<h2 class="member_title">修改密码</h2>
+		<form action="/member/setting/save" method="post" id="form">
+	 	<ul class="table">  
+	 		<li>
+	 			<span  class="tname">旧密码</span>
+	 			<input type="password" placeholder="旧密码" required="true" class="txt" value="" name="oldpasswd">
+	 		</li>
+	 		<li>
+	 			<span  class="tname">新密码</span>
+	 			<input type="password" placeholder="新密码" required="true" class="txt" value="" name="newpasswd">
+	 		</li>
+	 		<li>
+	 			<span  class="tname">密码确认</span>
+	 			<input type="password" placeholder="密码确认" required="true" class="txt" value="" name="cfmpasswd">
+	 		</li>
+	 		   
+	 		<li>
+	 			<span class="tname">&nbsp;</span>
+	 			<input type="hidden" name="cmd" value="passwd">
+	 			<button type="button" id="saveBtn" class="layui-btn layui-btn-sm wd80 ">更新</button>
+	 		</li>
+	 	</ul>
+	 	</form>
+	</div>
+
+
+</div>
+ 
+	
+<?php include $viewPath.'/footer.html';?>
+<script>
+
+xz.save('#saveBtn');	
+</script>
+

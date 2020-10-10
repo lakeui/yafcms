@@ -10,17 +10,19 @@ class ErrorController extends \Yaf\Controller_Abstract {
      */
     public function errorAction() { 
         $exception = $this->getRequest()->getException();
+        \Logger::error(json_encode($exception));
         try {
-            throw $exception;
+            $msg = 'sys error'; //$exception
         } catch (Yaf\Exception\LoadFailed $e) {
             //加载失败
         } catch (Yaf\Exception $e) {
             //其他错误
         }
-        
-//        assert($exception === $exception->getCode());
-//        $this->getView()->assign("code", $exception->getCode());
-//        $this->getView()->assign("message", $exception->getMessage());
+        $debug = \Yaf\Registry::get('config')->debug;
+        if($debug){
+            $msg = $exception->getMessage();
+        }
+        $this->getView()->assign("message",$msg);
       
     }
 

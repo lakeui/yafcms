@@ -1,0 +1,50 @@
+<?php include $viewPath.'/header.html';?>
+
+<?php echo $crumb; ?>
+
+<div class="wrap contain nopad">
+
+	<div class="zhuanti zt-main">
+		 <div class="zt-header">
+		    <div class="zt-l">
+		      <span class="thumb">
+		        <img src="<?php echo handle_img($row['img'],2,770,380);?>" alt="img">
+		      </span>
+		    </div>
+		    <div class="zt-r">
+		      <h2><span class="tag">热门专题</span> <?php echo $row['title'];?></h2>
+		      <div class="zt-m">
+		        <div class="zt-e">
+		          <span><em><?php echo $row['num'];?></em>篇文章</span>
+		          <span><em><?php echo $row['viewnum'];?></em>位观众</span>
+		        </div>
+		        <div class="zt-entry"><?php echo $row['shortdesc'];?></div>
+		      </div>
+		    </div>
+		</div>
+
+		<!-- <div class="zt-course">
+		  <div class="row">
+		    <div class="zt-course-item"><a href="https://xue.uisdc.com/pm/" target="_blank" class="external"><span>1</span><h3>涨薪必备</h3><h2>设计师向产品转型课程</h2></a></div><div class="zt-course-item"><a href="https://xue.uisdc.com/web2/" target="_blank" class="external"><span>2</span><h3>高薪全能</h3><h2>零基础Web前端课程</h2></a></div><div class="zt-course-item"><a href="https://xue.uisdc.com/ui/" target="_blank" class="external"><span>3</span><h3>入行必备</h3><h2>热门！UI设计零基础特训班</h2></a></div><div class="zt-course-item"><a href="https://xue.uisdc.com/draw/" target="_blank" class="external"><span>4</span><h3>火热报名</h3><h2>优设零基础手绘课</h2></a></div><div class="zt-course-item"><a href="https://xue.uisdc.com/uidesign/" target="_blank" class="external"><span>5</span><h3>入行课程</h3><h2>2018 零基础UI设计课程</h2></a></div>  </div>
+		</div> -->
+
+
+		<div class="article zt_article"> 
+			 <ul class="tuwen">
+			 	<?php if($list):?>
+				<?php foreach($list as $vo):?>
+      			<li class="tuwen_item">
+      				<a class="thumbnail" href="/p/<?php echo $vo['uuid'];?>" style="background-image:url(<?php echo handle_img($vo['img'],1);?>);" target="_blank"></a>
+      				<h3><a href="/p/<?php echo $vo['uuid'];?>" target="_blank"><i><?php echo $vo['step'];?></i><?php echo $vo['title'];?></a></h3>
+      				<div class="post-metas"><span><a href="/<?php echo $vo['url'];?>" class="tag"><?php echo $vo['typename'];?></a></span><span><?php echo date('M d, Y',$vo['create_time']);?></span><span>阅读 <?php echo number_format($vo['view_num']);?></span></div>
+      			</li>
+      			<?php endforeach;?>
+				<?php endif;?>    
+  			</ul>
+		</div>
+
+
+	</div>
+</div>
+<?php include $viewPath.'/footer.html';?>
+	

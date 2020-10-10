@@ -1,0 +1,80 @@
+<?php include $viewPath.'/header.html';?>
+  
+
+<div class="member_main">
+	
+	<?php include $viewPath.'/setting/left.html';?>
+
+	<div class="member_content">
+		<h2 class="member_title">个人资料</h2>
+		<form action="/member/setting/save" method="post" id="form">
+	 	<ul class="table">
+	 		<li>
+	 			<span class="tname">头像</span>
+	 			<img width="50" class="circle" id="uploadbtn" src="<?php echo showImgStr($row['face']);?>">
+	 			<input type="hidden" name="face" id="face" value="<?php echo $row['face'];?>">
+	 		</li>
+	 		<li>
+	 			<span  class="tname">账号状态</span>
+	 			<?php echo showUserStatus($row['status']);?>
+	 		</li>
+	 		<li>
+	 			<span  class="tname">昵称</span>
+	 			<input type="text" placeholder="用户昵称" required="true" class="txt" value="<?php echo $row['nickname'];?>" name="nickname">
+	 		</li>
+	 		<li>
+	 			<span  class="tname">手机</span> 
+	 			<?php 
+	 			if($row['phone']){
+	 				echo showPhoneStr($row['phone'])."<a href='' class='changephone'>[更换手机]</a>"; 
+	 			}else{
+	 				echo '<a href="" class="bindbtn">绑定手机</a>';
+	 			}
+	 			?>
+	 		</li>
+	 		<li>
+	 			<span  class="tname">电子邮件</span>
+	 			<?php 
+	 			if($row['email']){
+	 				echo $row['email'];
+	 			}else{
+	 				echo '<a href="" class="bindbtn">绑定邮箱</a>';
+	 			}
+	 			?>
+	 		</li>
+	 		<li>
+	 			<span  class="tname">性别</span>
+	 			<label><input type="radio" name="sex" value="1" <?php if($row['sex']==1){ echo 'checked';}?> > 男</label>
+	 			<label><input type="radio" name="sex" value="2" <?php if($row['sex']==2){ echo 'checked';}?>> 女</label>
+	 		</li>
+	 		<li>
+	 			<span  class="tname">文章编辑器</span>
+	 			<label><input type="radio" name="fck" value="1"  <?php if($row['fck']==1){ echo 'checked';}?> > 富文本</label>
+	 			<label><input type="radio" name="fck" value="2"  <?php if($row['fck']==2){ echo 'checked';}?> > Markdown</label>
+	 		</li>
+	 		<li>
+	 			<span  class="tname">注册时间</span>
+	 			<i><?php echo date("Y-m-d H:i:s",$row['reg_time']);?></i>
+	 		</li> 
+	 		<li>
+	 			<span class="tname">&nbsp;</span>
+	 			<input type="hidden" name="cmd" value="profile">
+	 			<button type="button" id="saveBtn" class="layui-btn layui-btn-sm wd80">更新</button>
+	 		</li>
+	 	</ul>
+	 	</form>
+	</div>
+
+
+</div>
+ 
+	
+<?php include $viewPath.'/footer.html';?>
+<script>
+
+
+xz.save('#saveBtn');
+xz.upload("#face");
+ 
+</script>
+

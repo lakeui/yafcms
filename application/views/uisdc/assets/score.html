@@ -1,0 +1,131 @@
+<?php include $viewPath.'/header.html';?>
+  
+
+<div class="member_main" id="app">
+	
+	<?php include $viewPath.'/setting/left.html';?>
+
+	<div class="member_content">
+		<div class="layui-row layui-col-space10 coin-area">
+		  <div class="layui-col-md4 coin ">
+		      <h2><i class="fa fa-gift"></i> 我的积分</h2>
+		      <b><?php echo getAssetsNum($score);?></b>
+		      <div class="scorebtns">
+				  <a href="" class="scorebtn">赚积分</a> 
+				  <a href="" class="scorebtn">花积分</a> 
+			  </div>
+		  </div>
+		  <div class="layui-col-md8 score">
+		      <h2>最近三个月积分统计</h2>
+		      <?php 
+		      	 if($list){
+		      	 	foreach($list as $vo){
+		      	 	   echo '<div class="layui-col-md3">
+			      <span>'.$vo['name'].'返积分</span>
+			      <b>+ '.$vo['snum'].'</b>
+			  </div>';
+		      	   }
+		      	 }
+		      ?> 
+		  </div>
+		</div> 
+		<hr>
+		<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this">积分明细</li>
+		  </ul>
+		  <div class="layui-tab-content" style="padding: 10px 0;">
+		  	<table cellpadding="1" cellspacing="1" class="layui-table">
+				<colgroup>
+				    <col width="180"> 
+				    <col width="100"> 
+				    <col width="120"> 
+				    <col width="120"> 
+				    <col> 
+				</colgroup>
+				<thead>
+					<tr>
+						<th>时间</th> 
+						<th>收入/支出</th>
+						<th>变化前积分</th>
+						<th>变化后积分</th>
+						<th>详细说明</th>
+					</tr>
+				</thead>
+				<tbody> 
+					<tr v-for="item in items" :key="item.id"> 
+						<td>{{ item.time }}</td>
+						<td class="red">{{ item.num }}</td>
+						<td>{{ item.before_num }}</td>
+						<td>{{ item.after_num }}</td>
+						<td>{{ item.title }}</td>
+					</tr> 
+					<tr>
+						<td colspan="5" v-show="empty">暂无数据</td>
+					</tr>
+				</tbody>
+			</table> 
+		  </div>
+		</div>  
+
+
+		<div id="page"></div>
+	</div>
+
+
+</div>
+ 
+	
+<?php include $viewPath.'/footer.html';?>
+<script>
+
+
+var vue = new Vue({
+	el: '#app',
+	data: {
+		empty:true,
+	    items: [],
+	    total:<?php echo $total;?>,
+	    currPage:1,
+	},
+	created: function () {
+		this.getlogs();     
+		var _this = this;
+		layui.use('laypage', function(){
+		  var laypage = layui.laypage;
+		  laypage.render({
+		    elem: 'page'
+		    ,count: _this.total
+		    ,jump: function(obj, first){
+		    	_this.currPage = obj.curr;
+			    // console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+			    // console.log(obj.limit); //得到每页显示的条数
+			    //首次不执行
+			    if(!first){
+			      //do something
+			    }
+			    _this.getlogs();
+			 }
+		  });  
+		});
+  	},
+	methods:{
+		getlogs: function (event) { 
+	        xz.ajaxPost(xz.api.assetslog,{type:1,p:this.currPage},function(json){
+	        	vue.items = json.data || [];
+	        	if(vue.items.length>0){
+	        		vue.empty = false;
+	        	}
+	        },function(){})
+	    }
+	},
+
+});
+
+
+
+
+
+</script>
+
+

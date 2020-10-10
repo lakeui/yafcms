@@ -1,9 +1,13 @@
 <?php
 
-class CateModel extends Model {
+class SoulModel extends BaseModel{
 
-    public function __construct($str = '') {
-        parent::__construct($str);
+    private $table = 'wt_soul';
+    
+    public function findRand(){ 
+        return $this->db->query('select * from '.$this->table.' order by rand( ) limit 1')->fetch(PDO::FETCH_ASSOC);
     }
-
+    
+     
+    
 }

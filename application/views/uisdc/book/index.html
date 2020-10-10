@@ -1,0 +1,44 @@
+<?php include $viewPath.'/header.html';?>
+
+
+<div class="book_banner">
+	<div class="h1">
+		
+	</div>
+</div>
+
+<div class="wrap contain">  
+	<div class="book">
+		 <ul class="book_label">
+		 	<?php if(!empty($list)):?>
+		 	<?php foreach($list as $vo):?>
+	 		<li class="book_item">
+	 			<?php if($vo['is_new']):?>
+	 			<span class="label" style="background-color: #009f3d">
+		          <i class="label-before" style="border-top: 18px solid #009f3d;"></i>
+		          <em style="background-color: #009f3d">新</em>
+		          <i class="label-after" style="border-left: 18px solid #009f3d;"></i>
+		        </span>
+		        <?php endif;?>
+		        <a href="/book/list/<?php echo $vo['url'];?>" class="special-item">
+		          <h3><?php echo $vo['typename'];?></h3>
+		          <p><?php echo $vo['shortdesc'];?></p>
+		          <div class="card">
+		          		<?php 
+		          		if(!empty($vo['books'])){
+							foreach($vo['books'] as $wo){
+								echo '<img src="'.$wo['books'].'" >';
+							}
+							echo '<em>'.$vo['num'].'</em>';
+		          		}
+		          		?> 
+		          </div>
+		        </a>
+	 		</li>
+		 	<?php endforeach;?>
+		 	<?php endif;?> 
+		 </ul>
+	</div>
+</div>
+<?php include $viewPath.'/footer.html';?>
+	

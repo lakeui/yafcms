@@ -1,0 +1,35 @@
+<?php include $viewPath.'/header.html';?>
+
+<div class="wrap contain">
+	<div class="zhuanti">
+		<h2 class="title">
+			<a <?php if($sort=='default') echo 'class="current" ';?> href="/zhuanti">最新专题</a>
+			<a <?php if($sort=='hot') echo 'class="current" ';?> href="/zhuanti?sort=hot">热门专题</a>
+		</h2>
+		<div class="zhuantilist zt-recommend">
+			<?php if($list): ?>
+			<?php foreach($list as $key=>$vo):?>
+			<div class="zt-item <?php if(($key+1)%3==0){ echo 'zt-item-last';}?>">
+			    <a href="/zhuanti/<?php echo $vo['url'];?>" >
+			      <div class="thumb" style="background-image:url(<?php echo handle_img($vo['img'],2,770,380);?>);">
+			        <h5>
+			          <span class="l"><?php echo $vo['viewnum'];?>人看过</span>
+			          <span class="r"><?php echo $vo['num'];?>篇文章</span>
+			        </h5>
+			      </div>
+			      <h2><?php echo $vo['title'];?></h2>
+			      <div class="entry"><?php echo $vo['shortdesc'];?></div>
+			      <div class="btns">
+			        <span class="btn">查看专题</span>
+			      </div>
+			    </a>
+		   </div>
+		   <?php endforeach;?>
+		   <?php else:?>
+		   <div class="empty">赞无数据</div>
+		   <?php endif;?>
+		</div>
+	</div>
+</div>
+<?php include $viewPath.'/footer.html';?>
+	

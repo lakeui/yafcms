@@ -1,0 +1,19 @@
+<div class="member_slider">
+ 	<ul class="member_menu1">
+ 		<?php
+ 		$str = '';
+ 		foreach($leftMenu as $key=>$vo){
+ 			$str.='<li><b>'.$vo["title"].'</b><ul class="member_menu2">';
+ 			foreach($vo['child'] as $url=>$wo){
+ 				$str.='<li ';
+ 				if($actionName==$url){
+ 					$str.=" class='chooseItem' ";
+ 				}
+ 				$str.='><a href="'.$key.$url.'"><i class="fa fa-'.$wo['icon'].'"></i>'.$wo['title'].'</a></li>';
+ 			}
+ 			$str.="</ul></li>";
+ 		}
+ 		echo $str;
+ 		?> 
+ 	</ul>
+</div>

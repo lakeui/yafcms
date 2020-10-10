@@ -1,0 +1,91 @@
+<?php include $viewPath.'/header.html';?>
+  
+
+<div class="member_main">
+	
+	<?php include $viewPath.'/setting/left.html';?>
+
+	<div class="member_content">
+		<h2 class="member_title">我关注的作者</h2>
+		<table cellpadding="1" cellspacing="1" class="layui-table">
+			<colgroup>
+			    <col> 
+			    <col width="80">
+			    <col width="150">
+			    <col width="100">
+			</colgroup>
+			<thead>
+				<tr>
+					<th>作者</th>
+					<th>文章数</th> 
+					<th>关注时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<a href="">
+							<img width="30" src="https://upload.jianshu.io/users/upload_avatars/7050971/45851ee9-9a0e-435b-9717-ff0ba2c40657.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240" />
+							水电费
+						</a>
+					</td>
+					<td>12</td> 
+					<td>2018-10-12 12:01</td>
+					<td><a href="">取消关注</a></td>
+				</tr> 
+				<tr>
+					<td>
+						<a href="">
+							<img width="30" src="https://upload.jianshu.io/users/upload_avatars/7050971/45851ee9-9a0e-435b-9717-ff0ba2c40657.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240" />
+							水电费
+						</a>
+					</td>
+					<td>12</td> 
+					<td>2018-10-12 12:01</td>
+					<td><a href="">取消关注</a></td>
+				</tr> 
+				<tr>
+					<td>
+						<a href="">
+							<img width="30" src="https://upload.jianshu.io/users/upload_avatars/7050971/45851ee9-9a0e-435b-9717-ff0ba2c40657.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240" />
+							水电费
+						</a>
+					</td>
+					<td>12</td> 
+					<td>2018-10-12 12:01</td>
+					<td><a href="">取消关注</a></td>
+				</tr> 
+
+			</tbody>
+		</table> 
+		<div id="page"></div>
+	</div>
+
+
+</div>
+ 
+	
+<?php include $viewPath.'/footer.html';?>
+<script>
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  //执行一个laypage实例
+  laypage.render({
+    elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: 50 //数据总数，从服务端得到
+    ,jump: function(obj, first){
+	    //obj包含了当前分页的所有参数，比如：
+	    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+	    console.log(obj.limit); //得到每页显示的条数
+	    
+	    //首次不执行
+	    if(!first){
+	      //do something
+	    }
+	 }
+  });
+});
+</script>
+
+

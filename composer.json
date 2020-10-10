@@ -1,0 +1,13 @@
+{
+    "name": "zhangheng/www.lakeui.com",
+    "authors": [
+        {
+            "name": "lakeui",
+            "email": "zhangheng@weicantimes.com"
+        }
+    ],
+    "require": {
+        "alibabacloud/client": "^1.5",
+        "alibabacloud/sdk": "^1.8"
+    }
+}

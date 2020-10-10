@@ -2,34 +2,53 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title><?php echo $seo['seo_title'];?></title>
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
-	<!-- <link rel="stylesheet" href="/js/layui-v1.0.7/css/layui.css"> -->
-	<link rel="stylesheet" href="/css/common.css">
+	<link rel="stylesheet" href="/libs/layui-v1.0.9/css/layui.css">
+	<link rel="stylesheet" href="/<?php echo $theme;?>/css/common.css"> 
+	<?php echo isset($css)?$css:"";?>
+    <meta name="keywords" content="<?php echo $seo['seo_key'];?>">
+    <meta name="description" content="<?php echo $seo['seo_desc'];?>">
 </head>
 <body>
 	<header class="header">
 		<div class="wrap m-header">
-		  	<a class="logo"><img src="images/logo@2x.png" alt="" width="160" ></a> 
+		  	<a href="/" class="logo"><img src="/<?php echo $theme;?>/images/logo@2x.png" alt="" width="160" ></a> 
 		  	<nav class="site-nav">
+		  		<?php if($menu):?>
 			  	<ul class="menu">
-			  		<li><a class="active" href="">看图</a></li>
-			  		<li><a href="">找软件</a></li>
-			  		<li><a href="">笑一笑</a></li>
-			  		<li><a href="">工具</a></li>
+			  		<?php  
+					foreach($menu as $key=>$vo){
+						$css = '';
+						if($vo['hot']==1){
+							$css="active";
+						}
+						echo '<li><a class="'.$css.'" href="'.$vo['url'].'">'.$vo['title'].'</a></li>';
+					}
+			  		?> 
 			  	</ul>
+			    <?php endif;?>
 		  	</nav>
 		    <nav class="user-nav">
 		        <ul>
-		            <li class="login"><a href="/login.html">Log in</a></li>
-		          	<li><a class="reg-btn" href="/welcome"><i class="fa fa-pencil-square-o"></i> 发文章</a></li>
+		        	<!-- 
+		            <li class="login"><a href="/login.html">登陆</a>·<a href="/login.html">注册</a></li>
+		          	<li><a class="reg-btn" href="/welcome"><i class="fa fa-pencil-square-o"></i> 投稿</a></li> -->
 		        </ul>
 		    </nav> 
 		    <div class="search">
 				<form class="header-search" action="/search"  method="get"> 
 				    <i class="fa fa-search"></i>
-				    <input type="text" name="q" id="search-query" value="" placeholder="Search...">
+				    <input type="text" name="q" id="search-query" value="" placeholder="关键词搜索">
 				</form>
 			</div> 
-	  	</div>
+	  	</div> 
 	</header>
+
+	<!-- <div class="tipsbj"> 
+	  	<div class="wrap tips">
+			<a href="" target="_blank"><i class="fa fa-volume-down"></i> 并且新增 UI8，UpLabs 内容导读，目前功能测试中，欢迎提出你的反馈与建议，谢谢支持。</a>
+	    </div>
+    </div> -->
+
+	

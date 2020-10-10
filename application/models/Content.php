@@ -1,9 +1,15 @@
 <?php
 
-class CateModel extends Model {
+class ContentModel extends BaseModel{
 
-    public function __construct($str = '') {
-        parent::__construct($str);
+    private $table = 'wt_content';
+    
+    public function select($condition='',$field="*"){ 
+        return $this->db->select($this->table,$field,$condition); 
     }
-
+    
+    
+    
+    
+    
 }

@@ -1,38 +1,24 @@
 <?php
 
-class IndexController extends Yaf\Controller_Abstract {
+class QrcodeController extends BaseController {
 
- 
-    public function indexAction() {   
-       
-      
-        // dump($obj->select());
-      
-//        return false;
-        $this->getView()->assign("content", "Hello Yaf");
+  
+    public function init() {
+        Yaf\Dispatcher::getInstance()->disableView();
+        parent::init();
     }
-
-    public function testAction() {   
-        $obj = new Db();
-        $rs = $obj->insert('cate',[
-            'cate_id'=>  rand(100,9999),
-            'cate_name'=>'wtest2'
-        ]);
-        dump($rs);
-//       $rs = $obj->get('cate','*',['cate_id'=>1]);
-//        dump($rs);
+     
+      
+    public function indexAction(){
+        $uuid = $this->getRequest()->getParam('uuid'); 
+        $url = 'http://m.lakeui.com/p/'.$uuid;
+        $file = WEB_PATH.'upload/'.$uuid.'.png';
+        if(!is_file($file)){
+            QRcode::png($url,$file,QR_ECLEVEL_H,8,2);
+            $file = makeImg($file);
+        } 
+        Header("Content-type: image/png");
+        echo file_get_contents($file);
         exit;
-        
-        $this->getView()->assign("content", "Hello Yaf");
-    }
-    
-    public function saveAction() {   
-        $files = $this->getRequest()->getFiles();
-        var_dump($files);
-        $up = new Upload();
-        $rs = $up->uploadOne($files['pic']);
-        var_dump($rs);
-       
-        return false; 
     }
 }

@@ -1,9 +1,20 @@
 <?php
 
-class CateModel extends Model {
+class MenuModel extends BaseModel{
 
-    public function __construct($str = '') {
-        parent::__construct($str);
+    private $table = 'wt_menu';
+    
+    
+    public function select(){ 
+        return $this->db->select($this->table,[
+            'title','url','hot'
+        ],[
+            'status'=>1,
+            'ORDER'=>[
+                'rise'=>'ASC',
+                'id'=>'ASC'
+            ]
+        ]); 
     }
-
+    
 }

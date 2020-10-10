@@ -1,0 +1,54 @@
+<div class="slide">
+
+	<div class="adv">
+		<?php echo $adv;?>
+	</div>
+
+	
+	<?php if($tag):?>
+	<div class="item">
+		<p class="title"><a href=""><i class="fa fa-tag"></i> 热门标签</a> <a class="all" href="/tag">全部 <i class="fa fa-angle-right"></i></a></p>
+		<div class=" tags">
+			<?php foreach($tag as $vo):?>
+			<a href="/tag/<?php echo urlencode($vo);?>" class="label-item" target="_blank"><?php echo $vo;?></a>
+			<?php endforeach;?>
+		</div>
+	</div>
+	<?php endif;?>
+
+
+	<?php if($ulist):?>
+	<div class="item">
+		<p class="title"><i class="fa fa-user-plus"></i> 最新加入</p>
+		<div class="user">
+			<?php 
+			foreach($ulist as $vo){
+				echo '<a href="/u/'.$vo["id"].'"><img src="'.handle_img($vo["face"]).'" alt="'.$vo["nickname"].'"></a>';
+			}
+			?> 
+		</div>
+	</div>
+	<?php endif;?>
+
+	<!--
+	<div class="item">
+		<p class="title"><i class="fa fa-commenting"></i> 近期评论</p>
+		<ul class="comment">
+			<li><a href="">不错的推荐啊</a></li> 
+		</ul>
+	</div>
+	-->
+
+	<?php if($link):?>
+	<div class="item">
+		<p class="title"><i class="fa fa-link"></i> 友情链接</p>
+		<ul class="link">
+			<?php 
+			foreach($link as $vo){
+				echo '<li><a target="_blank" href="'.$vo["url"].'"><i class="fa fa-angle-right"></i> '.$vo["title"].'</a></li>';
+			}
+			?> 
+		</ul>
+	</div>
+	<?php endif;?>
+</div>

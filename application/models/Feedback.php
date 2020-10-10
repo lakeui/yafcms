@@ -1,9 +1,14 @@
 <?php
 
-class CateModel extends Model {
+class FeedbackModel extends BaseModel{
 
-    public function __construct($str = '') {
-        parent::__construct($str);
+    private $table = 'wt_feedback';
+    
+    
+     
+    public function insert($data){
+        return $this->db->insert($this->table,$data);
     }
-
+    
 }
+

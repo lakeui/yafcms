@@ -1,0 +1,75 @@
+<?php include $viewPath.'/header.html';?>
+  
+
+<div class="member_main">
+	
+	<?php include $viewPath.'/setting/left.html';?>
+
+	<div class="member_content">
+		<h2 class="member_title">我收藏的文章</h2>
+		<table cellpadding="1" cellspacing="1" class="layui-table">
+			<colgroup>
+			    <col> 
+			    <col width="150">
+			    <col width="100">
+			</colgroup>
+			<thead>
+				<tr>
+					<th>文章标题</th> 
+					<th>收藏时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>成为批判性思考者：历史的另一种打开方式</td>
+					<td>2018-10-12 12:01</td>
+					<td><a href="">取消收藏</a></td>
+				</tr>
+				<tr>
+					<td>成为批判性思考者：历史的另一种打开方式</td>
+					<td>2018-10-12 12:01</td>
+					<td><a href="">取消收藏</a></td>
+				</tr>
+				<tr>
+					<td>成为批判性思考者：历史的另一种打开方式</td>
+					<td>2018-10-12 12:01</td>
+					<td><a href="">取消收藏</a></td>
+				</tr>
+				<tr>
+					<td>成为批判性思考者：历史的另一种打开方式</td>
+					<td>2018-10-12 12:01</td>
+					<td><a href="">取消收藏</a></td>
+				</tr>
+			</tbody>
+		</table> 
+		<div id="page"></div>
+	</div>
+
+
+</div>
+ 
+	
+<?php include $viewPath.'/footer.html';?>
+<script>
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  //执行一个laypage实例
+  laypage.render({
+    elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: 50 //数据总数，从服务端得到
+    ,jump: function(obj, first){
+	    //obj包含了当前分页的所有参数，比如：
+	    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+	    console.log(obj.limit); //得到每页显示的条数
+	    
+	    //首次不执行
+	    if(!first){
+	      //do something
+	    }
+	 }
+  });
+});
+</script>
+
+

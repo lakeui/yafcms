@@ -1,9 +1,14 @@
 <?php
 
-class CateModel extends Model {
+class ConfigModel extends BaseModel{
 
-    public function __construct($str = '') {
-        parent::__construct($str);
+    private $table = 'wt_config';
+    
+    public function select($condition='',$field="*"){ 
+        return $this->db->select($this->table,$field,$condition); 
     }
-
+    
+    
+    
+    
 }

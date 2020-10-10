@@ -1,38 +1,53 @@
 <?php
 
-class IndexController extends Yaf\Controller_Abstract {
+class PageController extends BaseController {
 
- 
-    public function indexAction() {   
-       
-      
-        // dump($obj->select());
-      
-//        return false;
-        $this->getView()->assign("content", "Hello Yaf");
+    public function init() {
+        Yaf\Dispatcher::getInstance()->disableView();
+        parent::init();
     }
 
-    public function testAction() {   
-        $obj = new Db();
-        $rs = $obj->insert('cate',[
-            'cate_id'=>  rand(100,9999),
-            'cate_name'=>'wtest2'
-        ]);
-        dump($rs);
-//       $rs = $obj->get('cate','*',['cate_id'=>1]);
-//        dump($rs);
-        exit;
+
+    public function detailAction() {   
+        $s = $this->getRequest()->getParam('s');
+        $s = rtrim($s,'/');
+        if(empty($s)){
+            //404
+            $this->error('参数错误');
+        }
+        //获取页面内容
+        $obj = new PageModel();
+        $row = $obj->get($s);
+        if(empty($row)){
+            $this->error('页面已经不存在');
+        } 
+         
+        $seo = $this->getSeo('page',[
+            '{val}'=>$row['title']
+        ]); 
+          
+        $tpl = 'detail.html';
+        if($row['type']==3){
+            $tpl = $row['flag'].'.html';
+        }
+        $list = [];
         
-        $this->getView()->assign("content", "Hello Yaf");
+        
+        if($row['flag']=='friendlink'){
+            $obj = new LinkModel();
+            $list = $obj->select([
+                'status'=>1
+            ], [
+                'id','title','logo','url'
+            ]);
+        }
+         
+        $params = [  
+            'seo'=>$seo, 
+            'row'=>$row, 
+            'list'=>$list,
+        ]; 
+        return $this->getView()->assign($params)->display('page/'.$tpl);
     }
-    
-    public function saveAction() {   
-        $files = $this->getRequest()->getFiles();
-        var_dump($files);
-        $up = new Upload();
-        $rs = $up->uploadOne($files['pic']);
-        var_dump($rs);
-       
-        return false; 
-    }
+ 
 }

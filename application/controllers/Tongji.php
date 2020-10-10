@@ -1,38 +1,29 @@
 <?php
 
-class IndexController extends Yaf\Controller_Abstract {
+class TongjiController extends BaseController {
 
  
-    public function indexAction() {   
-       
-      
-        // dump($obj->select());
-      
-//        return false;
-        $this->getView()->assign("content", "Hello Yaf");
+    
+    public function countArticleViewAction() {   
+        $uuid =  $this->getRequest()->getPost('uuid');
+        if(empty($uuid)){
+            finish(1,'参数错误');
+        }
+        $row = new ArticleModel();
+        $flag = $row->update([
+            'view_num[+]'=>1
+        ], [
+            'uuid'=>$uuid
+        ]);
+        if(!empty($flag)){
+            finish(0);
+        }
+        finish(1,'操作失败');
     }
 
-    public function testAction() {   
-        $obj = new Db();
-        $rs = $obj->insert('cate',[
-            'cate_id'=>  rand(100,9999),
-            'cate_name'=>'wtest2'
-        ]);
-        dump($rs);
-//       $rs = $obj->get('cate','*',['cate_id'=>1]);
-//        dump($rs);
-        exit;
-        
-        $this->getView()->assign("content", "Hello Yaf");
-    }
     
     public function saveAction() {   
-        $files = $this->getRequest()->getFiles();
-        var_dump($files);
-        $up = new Upload();
-        $rs = $up->uploadOne($files['pic']);
-        var_dump($rs);
-       
-        return false; 
+         
+         
     }
 }

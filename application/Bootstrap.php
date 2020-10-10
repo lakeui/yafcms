@@ -22,4 +22,10 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
         $router->addConfig(\Yaf\Registry::get("config")->routes);
     }
 
+     /**
+     * 注册composer
+     */
+    public function _initComposer(\Yaf\Dispatcher $dispatcher) {
+        require APP_PATH.'/vendor/autoload.php';
+    }
 }

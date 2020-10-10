@@ -1,9 +1,18 @@
 <?php
 
-class CateModel extends Model {
+class TypeModel extends BaseModel{
 
-    public function __construct($str = '') {
-        parent::__construct($str);
+    private $table = 'wt_type';
+ 
+    public function select($condition='',$field="*"){ 
+        return $this->db->select($this->table,$field,$condition); 
     }
-
+    
+    
+    public function get($condition=[],$field="*"){
+        return $this->db->get($this->table,$field,$condition);
+    }
+    
+    
+    
 }

@@ -1,0 +1,175 @@
+.member_main{
+	width: 1200px;
+	margin: 15px auto;
+	display: flex;
+	flex-direction: row;
+	padding: 0 0 20px 0;
+}
+.member_slider{
+	height: 100%;
+	background: #fff;
+	flex-basis: 160px;
+	padding: 15px 20px;
+	border-radius: 5px;
+}
+
+.member_menu1{padding-top: 10px;padding-left: 15px;}
+.member_menu1 li{
+	line-height: 32px;
+}
+
+.member_menu1 li b{
+	font-size: 15px;
+	color: #404040;
+}
+.member_menu1 li a{
+	color: #444;
+}
+.member_menu1 li a:hover{
+	color: green;
+}
+
+.member_menu1 li.chooseItem a{
+    color:#16a13a;
+}
+
+.member_menu2{
+	margin-bottom: 20px;
+}
+.member_menu2 i{
+	display: inline-block;
+	width: 20px;
+	text-align: left;
+}
+
+.member_content{
+	margin-left: 20px;
+}
+.member_content{ background:#fff; padding:20px 30px; flex-grow:2;}
+.table li{line-height:40px;margin-bottom: 15px;}
+.table .txt{height: 30px;width:200px;border: 1px solid #c3c3c3;background:#fff;line-height: 30px;}
+.table .tname{float: left;display:inline-block;width:90px;color:#555;}
+.bindbtn{
+    border:1px solid #16a13a;
+    padding:5px 10px;
+    border-radius:5px;
+    color:#16a13a;
+}
+.bindbtn:hover{
+	background:#d3fde2;
+	color:#16a13a;
+}
+.changephone{ padding-left:15px;}
+a.changephone:hover{
+	color:#16a13a;
+}
+.table li label{
+	padding-right:20px;
+}
+.table img{ 
+	cursor: pointer;
+}
+.circle{
+	border-radius: 50%;
+}
+.member_title{
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+	line-height: 40px;
+	border-bottom: 1px solid #f3f3f3;
+	margin-bottom: 20px;
+}
+
+.table1{
+	display:flex;
+	flex-direction:row; 
+
+}
+.table1 li{
+	width: 160px;
+}
+.table1 li a{
+	min-width: 140px;
+	color: #333;
+	display:inline-block;
+	padding: 9px 0px;
+	text-align:center;
+	line-height:22px;
+	border-radius:5px;
+	background: #f3f3f3;
+}
+.table1 li a:hover{
+	background:#dfeefb;
+}
+.table1 li a i{
+	font-size:22px;
+}
+.table1 li.github-item a i{
+	color:#2c5f8a; 
+}
+.table1 li.weixin-item a i{
+	color:#16a13a; 
+}
+.table1 li.weibo-item a i{
+	color:#ea6f5a; 
+}
+.table1 li.qq-item a i{
+	color: #2196F3;
+}
+.table1 li.binded a i{
+	color:#8e8c8c;
+}
+.coin-area{
+	padding:20px;
+}
+
+.coin h2{
+	font-size:14px;
+	color:#333;
+}
+.coin b{
+	padding: 15px 0;
+	display:inline-block;
+	font-size: 34px;
+}
+.coin-sub{
+
+}
+.coin-sub li{
+	line-height:28px;
+	color:#444;
+}
+.coin-sub li b{ padding: 0 5px; }
+.coin-recharge li{ 
+    text-align:center;
+}
+.coin-recharge span{font-size:12px;display:inline-block;padding-top:10px; color:#888;}
+.scorebtns{
+	padding:10px 0;
+}
+.scorebtn{
+	line-height:20px;
+	border: 1px solid #949494;
+	padding:4px 10px;
+	color: #626363;
+	border-radius:5px;
+	margin-right:10px;
+}
+a.scorebtn:hover{
+	color:#16a13a;
+	border:1px solid #16a13a;
+}
+.score{
+	border-left:1px solid #eee;
+	height: 130px;
+	padding-left:40px;
+}
+.score h2{
+	font-size:16px;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+.score div{ line-height:30px;}
+.score  span{ color:#666;font-size:13px;}
+.score b{display:block; font-size:22px;font-weight:normal;}

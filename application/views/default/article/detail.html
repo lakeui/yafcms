@@ -1,16 +1,144 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?php include $viewPath.'/header.html';?>
+ 
+<?php echo $crumb; ?>
+
+<div class="wrap contain">
+
+	<div class="slide">
+		<!-- <div class="item fix">
+			<p class="title"><i class="fa fa-th-list"></i> 目录</p>
+			<ul class="mulu">
+				<li><a href="">1.安装</a>
+					<ul>
+						<li><a href="">1.1 环境搭建</a></li>
+					</ul>
+				</li>
+				<li><a href="">2.使用</a></li>
+				<li><a href="">3.编写</a></li>
+				<li><a href="">4.代码</a></li>
+				<li><a href="">5.结束</a></li>
+			</ul>
+		</div>  -->
+	</div>
+
+	<div class="main"> 
+		<div class="blog-heading">
+			<h1 class="title">
+				<?php
+				$html='';
+				if($row['original']==1){
+					$html.='<span class="status-tag original" title="原创博客">原</span>';
+				}elseif($row['original']==2){
+					$html.='<span class="status-tag original" title="转载博客">转</span>';
+				}
+				if($row['index']){
+					$html.'<span class="status-tag recommend" title="首页推荐过的博客">荐</span>';
+				} 
+				$html.=$row['title'];
+				echo $html;
+				?>
+			</h1>
+			<div class="blog-o-info"> 
+			    
+			    <span class="b-time">By <a href="/u/<?php echo $row['user_id'];?>" class="b-author" rel="nofollow"><?php echo $row['nickname'];?></a> / <?php echo date('M n, Y',$row['create_time']);?></span> 
+			    <span class="b-watch">浏览 <i id="view_num">0</i></span>
+			    <span class="b-comment">评论 <i class="cmt_num">0</i></span> 
+			    <span class="b-comment">发表于 <a href="/<?php echo $row['url'];?>"><?php echo $row['typename'];?></a></span> 
+			</div> 
+			<p class="tags">
+				<?php echo handle_tag($row['tags']);?> 
+	        </p>
+		</div>
+
+		<p class="blog-summary">
+		    <em>摘要：</em><?php echo $row['shortdesc'];?>
+		</p>
+		<div class="blog-body">
+			<div class="blog-content"><?php echo $row['contents'];?></div>
+		</div>
+
+
+
+<!-- 		<div class="code">
+			<img src="/qrcode/index/<?php echo $row['uuid'];?>" style="width: 144px; height:144px">
+			<p>手机扫码阅读，舒服~</p>
+		</div> -->
+
+
+	
+
+		<!-- <div class="blog-footer"> 
+		   <a href="#comment" class="cmtbtn"><i class="fa fa-comment-o"></i> 评论文章  (<i class="cmt_num">0</i>)</a>
+		    <span id="vote_btn"  title="点赞" class="opt-btn "><i class="fa fa-thumbs-o-up"></i> (<span id="good_num">0</span>)</span>
+		    <span id="mark_btn"  title="收藏" class="opt-btn "><i class="fa fa-heart-o"></i> (<span id="fav_num">0</span>)</span>
+		    <dl class="share-to">
+		        <dt>分享到 : </dt>
+		        <dd>
+		            <a href="" target="_blank" class="weibo"><i class="fa fa-weibo"></i></a>
+		            <div class="wechat">
+		                <i class="fa fa-weixin"></i>
+		                <img src="https://yqfile.alicdn.com/e77cd6c7dd7335ca7d21a57bb14a19db.png" alt="">
+		            </div>
+		            <div class="bshare-custom icon-medium"><a title="分享到微信" class="bshare-weixin"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到QQ好友" class="bshare-qqim"></a><a title="分享到豆瓣" class="bshare-douban"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=3&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+		        </dd>
+		    </dl>
+		</div> -->
+
+<!-- 		<div class="about-content">
+			<h3 class="title-info">相关文章</h3>
+			<ul class="about-c-list">
+		        <li><a href=""> </a></li> 
+            </ul>
+		</div> -->
+
+	</div>
+	 
+
+	
+
+
+	
+</div>
+
+<?php include $viewPath.'/footer.html';?>
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/layer/layer.js"></script> 
+<script src="/js/xz.js"></script>
+<script>
+
+$("#vote_btn").click(function(event) {
+	xz.ajaxPost(xz.api.good,{'uuid':'<?php echo $row["uuid"];?>'},function(json){
+		if(json.status==0){
+			var num = parseInt($("#good_num").text())+1;
+			$("#good_num").text(num);
+		}else{
+			layer.msg(json.info);
+		}
+	});
+});
+$("#mark_btn").click(function(event) {
+	xz.ajaxPost(xz.api.fav,{'uuid':'<?php echo $row["uuid"];?>'},function(json){
+		if(json.status==0){
+			var num = parseInt($("#fav_num").text())+1;
+			$("#fav_num").text(num);
+		}else{
+			layer.msg(json.info);
+		}
+	});
+});
+
+
+
+xz.ajaxPost(xz.api.countArticleView,{'uuid':'<?php echo $row["uuid"];?>'},function(json){});
+
+xz.ajaxPost(xz.api.getArticleNum,{'uuid':'<?php echo $row["uuid"];?>'},function(json){
+    if(json.status==0){
+        $('.cmt_num').text(json.data.cmt_num);
+        $('#view_num').text(json.data.view_num);
+        $('#fav_num').text(json.data.fav_num);
+        $('#good_num').text(json.data.good_num); 
+    }
+});
+
+</script>
+

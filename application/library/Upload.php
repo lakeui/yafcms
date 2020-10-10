@@ -14,7 +14,7 @@ class Upload {
         'subName' => array('date', 'ym'), //子目录创建方式，[0]-函数名，[1]-参数，多个参数使用数组
         'rootPath' => '', //保存根路径
         'savePath' => '', //保存路径
-        'saveName' => array('sha1_file', '__FILE__'), //上传文件命名规则，[0]-函数名，[1]-参数，多个参数使用数组
+        'saveName' => '', //上传文件命名规则，[0]-函数名，[1]-参数，多个参数使用数组
         'saveExt' => '', //文件保存后缀，空则使用原后缀
         'replace' => true, //存在同名是否覆盖
         'hash' => false, //是否生成hash编码
@@ -335,7 +335,7 @@ class Upload {
         }
         /* 文件保存后缀，支持强制更改文件后缀 */
         $ext = empty($this->config['saveExt']) ? $file['ext'] : $this->saveExt;
-        $savename = date('ymd').substr($savename, 8,12);
+        $savename = date('ymdhis').substr($savename, 8,12);
         return $savename . '.' . $ext;
     }
 

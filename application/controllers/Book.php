@@ -1,38 +1,49 @@
 <?php
 
-class IndexController extends Yaf\Controller_Abstract {
+class BookController extends BaseController {
 
  
-    public function indexAction() {   
-       
-      
-        // dump($obj->select());
-      
-//        return false;
-        $this->getView()->assign("content", "Hello Yaf");
-    }
-
-    public function testAction() {   
-        $obj = new Db();
-        $rs = $obj->insert('cate',[
-            'cate_id'=>  rand(100,9999),
-            'cate_name'=>'wtest2'
-        ]);
-        dump($rs);
-//       $rs = $obj->get('cate','*',['cate_id'=>1]);
-//        dump($rs);
-        exit;
+    public function indexAction() {  
+        $obj = new TypeModel();
+        $list = $obj->select([
+            'AND'=>[
+                'status'=>1,
+                'type'=>2
+            ],
+            'ORDER'=>[
+                'rise'=>'ASC',
+                'id'=>'DESC'
+            ]
+        ], ['url','typename','shortdesc','is_new','books','num']);
         
-        $this->getView()->assign("content", "Hello Yaf");
-    }
+        $seo = $this->getSeo('book');  
+        $params = [
+            'list'=>$list,
+            'seo'=>$seo,
+        ];
+        $this->getView()->assign($params);
+    } 
+     
     
-    public function saveAction() {   
-        $files = $this->getRequest()->getFiles();
-        var_dump($files);
-        $up = new Upload();
-        $rs = $up->uploadOne($files['pic']);
-        var_dump($rs);
-       
-        return false; 
-    }
+    
+    public function listAction() {  
+        $order = [
+            'rise'=>'ASC',
+            'id'=>'DESC'
+        ];
+        $obj = new BookModel();
+        $list = $obj->select([
+            'status'=>1,
+            'ORDER'=>$order
+        ], ['url','title','shortdesc','viewnum','num','img']);
+        $seo = $this->getSeo('zhuanti');  
+        $params = [
+            'list'=>$list,
+            'seo'=>$seo,
+            'sort'=>$sort,
+        ];
+        $this->getView()->assign($params);
+    } 
+    
+    
 }
