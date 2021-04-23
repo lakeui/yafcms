@@ -1,0 +1,36 @@
+<?php include $viewPath.'/header.html';?>
+
+<div class="wrap ">
+	<div class="title">2019年春网络教育随堂练习题参考答案</div>
+		 
+	<div class="list"> 
+		<?php if($list):?>
+		<?php foreach($list as $vo):?>
+		<ul>
+			<li>
+				<a href="">
+					<span>[<?php echo date("Y/m/d",$vo['create_time']);?>]</span><?php echo $vo['title'];?>
+				</a>
+
+			</li>
+		</ul> 
+		<?php endforeach;?>
+		<?php else:?>
+		<div class="empty">暂无文章</div>
+		<?php endif;?> 
+	</div>
+	<div class="page">
+		<?php echo $page;?>
+	</div>
+	
+</div>
+<?php include $viewPath.'/footer.html';?>
+
+<!-- 多条广告如下脚本只需引入一次 -->
+<!-- <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js" async="async" defer="defer" ></script> -->
+	
+
+<script>
+xz.adv('#rightAdv','5bb1d6e896807'); 
+</script>
+	
