@@ -8,6 +8,7 @@
     ],
     "require": {
         "alibabacloud/client": "^1.5",
-        "alibabacloud/sdk": "^1.8"
+        "alibabacloud/sdk": "^1.8",
+        "overtrue/socialite": "^2.0"
     }
 }

@@ -8,7 +8,6 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method AddCdnDomain addCdnDomain(array $options = [])
  * @method AddFCTrigger addFCTrigger(array $options = [])
  * @method BatchAddCdnDomain batchAddCdnDomain(array $options = [])
- * @method BatchDeleteCdnDomainConfig batchDeleteCdnDomainConfig(array $options = [])
  * @method BatchSetCdnDomainConfig batchSetCdnDomainConfig(array $options = [])
  * @method BatchSetCdnDomainServerCertificate batchSetCdnDomainServerCertificate(array $options = [])
  * @method BatchStartCdnDomain batchStartCdnDomain(array $options = [])
@@ -26,6 +25,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DeleteSpecificStagingConfig deleteSpecificStagingConfig(array $options = [])
  * @method DeleteUsageDetailDataExportTask deleteUsageDetailDataExportTask(array $options = [])
  * @method DeleteUserUsageDataExportTask deleteUserUsageDataExportTask(array $options = [])
+ * @method DescribeActiveVersionOfConfigGroup describeActiveVersionOfConfigGroup(array $options = [])
  * @method DescribeCdnCertificateDetail describeCdnCertificateDetail(array $options = [])
  * @method DescribeCdnCertificateList describeCdnCertificateList(array $options = [])
  * @method DescribeCdnDomainByCertificate describeCdnDomainByCertificate(array $options = [])
@@ -36,23 +36,32 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DescribeCdnHttpsDomainList describeCdnHttpsDomainList(array $options = [])
  * @method DescribeCdnRegionAndIsp describeCdnRegionAndIsp(array $options = [])
  * @method DescribeCdnService describeCdnService(array $options = [])
+ * @method DescribeCdnUserBillHistory describeCdnUserBillHistory(array $options = [])
  * @method DescribeCdnUserBillPrediction describeCdnUserBillPrediction(array $options = [])
+ * @method DescribeCdnUserBillType describeCdnUserBillType(array $options = [])
+ * @method DescribeCdnUserConfigs describeCdnUserConfigs(array $options = [])
+ * @method DescribeCdnUserDomainsByFunc describeCdnUserDomainsByFunc(array $options = [])
  * @method DescribeCdnUserQuota describeCdnUserQuota(array $options = [])
  * @method DescribeCdnUserResourcePackage describeCdnUserResourcePackage(array $options = [])
+ * @method DescribeCdnWafDomain describeCdnWafDomain(array $options = [])
  * @method DescribeCertificateInfoByID describeCertificateInfoByID(array $options = [])
  * @method DescribeConfigOfVersion describeConfigOfVersion(array $options = [])
  * @method DescribeCustomLogConfig describeCustomLogConfig(array $options = [])
  * @method DescribeDomainAverageResponseTime describeDomainAverageResponseTime(array $options = [])
  * @method DescribeDomainBpsData describeDomainBpsData(array $options = [])
+ * @method DescribeDomainBpsDataByLayer describeDomainBpsDataByLayer(array $options = [])
  * @method DescribeDomainBpsDataByTimeStamp describeDomainBpsDataByTimeStamp(array $options = [])
  * @method DescribeDomainCcActivityLog describeDomainCcActivityLog(array $options = [])
  * @method DescribeDomainCertificateInfo describeDomainCertificateInfo(array $options = [])
  * @method DescribeDomainCustomLogConfig describeDomainCustomLogConfig(array $options = [])
+ * @method DescribeDomainDetailDataByLayer describeDomainDetailDataByLayer(array $options = [])
  * @method DescribeDomainFileSizeProportionData describeDomainFileSizeProportionData(array $options = [])
  * @method DescribeDomainHitRateData describeDomainHitRateData(array $options = [])
  * @method DescribeDomainHttpCodeData describeDomainHttpCodeData(array $options = [])
+ * @method DescribeDomainHttpCodeDataByLayer describeDomainHttpCodeDataByLayer(array $options = [])
  * @method DescribeDomainISPData describeDomainISPData(array $options = [])
  * @method DescribeDomainMax95BpsData describeDomainMax95BpsData(array $options = [])
+ * @method DescribeDomainNamesOfVersion describeDomainNamesOfVersion(array $options = [])
  * @method DescribeDomainPathData describeDomainPathData(array $options = [])
  * @method DescribeDomainPvData describeDomainPvData(array $options = [])
  * @method DescribeDomainQpsData describeDomainQpsData(array $options = [])
@@ -90,16 +99,19 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DescribeRangeDataByLocateAndIspService describeRangeDataByLocateAndIspService(array $options = [])
  * @method DescribeRealtimeDeliveryAcc describeRealtimeDeliveryAcc(array $options = [])
  * @method DescribeRefreshQuota describeRefreshQuota(array $options = [])
+ * @method DescribeRefreshTaskById describeRefreshTaskById(array $options = [])
  * @method DescribeRefreshTasks describeRefreshTasks(array $options = [])
  * @method DescribeStagingIp describeStagingIp(array $options = [])
  * @method DescribeTagResources describeTagResources(array $options = [])
  * @method DescribeTopDomainsByFlow describeTopDomainsByFlow(array $options = [])
+ * @method DescribeUserCertificateExpireCount describeUserCertificateExpireCount(array $options = [])
  * @method DescribeUserConfigs describeUserConfigs(array $options = [])
  * @method DescribeUserDomains describeUserDomains(array $options = [])
  * @method DescribeUserTags describeUserTags(array $options = [])
  * @method DescribeUserUsageDataExportTask describeUserUsageDataExportTask(array $options = [])
  * @method DescribeUserUsageDetailDataExportTask describeUserUsageDetailDataExportTask(array $options = [])
  * @method DescribeUserVipsByDomain describeUserVipsByDomain(array $options = [])
+ * @method DescribeVerifyContent describeVerifyContent(array $options = [])
  * @method DisableRealtimeLogDelivery disableRealtimeLogDelivery(array $options = [])
  * @method EnableRealtimeLogDelivery enableRealtimeLogDelivery(array $options = [])
  * @method ListDomainsByLogConfigId listDomainsByLogConfigId(array $options = [])
@@ -111,8 +123,6 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method ModifyCdnDomainSchdmByProperty modifyCdnDomainSchdmByProperty(array $options = [])
  * @method ModifyCdnService modifyCdnService(array $options = [])
  * @method ModifyDomainCustomLogConfig modifyDomainCustomLogConfig(array $options = [])
- * @method ModifyFileCacheExpiredConfig modifyFileCacheExpiredConfig(array $options = [])
- * @method ModifyHttpHeaderConfig modifyHttpHeaderConfig(array $options = [])
  * @method ModifyRealtimeLogDelivery modifyRealtimeLogDelivery(array $options = [])
  * @method ModifyUserCustomLogConfig modifyUserCustomLogConfig(array $options = [])
  * @method OpenCdnService openCdnService(array $options = [])
@@ -144,15 +154,14 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method SetReqAuthConfig setReqAuthConfig(array $options = [])
  * @method SetReqHeaderConfig setReqHeaderConfig(array $options = [])
  * @method SetSourceHostConfig setSourceHostConfig(array $options = [])
- * @method SetUserGreenManagerConfig setUserGreenManagerConfig(array $options = [])
  * @method SetVideoSeekConfig setVideoSeekConfig(array $options = [])
- * @method SetWafConfig setWafConfig(array $options = [])
  * @method SetWaitingRoomConfig setWaitingRoomConfig(array $options = [])
  * @method StartCdnDomain startCdnDomain(array $options = [])
  * @method StopCdnDomain stopCdnDomain(array $options = [])
  * @method TagResources tagResources(array $options = [])
  * @method UntagResources untagResources(array $options = [])
  * @method UpdateFCTrigger updateFCTrigger(array $options = [])
+ * @method VerifyDomainOwner verifyDomainOwner(array $options = [])
  */
 class CdnApiResolver extends ApiResolver
 {
@@ -313,22 +322,6 @@ class AddFCTrigger extends Rpc
  * @method $this withCheckUrl($value)
  */
 class BatchAddCdnDomain extends Rpc
-{
-}
-
-/**
- * @method string getFunctionNames()
- * @method $this withFunctionNames($value)
- * @method string getDomainNames()
- * @method $this withDomainNames($value)
- * @method string getOwnerAccount()
- * @method $this withOwnerAccount($value)
- * @method string getOwnerId()
- * @method $this withOwnerId($value)
- * @method string getSecurityToken()
- * @method $this withSecurityToken($value)
- */
-class BatchDeleteCdnDomainConfig extends Rpc
 {
 }
 
@@ -603,6 +596,18 @@ class DeleteUserUsageDataExportTask extends Rpc
 }
 
 /**
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getEnv()
+ * @method $this withEnv($value)
+ * @method string getConfigGroupId()
+ * @method $this withConfigGroupId($value)
+ */
+class DescribeActiveVersionOfConfigGroup extends Rpc
+{
+}
+
+/**
  * @method string getCertName()
  * @method $this withCertName($value)
  * @method string getOwnerId()
@@ -729,6 +734,18 @@ class DescribeCdnService extends Rpc
 /**
  * @method string getStartTime()
  * @method $this withStartTime($value)
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DescribeCdnUserBillHistory extends Rpc
+{
+}
+
+/**
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
  * @method string getDimension()
  * @method $this withDimension($value)
  * @method string getArea()
@@ -739,6 +756,44 @@ class DescribeCdnService extends Rpc
  * @method $this withOwnerId($value)
  */
 class DescribeCdnUserBillPrediction extends Rpc
+{
+}
+
+/**
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DescribeCdnUserBillType extends Rpc
+{
+}
+
+/**
+ * @method string getFunctionName()
+ * @method $this withFunctionName($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DescribeCdnUserConfigs extends Rpc
+{
+}
+
+/**
+ * @method string getPageNumber()
+ * @method $this withPageNumber($value)
+ * @method string getResourceGroupId()
+ * @method $this withResourceGroupId($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getFuncId()
+ * @method $this withFuncId($value)
+ */
+class DescribeCdnUserDomainsByFunc extends Rpc
 {
 }
 
@@ -759,6 +814,16 @@ class DescribeCdnUserQuota extends Rpc
  * @method $this withSecurityToken($value)
  */
 class DescribeCdnUserResourcePackage extends Rpc
+{
+}
+
+/**
+ * @method string getDomainName()
+ * @method $this withDomainName($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DescribeCdnWafDomain extends Rpc
 {
 }
 
@@ -851,6 +916,28 @@ class DescribeDomainBpsData extends Rpc
 }
 
 /**
+ * @method string getLocationNameEn()
+ * @method $this withLocationNameEn($value)
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getIspNameEn()
+ * @method $this withIspNameEn($value)
+ * @method string getLayer()
+ * @method $this withLayer($value)
+ * @method string getDomainName()
+ * @method $this withDomainName($value)
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getInterval()
+ * @method $this withInterval($value)
+ */
+class DescribeDomainBpsDataByLayer extends Rpc
+{
+}
+
+/**
  * @method string getLocationNames()
  * @method $this withLocationNames($value)
  * @method string getIspNames()
@@ -914,6 +1001,31 @@ class DescribeDomainCustomLogConfig extends Rpc
 }
 
 /**
+ * @method string getLocationNameEn()
+ * @method $this withLocationNameEn($value)
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getIspNameEn()
+ * @method $this withIspNameEn($value)
+ * @method string getLayer()
+ * @method $this withLayer($value)
+ * @method string getDomainName()
+ * @method $this withDomainName($value)
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getField()
+ * @method $this withField($value)
+ */
+class DescribeDomainDetailDataByLayer extends Rpc
+{
+
+    /** @var string */
+    public $method = 'GET';
+}
+
+/**
  * @method string getStartTime()
  * @method $this withStartTime($value)
  * @method string getSecurityToken()
@@ -962,6 +1074,28 @@ class DescribeDomainHttpCodeData extends Rpc
 }
 
 /**
+ * @method string getLocationNameEn()
+ * @method $this withLocationNameEn($value)
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getIspNameEn()
+ * @method $this withIspNameEn($value)
+ * @method string getLayer()
+ * @method $this withLayer($value)
+ * @method string getDomainName()
+ * @method $this withDomainName($value)
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getInterval()
+ * @method $this withInterval($value)
+ */
+class DescribeDomainHttpCodeDataByLayer extends Rpc
+{
+}
+
+/**
  * @method string getStartTime()
  * @method $this withStartTime($value)
  * @method string getDomainName()
@@ -986,6 +1120,20 @@ class DescribeDomainISPData extends Rpc
  * @method $this withOwnerId($value)
  */
 class DescribeDomainMax95BpsData extends Rpc
+{
+}
+
+/**
+ * @method string getVersionId()
+ * @method $this withVersionId($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ * @method string getPageIndex()
+ * @method $this withPageIndex($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DescribeDomainNamesOfVersion extends Rpc
 {
 }
 
@@ -1606,6 +1754,16 @@ class DescribeRefreshQuota extends Rpc
 }
 
 /**
+ * @method string getTaskId()
+ * @method $this withTaskId($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DescribeRefreshTaskById extends Rpc
+{
+}
+
+/**
  * @method string getObjectPath()
  * @method $this withObjectPath($value)
  * @method string getStartTime()
@@ -1709,6 +1867,14 @@ class DescribeTopDomainsByFlow extends Rpc
 /**
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
+ */
+class DescribeUserCertificateExpireCount extends Rpc
+{
+}
+
+/**
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
  * @method string getSecurityToken()
  * @method $this withSecurityToken($value)
  * @method string getConfig()
@@ -1736,6 +1902,8 @@ class DescribeUserConfigs extends Rpc
  * @method array getTag()
  * @method string getFuncFilter()
  * @method $this withFuncFilter($value)
+ * @method string getCoverage()
+ * @method $this withCoverage($value)
  * @method string getDomainName()
  * @method $this withDomainName($value)
  * @method string getOwnerId()
@@ -1816,6 +1984,16 @@ class DescribeUserUsageDetailDataExportTask extends Rpc
  * @method $this withSecurityToken($value)
  */
 class DescribeUserVipsByDomain extends Rpc
+{
+}
+
+/**
+ * @method string getDomainName()
+ * @method $this withDomainName($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DescribeVerifyContent extends Rpc
 {
 }
 
@@ -1970,44 +2148,6 @@ class ModifyDomainCustomLogConfig extends Rpc
 }
 
 /**
- * @method string getSecurityToken()
- * @method $this withSecurityToken($value)
- * @method string getDomainName()
- * @method $this withDomainName($value)
- * @method string getWeight()
- * @method $this withWeight($value)
- * @method string getCacheContent()
- * @method $this withCacheContent($value)
- * @method string getOwnerId()
- * @method $this withOwnerId($value)
- * @method string getTTL()
- * @method $this withTTL($value)
- * @method string getConfigID()
- * @method $this withConfigID($value)
- */
-class ModifyFileCacheExpiredConfig extends Rpc
-{
-}
-
-/**
- * @method string getHeaderValue()
- * @method $this withHeaderValue($value)
- * @method string getSecurityToken()
- * @method $this withSecurityToken($value)
- * @method string getDomainName()
- * @method $this withDomainName($value)
- * @method string getOwnerId()
- * @method $this withOwnerId($value)
- * @method string getConfigID()
- * @method $this withConfigID($value)
- * @method string getHeaderKey()
- * @method $this withHeaderKey($value)
- */
-class ModifyHttpHeaderConfig extends Rpc
-{
-}
-
-/**
  * @method string getProject()
  * @method $this withProject($value)
  * @method string getOwnerId()
@@ -2066,14 +2206,14 @@ class PublishStagingConfigToProduction extends Rpc
 }
 
 /**
- * @method string getArea()
- * @method $this withArea($value)
  * @method string getObjectPath()
  * @method $this withObjectPath($value)
- * @method string getOwnerId()
- * @method $this withOwnerId($value)
  * @method string getSecurityToken()
  * @method $this withSecurityToken($value)
+ * @method string getArea()
+ * @method $this withArea($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
  */
 class PushObjectCache extends Rpc
 {
@@ -2200,8 +2340,6 @@ class SetDomainGreenManagerConfig extends Rpc
  * @method $this withDomainName($value)
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
- * @method string getRegion()
- * @method $this withRegion($value)
  */
 class SetDomainServerCertificate extends Rpc
 {
@@ -2502,20 +2640,6 @@ class SetSourceHostConfig extends Rpc
 }
 
 /**
- * @method string getOwnerId()
- * @method $this withOwnerId($value)
- * @method string getSecurityToken()
- * @method $this withSecurityToken($value)
- * @method string getQuota()
- * @method $this withQuota($value)
- * @method string getRatio()
- * @method $this withRatio($value)
- */
-class SetUserGreenManagerConfig extends Rpc
-{
-}
-
-/**
  * @method string getEnable()
  * @method $this withEnable($value)
  * @method string getDomainName()
@@ -2526,20 +2650,6 @@ class SetUserGreenManagerConfig extends Rpc
  * @method $this withConfigId($value)
  */
 class SetVideoSeekConfig extends Rpc
-{
-}
-
-/**
- * @method string getEnable()
- * @method $this withEnable($value)
- * @method string getDomainName()
- * @method $this withDomainName($value)
- * @method string getOwnerId()
- * @method $this withOwnerId($value)
- * @method string getConfigId()
- * @method $this withConfigId($value)
- */
-class SetWafConfig extends Rpc
 {
 }
 
@@ -2635,6 +2745,8 @@ class TagResources extends Rpc
 }
 
 /**
+ * @method string getAll()
+ * @method $this withAll($value)
  * @method array getResourceId()
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
@@ -2740,4 +2852,16 @@ class UpdateFCTrigger extends Rpc
 
         return $this;
     }
+}
+
+/**
+ * @method string getVerifyType()
+ * @method $this withVerifyType($value)
+ * @method string getDomainName()
+ * @method $this withDomainName($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class VerifyDomainOwner extends Rpc
+{
 }

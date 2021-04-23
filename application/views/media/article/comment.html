@@ -1,0 +1,51 @@
+ 
+<div class="qsw_cmt_all"> 
+    <div class="qsw_cmt_form">
+ 
+        <div class="qsw_cmt_textarea" id="qsw_cmt_textarea">
+            <textarea name="message" class="qsw_cmt_input" id="qsw_cmt_input" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea>
+
+            <div class="qsw_cmt_submit">
+
+            	<div class="cmt-left">
+            		<div class="qsw_cmt_face">
+	                  <!--   <a class="qsw_cmt_facetext" title="插入表情" href="javascript:qsw_show_face()">
+	                    	<i class="layui-icon layui-icon-face-smile"></i> 
+	                    </a> -->
+	                    <span>⌘ + Return 发表</span>
+
+	                    <div class="facecon">
+		                    <div class="ant-popover-arrow"></div>
+		                    <div class="qsw_cmt_facelist">
+		                        <?php foreach ($face as $key => $value) {
+		                            echo "<a  href='javascript:' title='{$value}'><img src='/uisdc/face/{$key}.gif' /></a>";
+		                        }?>
+		                    </div>
+	                    </div>
+	                </div>
+            	</div>
+
+            	<div class="cmt-right">
+            		<button type="button" disabled="disabled" class="qsw_cmt_button disabled"><span>发布</span></button>
+            	</div>
+                
+            </div>
+        </div>
+        <div class="qsw_clear"></div>
+    </div>
+    
+    <div class="qsw_cmt_title">
+        <span>
+            <a class="qsw_order_latest qsw_curr" data-order="1">最新</a>
+            <a class="qsw_order_old" data-order="2">最早</a>
+        </span>
+        <b><em>全部评论</em> 共 <i id="qsw_cmt_num">0</i> 条评论</b>
+    </div>
+    
+    <div class="qsw_cmt_list">
+        <ul class="qsw_cmt_comments">
+             
+        </ul>  
+    </div>
+    
+</div>

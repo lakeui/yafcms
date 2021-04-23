@@ -6,6 +6,8 @@ class UserModel extends BaseModel{
     private $bind = 'wt_user_bind';
     private $follow = 'wt_user_follow';
     private $log = 'wt_user_logs';
+    private $comment = 'wt_comment';
+    private $article = 'wt_news';
 
 
     //获取用户绑定列表
@@ -14,55 +16,17 @@ class UserModel extends BaseModel{
             'type','account'
         ],[
             'user_id'=>$user_id
-        ]); 
-        $data = [
-            1=>[
-                'title'=>'绑定微信',
-                'icon'=>'weixin',
-                'isbind'=>0,
-                'url'=>''
-            ],
-            2=>[
-                'title'=>'绑定Github',
-                'icon'=>'github',
-                'isbind'=>0,
-                'url'=>''
-            ],
-            3=>[
-                'title'=>'绑定微博',
-                'icon'=>'weibo',
-                'isbind'=>0,
-                'url'=>''
-            ],
-            4=>[
-                'title'=>'绑定QQ',
-                'icon'=>'qq',
-                'isbind'=>0,
-                'url'=>''
-            ]
-        ];
+        ]);  
         
         $bind = [];
         if(!empty($list)){
             //绑定类型 1=qq 2=weixin 3=weibo 4=github
             foreach ($list as $vo) {
-                $bind[$vo['type']] = 1;
+                $bind[$vo['type']] = $vo;
             }
         }
-        $html = '';
-        foreach ($data as $key => $vo) {
-            if(!empty($bind[$key])){
-                $html.="<li id='{$vo['icon']}' class='{$vo['icon']}-item binded'><a  href='javascript:'><i class='fa fa-{$vo['icon']}'></i><br/>
-	 		已绑定 {$vo['account']}
-	 		</a></li>";
-            }else{
-                $html.="<li id='{$vo['icon']}' class='{$vo['icon']}-item'><a target='_blank' href='{$vo['url']}'><i class='fa fa-{$vo['icon']}'></i><br/>
-	 		{$vo['title']}
-	 		</a></li>";
-            }
-            
-        }
-        return $html;
+        return $bind;
+        
     }
 
     
@@ -76,6 +40,65 @@ class UserModel extends BaseModel{
         return $this->db->insert($this->table,$data);
     }
 
+    
+    public function countCommentNum($where) {
+        return $this->db->count($this->comment,$where);
+    }
+
+
+    public function getCommentList($condition,$field="*",$param ='') {
+        if(!empty($param)){
+            return $this->db->select("wt_comment(a)",[
+                "[>]wt_user(b)" => ["a.user_id" => "user_id"],
+            ],[
+                'a.id','a.no','a.create_time','a.content','a.good_num',
+                'b.face','b.nickname'
+            ],[
+                'AND'=>[
+                    'a.type'=>$param['type'],
+                    'a.relate_id'=>$param['id'],
+                ],
+                "ORDER" => ["a.id" => $param['order']],
+                "LIMIT" => [$param['start'],$param['limit']]
+            ]); 
+        }else{
+            return $this->db->select($this->comment,$field,$condition); 
+        }
+        
+    }
+
+
+
+
+    public function commentArticle($id,$updateData,$data,$log){
+        $pdo = $this->db->getPdo();
+        $pdo->beginTransaction();
+        try {
+            $f1 = $this->db->insert($this->comment,$data);
+            $f2 = $this->db->update($this->article,$updateData,[
+                'uuid'=>$id
+            ]);
+            $f3 = $this->db->insert($this->log,$log);
+            if(!empty($f1) && !empty($f2) && !empty($f2)){
+                $pdo->commit();
+                return $f1;
+            }
+            $msg = "commentArticle 失败，f1:{$f1},f2:{$f2},f3:{$f3}";
+        } catch (\Exception $exc) {
+            $msg = $exc->getMessage();
+        }
+        \Logger::error([
+            'data'=>[
+                'data'=>$data,
+                'log'=>$log,
+                'updateData'=>$updateData,
+            ],
+            'msg'=>$msg
+        ]);
+        $pdo->rollBack();
+        return false;
+    }
+    
     
     /**
      * 更新用户登录错误次数
@@ -97,11 +120,17 @@ class UserModel extends BaseModel{
      * @param type $data
      * @return type
      */
-    public function updateUser($user_id,$data) {
+    public function updateUser($user_id,$data,$field="id") {
         return $this->db->update($this->table,$data,[
-            'id'=>$user_id
+            $field=>$user_id
         ]);
     }
+
+    
+    public function getUserRow($where,$field="*") {
+        return $this->db->get($this->table,$field,$where); 
+    }
+
 
     /**
      * 根据user_id获取用户信息
@@ -161,18 +190,29 @@ class UserModel extends BaseModel{
         return $this->db->get($this->follow,$field,$where); 
     }
     
+     public function getUserFollowList($where,$field='*') {
+        return $this->db->select($this->follow,$field,$where); 
+    }
     
+    public function countFollowNum($where) {
+        return $this->db->count($this->follow,$where);
+    }
+
+
+
+
     public function addFollow($data,$log) {
         $pdo = $this->db->getPdo();
         $pdo->beginTransaction();
         try {
+            $data['create_time'] = time();
             $f1 = $this->db->insert($this->follow,$data);
             $f2 = $this->db->insert($this->log,$log);
             if(!empty($f1) && !empty($f2)){
                  $pdo->commit();
                 return true;
             }
-            $msg = "关注用户失败，f1:{$f1},f2:{$f2}";
+            $msg = "addFollow 失败，f1:{$f1},f2:{$f2}";
         } catch (\Exception $exc) {
             $msg = $exc->getMessage();
         }
@@ -198,7 +238,7 @@ class UserModel extends BaseModel{
                 $pdo->commit();
                 return true;
             }
-            $msg = "取消关注失败，f1:{$f1},f2:{$f2}";
+            $msg = "unFollow 失败，f1:{$f1},f2:{$f2}";
         } catch (\Exception $exc) {
             $msg = $exc->getMessage();
         }
@@ -216,5 +256,47 @@ class UserModel extends BaseModel{
     public function logs($data) {
          return $this->db->insert($this->log,$data);
     }
+    
+    
+    public function bind($data) {
+        $data['create_time'] = time();
+        return $this->db->insert($this->bind,$data);
+    }
+
+
+
+
+    public function bindAndCreateUser($user,$bind) {
+       $pdo = $this->db->getPdo();
+        $pdo->beginTransaction();
+        try {
+            $user['reg_time'] = time();
+            $f1 = $this->db->insert($this->table,$user);
+            $bind['create_time'] = time();
+            $bind['user_id'] = $user['user_id'];
+            $f2 = $this->db->insert($this->bind,$bind);
+            if(!empty($f1) && !empty($f2)){
+                $pdo->commit();
+                return true;
+            }
+            $msg = "绑定用户失败，f1:{$f1},f2:{$f2}";
+        } catch (\Exception $exc) {
+            $msg = $exc->getMessage();
+        }
+        \Logger::error([
+            'data'=>[
+                'user'=>$user,
+                'bind'=>$bind,
+            ],
+            'msg'=>$msg
+        ]);
+        $pdo->rollBack();
+        return false;
+    }
+    
+    public function getUserBindRow($where,$field="*") {
+        return $this->db->get($this->bind,$field,$where); 
+    }
+     
     
 }

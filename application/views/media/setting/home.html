@@ -1,0 +1,47 @@
+<?php include $viewPath.'/header.html';?>
+  
+
+<div class="member_main">
+	
+	<?php include $viewPath.'/setting/left.html';?>
+
+	<div class="member_content">
+		<h2 class="member_title">主页设置</h2>
+		<form action="/member/setting/save" method="post" id="form">
+	 	<ul class="table">  
+	 		<li>
+	 			<span class="tname">微信二维码</span>
+	 			<img width="60" id="uploadbtn" src="<?php echo showImgStr($row['qrcode'],2);?>">
+	 			<input type="hidden" name="qrcode" id="qrcode" value="<?php echo $row['qrcode'];?>">
+	 		</li>
+	 		<li>
+	 			<span  class="tname">个人简介</span>
+	 			<textarea class="textarea1" name="shortdesc" placeholder="个人简介 50字以内"><?php echo $row['shortdesc'];?></textarea>
+	 		</li>
+	 		<li>
+	 			<span  class="tname">个人网站</span>
+	 			<input type="text" placeholder="http://" class="txt" style="width: 300px;" value="<?php echo $row['home'];?>" name="home">
+	 		</li>
+	 		   
+	 		<li>
+	 			<span class="tname">&nbsp;</span>
+	 			<input type="hidden" name="cmd" value="home">
+	 			<button type="button" id="saveBtn" class="layui-btn layui-btn-sm wd80 ">更新</button>
+	 		</li>
+	 	</ul>
+	 	</form>
+	</div>
+
+
+</div>
+ 
+	
+<?php include $viewPath.'/footer.html';?>
+<script>
+
+xz.save('#saveBtn');	
+xz.upload("#qrcode");
+
+
+</script>
+

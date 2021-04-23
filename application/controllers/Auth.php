@@ -11,16 +11,16 @@ class AuthController extends BaseController {
                     'title'=>'个人资料',
                     'icon'=>'user'
                 ],
-                'home'=>[
-                    'title'=>'主页设置',
-                    'icon'=>'home'
-                ],
+//                'home'=>[
+//                    'title'=>'主页设置',
+//                    'icon'=>'home'
+//                ],
                 'passwd'=>[
                     'title'=>'修改密码',
                     'icon'=>'lock'
                 ],
                 'open'=>[
-                    'title'=>'社交账号',
+                    'title'=>'第三方账号',
                     'icon'=>'weibo'
                 ]
             ]
@@ -37,41 +37,41 @@ class AuthController extends BaseController {
         '/member/contents/'=>[
             'title'=>'内容管理',
             'child'=>[
-                'article'=>[
-                    'title'=>'文章',
-                    'icon'=>'file-text-o'
-                ],
-                'comments'=>[
-                    'title'=>'评论',
-                    'icon'=>'commenting-o'
-                ],
+//                'article'=>[
+//                    'title'=>'我的文章',
+//                    'icon'=>'file-text-o'
+//                ],
+//                'comments'=>[
+//                    'title'=>'评论文章',
+//                    'icon'=>'commenting-o'
+//                ],
                 'follow'=>[
-                    'title'=>'关注',
+                    'title'=>'关注的作者',
                     'icon'=>'feed'
                 ],
                 'fav'=>[
-                    'title'=>'收藏',
+                    'title'=>'收藏文章',
                     'icon'=>'bookmark'
                 ],
                 'love'=>[
-                    'title'=>'喜欢',
+                    'title'=>'喜欢文章',
                     'icon'=>'heart-o'
                 ],
             ]
         ],
-        '/member/assets/'=>[
-            'title'=>'资产管理',
-            'child'=>[
-                'coin'=>[
-                    'title'=>'桃核',
-                    'icon'=>'diamond'
-                ],
-                'score'=>[
-                    'title'=>'积分',
-                    'icon'=>'gift'
-                ] 
-            ]
-        ]
+//        '/member/assets/'=>[
+//            'title'=>'资产管理',
+//            'child'=>[
+//                'coin'=>[
+//                    'title'=>'圆币',
+//                    'icon'=>'diamond'
+//                ],
+//                'score'=>[
+//                    'title'=>'积分',
+//                    'icon'=>'gift'
+//                ] 
+//            ]
+//        ]
     ];
 
 

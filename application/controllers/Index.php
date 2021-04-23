@@ -9,7 +9,7 @@ class IndexController extends BaseController {
     }
 
     
-    private function uisdcAction() {  
+    private function uisdcAction() {   
         $p = $this->getRequest()->getQuery('p',1);
         $size = 10;
          //分类
@@ -103,7 +103,7 @@ class IndexController extends BaseController {
     
     
     
-    private function mobileAction() {  
+    private function mediaAction() {   
         $p = $this->getRequest()->getQuery('p',1);
         $size = 10;
          //分类
@@ -134,6 +134,9 @@ class IndexController extends BaseController {
             $nextPageLink = '<a class="fr" href="/?p='.$nextPage.'">下一页 <i class="fa fa-long-arrow-right"></i></a>';
         }
          
+        
+        $objSoul = new SoulModel();
+        $soul = $objSoul->findRand();
         
       
         //标签
@@ -186,8 +189,8 @@ class IndexController extends BaseController {
             'topArticle'=>$topArticle,
             'viewPath'=>$viewPath, 
             'prePageLink'=>$prePageLink,
-            'nextPageLink'=>$nextPageLink
-
+            'nextPageLink'=>$nextPageLink,
+            'soul'=>$soul
         ]; 
         $this->getView()->assign($params);
     }

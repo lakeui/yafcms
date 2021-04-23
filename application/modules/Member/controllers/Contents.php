@@ -34,13 +34,35 @@ class ContentsController extends AuthController {
     
     //关注列表
     public function followAction() {
+        $page = $this->getRequest()->getQuery('page','1');
+        $limit = $this->getRequest()->getQuery('limit',10);
         $css = load('member', 'css');
+        
+        $map = [
+            'type'=>1,
+            'mode'=>1,
+            'user_id'=> $this->user_id
+        ]; 
+        
+        $obj = new \biz\UserBizModel();
+        $list = $obj->getFollowList($map, $page,$limit);
+        if(!empty($list)){
+            foreach ($list as &$vo) {
+                //获取用户信息
+                $user = $obj->getUserByUserId($vo['relate_id']);
+                $vo['user'] = $user;
+            }
+        } 
+        
+        $num = $obj->countFollow($map);
         $params = [  
             'seo'=>[
                 'seo_title'=>'我关注的作者'
             ],
+            'list'=>$list,
             'css'=>$css,
             'hideFooter'=>true,
+            'num'=>$num,
             'leftMenu'=> $this->leftMenu
         ];
         $this->getView()->assign($params);
@@ -48,12 +70,31 @@ class ContentsController extends AuthController {
     
     //我收藏的文章
     public function favAction() {
+        $page = $this->getRequest()->getQuery('page','1');
+        $limit = $this->getRequest()->getQuery('limit',10);
         $css = load('member', 'css');
+        $map = [
+            'type'=>2,
+            'mode'=>2,
+            'user_id'=> $this->user_id
+        ]; 
+        $objArticle = new \biz\ArticleBizModel();
+        $obj = new \biz\UserBizModel();
+        $list = $obj->getFollowList($map, $page,$limit);
+        if(!empty($list)){
+            foreach ($list as &$vo) {
+                //获取文章信息
+                $vo['title'] = $objArticle->getArticleById($vo['relate_id'],'title');
+            }
+        } 
+        $num = $obj->countFollow($map);
         $params = [  
             'seo'=>[
                 'seo_title'=>'我收藏的文章'
             ],
             'css'=>$css,
+            'num'=>$num,
+            'list'=>$list,
             'hideFooter'=>true,
             'leftMenu'=> $this->leftMenu
         ];
@@ -63,12 +104,31 @@ class ContentsController extends AuthController {
     
     //我喜欢的文章
     public function loveAction() {
+        $page = $this->getRequest()->getQuery('page','1');
+        $limit = $this->getRequest()->getQuery('limit',10);
         $css = load('member', 'css');
+        $map = [
+            'type'=>3,
+            'mode'=>2,
+            'user_id'=> $this->user_id
+        ]; 
+        $objArticle = new \biz\ArticleBizModel();
+        $obj = new \biz\UserBizModel();
+        $list = $obj->getFollowList($map, $page,$limit);
+        if(!empty($list)){
+            foreach ($list as &$vo) {
+                //获取文章信息
+                $vo['title'] = $objArticle->getArticleById($vo['relate_id'],'title');
+            }
+        } 
+        $num = $obj->countFollow($map);
         $params = [  
             'seo'=>[
-                'seo_title'=>'我收藏的文章'
+                'seo_title'=>'我喜欢的文章'
             ],
             'css'=>$css,
+            'num'=>$num,
+            'list'=>$list,
             'hideFooter'=>true,
             'leftMenu'=> $this->leftMenu
         ];

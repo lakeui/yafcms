@@ -35,10 +35,13 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method CopySnapshot copySnapshot(array $options = [])
  * @method CreateAutoProvisioningGroup createAutoProvisioningGroup(array $options = [])
  * @method CreateAutoSnapshotPolicy createAutoSnapshotPolicy(array $options = [])
+ * @method CreateCapacityReservation createCapacityReservation(array $options = [])
  * @method CreateCommand createCommand(array $options = [])
+ * @method CreateDedicatedHostCluster createDedicatedHostCluster(array $options = [])
  * @method CreateDemand createDemand(array $options = [])
  * @method CreateDeploymentSet createDeploymentSet(array $options = [])
  * @method CreateDisk createDisk(array $options = [])
+ * @method CreateElasticityAssurance createElasticityAssurance(array $options = [])
  * @method CreateForwardEntry createForwardEntry(array $options = [])
  * @method CreateHaVip createHaVip(array $options = [])
  * @method CreateHpcCluster createHpcCluster(array $options = [])
@@ -65,6 +68,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DeleteAutoSnapshotPolicy deleteAutoSnapshotPolicy(array $options = [])
  * @method DeleteBandwidthPackage deleteBandwidthPackage(array $options = [])
  * @method DeleteCommand deleteCommand(array $options = [])
+ * @method DeleteDedicatedHostCluster deleteDedicatedHostCluster(array $options = [])
  * @method DeleteDemand deleteDemand(array $options = [])
  * @method DeleteDeploymentSet deleteDeploymentSet(array $options = [])
  * @method DeleteDisk deleteDisk(array $options = [])
@@ -98,20 +102,26 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DescribeAvailableResource describeAvailableResource(array $options = [])
  * @method DescribeBandwidthLimitation describeBandwidthLimitation(array $options = [])
  * @method DescribeBandwidthPackages describeBandwidthPackages(array $options = [])
+ * @method DescribeCapacityReservationInstances describeCapacityReservationInstances(array $options = [])
+ * @method DescribeCapacityReservations describeCapacityReservations(array $options = [])
  * @method DescribeClassicLinkInstances describeClassicLinkInstances(array $options = [])
  * @method DescribeCloudAssistantStatus describeCloudAssistantStatus(array $options = [])
  * @method DescribeClusters describeClusters(array $options = [])
  * @method DescribeCommands describeCommands(array $options = [])
  * @method DescribeDedicatedHostAutoRenew describeDedicatedHostAutoRenew(array $options = [])
+ * @method DescribeDedicatedHostClusters describeDedicatedHostClusters(array $options = [])
  * @method DescribeDedicatedHosts describeDedicatedHosts(array $options = [])
  * @method DescribeDedicatedHostTypes describeDedicatedHostTypes(array $options = [])
  * @method DescribeDemands describeDemands(array $options = [])
  * @method DescribeDeploymentSets describeDeploymentSets(array $options = [])
+ * @method DescribeDeploymentSetSupportedInstanceTypeFamily describeDeploymentSetSupportedInstanceTypeFamily(array $options = [])
  * @method DescribeDiskMonitorData describeDiskMonitorData(array $options = [])
  * @method DescribeDisks describeDisks(array $options = [])
  * @method DescribeDisksFullStatus describeDisksFullStatus(array $options = [])
  * @method DescribeEipAddresses describeEipAddresses(array $options = [])
  * @method DescribeEipMonitorData describeEipMonitorData(array $options = [])
+ * @method DescribeElasticityAssuranceInstances describeElasticityAssuranceInstances(array $options = [])
+ * @method DescribeElasticityAssurances describeElasticityAssurances(array $options = [])
  * @method DescribeEniMonitorData describeEniMonitorData(array $options = [])
  * @method DescribeForwardTableEntries describeForwardTableEntries(array $options = [])
  * @method DescribeHaVips describeHaVips(array $options = [])
@@ -120,6 +130,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DescribeImages describeImages(array $options = [])
  * @method DescribeImageSharePermission describeImageSharePermission(array $options = [])
  * @method DescribeImageSupportInstanceTypes describeImageSupportInstanceTypes(array $options = [])
+ * @method DescribeInstanceAttachmentAttributes describeInstanceAttachmentAttributes(array $options = [])
  * @method DescribeInstanceAttribute describeInstanceAttribute(array $options = [])
  * @method DescribeInstanceAutoRenewAttribute describeInstanceAutoRenewAttribute(array $options = [])
  * @method DescribeInstanceHistoryEvents describeInstanceHistoryEvents(array $options = [])
@@ -141,6 +152,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DescribeLaunchTemplateVersions describeLaunchTemplateVersions(array $options = [])
  * @method DescribeLimitation describeLimitation(array $options = [])
  * @method DescribeNatGateways describeNatGateways(array $options = [])
+ * @method DescribeNetworkInterfaceAttribute describeNetworkInterfaceAttribute(array $options = [])
  * @method DescribeNetworkInterfacePermissions describeNetworkInterfacePermissions(array $options = [])
  * @method DescribeNetworkInterfaces describeNetworkInterfaces(array $options = [])
  * @method DescribeNewProjectEipMonitorData describeNewProjectEipMonitorData(array $options = [])
@@ -157,6 +169,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DescribeSecurityGroupAttribute describeSecurityGroupAttribute(array $options = [])
  * @method DescribeSecurityGroupReferences describeSecurityGroupReferences(array $options = [])
  * @method DescribeSecurityGroups describeSecurityGroups(array $options = [])
+ * @method DescribeSendFileResults describeSendFileResults(array $options = [])
  * @method DescribeSnapshotLinks describeSnapshotLinks(array $options = [])
  * @method DescribeSnapshotMonitorData describeSnapshotMonitorData(array $options = [])
  * @method DescribeSnapshotPackage describeSnapshotPackage(array $options = [])
@@ -207,6 +220,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method ModifyDedicatedHostAttribute modifyDedicatedHostAttribute(array $options = [])
  * @method ModifyDedicatedHostAutoReleaseTime modifyDedicatedHostAutoReleaseTime(array $options = [])
  * @method ModifyDedicatedHostAutoRenewAttribute modifyDedicatedHostAutoRenewAttribute(array $options = [])
+ * @method ModifyDedicatedHostClusterAttribute modifyDedicatedHostClusterAttribute(array $options = [])
  * @method ModifyDedicatedHostsChargeType modifyDedicatedHostsChargeType(array $options = [])
  * @method ModifyDemand modifyDemand(array $options = [])
  * @method ModifyDeploymentSetAttribute modifyDeploymentSetAttribute(array $options = [])
@@ -220,6 +234,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method ModifyImageAttribute modifyImageAttribute(array $options = [])
  * @method ModifyImageShareGroupPermission modifyImageShareGroupPermission(array $options = [])
  * @method ModifyImageSharePermission modifyImageSharePermission(array $options = [])
+ * @method ModifyInstanceAttachmentAttributes modifyInstanceAttachmentAttributes(array $options = [])
  * @method ModifyInstanceAttribute modifyInstanceAttribute(array $options = [])
  * @method ModifyInstanceAutoReleaseTime modifyInstanceAutoReleaseTime(array $options = [])
  * @method ModifyInstanceAutoRenewAttribute modifyInstanceAutoRenewAttribute(array $options = [])
@@ -260,6 +275,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method RedeployDedicatedHost redeployDedicatedHost(array $options = [])
  * @method RedeployInstance redeployInstance(array $options = [])
  * @method ReInitDisk reInitDisk(array $options = [])
+ * @method ReleaseCapacityReservation releaseCapacityReservation(array $options = [])
  * @method ReleaseDedicatedHost releaseDedicatedHost(array $options = [])
  * @method ReleaseEipAddress releaseEipAddress(array $options = [])
  * @method ReleasePublicIpAddress releasePublicIpAddress(array $options = [])
@@ -275,6 +291,8 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method RevokeSecurityGroupEgress revokeSecurityGroupEgress(array $options = [])
  * @method RunCommand runCommand(array $options = [])
  * @method RunInstances runInstances(array $options = [])
+ * @method SendFile sendFile(array $options = [])
+ * @method StartElasticityAssurance startElasticityAssurance(array $options = [])
  * @method StartInstance startInstance(array $options = [])
  * @method StartInstances startInstances(array $options = [])
  * @method StopInstance stopInstance(array $options = [])
@@ -402,10 +420,14 @@ class AddTags extends Rpc
  * @method $this withClientToken($value)
  * @method string getDescription()
  * @method $this withDescription($value)
+ * @method string getCpuOverCommitRatio()
+ * @method $this withCpuOverCommitRatio($value)
  * @method string getResourceGroupId()
  * @method $this withResourceGroupId($value)
  * @method string getActionOnMaintenance()
  * @method $this withActionOnMaintenance($value)
+ * @method string getDedicatedHostClusterId()
+ * @method $this withDedicatedHostClusterId($value)
  * @method array getTag()
  * @method string getDedicatedHostType()
  * @method $this withDedicatedHostType($value)
@@ -609,6 +631,8 @@ class AssignIpv6Addresses extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
  * @method string getSecondaryPrivateIpAddressCount()
  * @method $this withSecondaryPrivateIpAddressCount($value)
  * @method string getResourceOwnerAccount()
@@ -759,10 +783,14 @@ class AttachKeyPair extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getTrunkNetworkInstanceId()
+ * @method $this withTrunkNetworkInstanceId($value)
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
  * @method $this withOwnerAccount($value)
+ * @method string getWaitForNetworkConfigurationReady()
+ * @method $this withWaitForNetworkConfigurationReady($value)
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
  * @method string getInstanceId()
@@ -1009,6 +1037,8 @@ class ConvertNatPublicIpToEip extends Rpc
  * @method $this withEncryptAlgorithm($value)
  * @method string getDestinationRegionId()
  * @method $this withDestinationRegionId($value)
+ * @method string getResourceGroupId()
+ * @method $this withResourceGroupId($value)
  * @method array getTag()
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
@@ -1056,6 +1086,8 @@ class CopyImage extends Rpc
  * @method $this withSnapshotId($value)
  * @method string getDestinationRegionId()
  * @method $this withDestinationRegionId($value)
+ * @method string getResourceGroupId()
+ * @method $this withResourceGroupId($value)
  * @method array getTag()
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
@@ -1179,15 +1211,21 @@ class CreateAutoProvisioningGroup extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getCopiedSnapshotsRetentionDays()
+ * @method $this withCopiedSnapshotsRetentionDays($value)
  * @method string getTimePoints()
  * @method string getRepeatWeekdays()
  * @method array getTag()
+ * @method string getEnableCrossRegionCopy()
+ * @method $this withEnableCrossRegionCopy($value)
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
  * @method string getAutoSnapshotPolicyName()
  * @method string getRetentionDays()
+ * @method string getTargetCopyRegions()
+ * @method $this withTargetCopyRegions($value)
  */
 class CreateAutoSnapshotPolicy extends Rpc
 {
@@ -1268,6 +1306,94 @@ class CreateAutoSnapshotPolicy extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
+ * @method string getDescription()
+ * @method $this withDescription($value)
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getPlatform()
+ * @method $this withPlatform($value)
+ * @method string getPrivatePoolOptionsMatchCriteria()
+ * @method string getInstanceType()
+ * @method $this withInstanceType($value)
+ * @method string getInstanceChargeType()
+ * @method $this withInstanceChargeType($value)
+ * @method string getEfficientStatus()
+ * @method $this withEfficientStatus($value)
+ * @method string getPeriod()
+ * @method $this withPeriod($value)
+ * @method string getEndTimeType()
+ * @method $this withEndTimeType($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getPrivatePoolOptionsName()
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getResourceType()
+ * @method $this withResourceType($value)
+ * @method string getPeriodUnit()
+ * @method $this withPeriodUnit($value)
+ * @method array getZoneId()
+ * @method string getChargeType()
+ * @method $this withChargeType($value)
+ * @method string getPackageType()
+ * @method $this withPackageType($value)
+ * @method string getInstanceAmount()
+ * @method $this withInstanceAmount($value)
+ */
+class CreateCapacityReservation extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsMatchCriteria($value)
+    {
+        $this->data['PrivatePoolOptionsMatchCriteria'] = $value;
+        $this->options['query']['PrivatePoolOptions.MatchCriteria'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsName($value)
+    {
+        $this->data['PrivatePoolOptionsName'] = $value;
+        $this->options['query']['PrivatePoolOptions.Name'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param array $zoneId
+     *
+     * @return $this
+     */
+	public function withZoneId(array $zoneId)
+	{
+	    $this->data['ZoneId'] = $zoneId;
+		foreach ($zoneId as $i => $iValue) {
+			$this->options['query']['ZoneId.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getWorkingDir()
  * @method $this withWorkingDir($value)
  * @method string getDescription()
@@ -1291,6 +1417,51 @@ class CreateAutoSnapshotPolicy extends Rpc
  */
 class CreateCommand extends Rpc
 {
+}
+
+/**
+ * @method string getDedicatedHostClusterName()
+ * @method $this withDedicatedHostClusterName($value)
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getDescription()
+ * @method $this withDescription($value)
+ * @method string getResourceGroupId()
+ * @method $this withResourceGroupId($value)
+ * @method array getTag()
+ * @method string getDryRun()
+ * @method $this withDryRun($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getZoneId()
+ * @method $this withZoneId($value)
+ */
+class CreateDedicatedHostCluster extends Rpc
+{
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+		}
+
+		return $this;
+    }
 }
 
 /**
@@ -1336,6 +1507,8 @@ class CreateDemand extends Rpc
  * @method $this withClientToken($value)
  * @method string getDescription()
  * @method $this withDescription($value)
+ * @method string getGroupCount()
+ * @method $this withGroupCount($value)
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
@@ -1442,6 +1615,106 @@ class CreateDisk extends Rpc
 			if(isset($depth1Value['AssumeRoleFor'])){
 				$this->options['query']['Arn.' . ($depth1 + 1) . '.AssumeRoleFor'] = $depth1Value['AssumeRoleFor'];
 			}
+		}
+
+		return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
+ * @method string getDescription()
+ * @method $this withDescription($value)
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getPlatform()
+ * @method $this withPlatform($value)
+ * @method string getPrivatePoolOptionsMatchCriteria()
+ * @method array getInstanceType()
+ * @method string getInstanceChargeType()
+ * @method $this withInstanceChargeType($value)
+ * @method string getPeriod()
+ * @method $this withPeriod($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getPrivatePoolOptionsName()
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getAssuranceTimes()
+ * @method $this withAssuranceTimes($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getResourceType()
+ * @method $this withResourceType($value)
+ * @method string getInstanceCpuCoreCount()
+ * @method $this withInstanceCpuCoreCount($value)
+ * @method string getPeriodUnit()
+ * @method $this withPeriodUnit($value)
+ * @method array getZoneId()
+ * @method string getChargeType()
+ * @method $this withChargeType($value)
+ * @method string getPackageType()
+ * @method $this withPackageType($value)
+ * @method string getInstanceAmount()
+ * @method $this withInstanceAmount($value)
+ */
+class CreateElasticityAssurance extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsMatchCriteria($value)
+    {
+        $this->data['PrivatePoolOptionsMatchCriteria'] = $value;
+        $this->options['query']['PrivatePoolOptions.MatchCriteria'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param array $instanceType
+     *
+     * @return $this
+     */
+	public function withInstanceType(array $instanceType)
+	{
+	    $this->data['InstanceType'] = $instanceType;
+		foreach ($instanceType as $i => $iValue) {
+			$this->options['query']['InstanceType.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsName($value)
+    {
+        $this->data['PrivatePoolOptionsName'] = $value;
+        $this->options['query']['PrivatePoolOptions.Name'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param array $zoneId
+     *
+     * @return $this
+     */
+	public function withZoneId(array $zoneId)
+	{
+	    $this->data['ZoneId'] = $zoneId;
+		foreach ($zoneId as $i => $iValue) {
+			$this->options['query']['ZoneId.' . ($i + 1)] = $iValue;
 		}
 
 		return $this;
@@ -1615,13 +1888,17 @@ class CreateImage extends Rpc
  * @method $this withDeletionProtection($value)
  * @method string getResourceGroupId()
  * @method $this withResourceGroupId($value)
+ * @method string getPrivatePoolOptionsMatchCriteria()
  * @method string getHostName()
  * @method $this withHostName($value)
  * @method string getPassword()
  * @method $this withPassword($value)
+ * @method string getDeploymentSetGroupNo()
+ * @method $this withDeploymentSetGroupNo($value)
  * @method string getStorageSetPartitionNumber()
  * @method $this withStorageSetPartitionNumber($value)
  * @method array getTag()
+ * @method string getPrivatePoolOptionsId()
  * @method string getAutoRenewPeriod()
  * @method $this withAutoRenewPeriod($value)
  * @method string getNodeControllerId()
@@ -1722,6 +1999,19 @@ class CreateInstance extends Rpc
 {
 
     /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsMatchCriteria($value)
+    {
+        $this->data['PrivatePoolOptionsMatchCriteria'] = $value;
+        $this->options['query']['PrivatePoolOptions.MatchCriteria'] = $value;
+
+        return $this;
+    }
+
+    /**
      * @param array $tag
      *
      * @return $this
@@ -1739,6 +2029,19 @@ class CreateInstance extends Rpc
 		}
 
 		return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsId($value)
+    {
+        $this->data['PrivatePoolOptionsId'] = $value;
+        $this->options['query']['PrivatePoolOptions.Id'] = $value;
+
+        return $this;
     }
 
     /**
@@ -2454,6 +2757,8 @@ class CreateNatGateway extends Rpc
 }
 
 /**
+ * @method string getQueueNumber()
+ * @method $this withQueueNumber($value)
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
  * @method string getClientToken()
@@ -2468,6 +2773,8 @@ class CreateNatGateway extends Rpc
  * @method $this withBusinessType($value)
  * @method string getResourceGroupId()
  * @method $this withResourceGroupId($value)
+ * @method string getInstanceType()
+ * @method $this withInstanceType($value)
  * @method array getTag()
  * @method string getNetworkInterfaceName()
  * @method $this withNetworkInterfaceName($value)
@@ -2716,6 +3023,8 @@ class CreateRouterInterface extends Rpc
  * @method $this withResourceOwnerId($value)
  * @method string getClientToken()
  * @method $this withClientToken($value)
+ * @method string getServiceManaged()
+ * @method $this withServiceManaged($value)
  * @method string getDescription()
  * @method $this withDescription($value)
  * @method string getSecurityGroupName()
@@ -2801,6 +3110,8 @@ class CreateSimulatedSystemEvents extends Rpc
  * @method $this withDescription($value)
  * @method string getSnapshotName()
  * @method $this withSnapshotName($value)
+ * @method string getResourceGroupId()
+ * @method $this withResourceGroupId($value)
  * @method string getDiskId()
  * @method $this withDiskId($value)
  * @method array getTag()
@@ -3036,6 +3347,22 @@ class DeleteBandwidthPackage extends Rpc
  * @method $this withOwnerId($value)
  */
 class DeleteCommand extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getDedicatedHostClusterId()
+ * @method $this withDedicatedHostClusterId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DeleteDedicatedHostCluster extends Rpc
 {
 }
 
@@ -3819,6 +4146,82 @@ class DescribeBandwidthPackages extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getNextToken()
+ * @method $this withNextToken($value)
+ * @method string getPrivatePoolOptionsId()
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getMaxResults()
+ * @method $this withMaxResults($value)
+ * @method string getPackageType()
+ * @method $this withPackageType($value)
+ */
+class DescribeCapacityReservationInstances extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsId($value)
+    {
+        $this->data['PrivatePoolOptionsId'] = $value;
+        $this->options['query']['PrivatePoolOptions.Id'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getPlatform()
+ * @method $this withPlatform($value)
+ * @method string getNextToken()
+ * @method $this withNextToken($value)
+ * @method string getInstanceType()
+ * @method $this withInstanceType($value)
+ * @method string getInstanceChargeType()
+ * @method $this withInstanceChargeType($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getPrivatePoolOptionsIds()
+ * @method string getMaxResults()
+ * @method $this withMaxResults($value)
+ * @method string getZoneId()
+ * @method $this withZoneId($value)
+ * @method string getPackageType()
+ * @method $this withPackageType($value)
+ */
+class DescribeCapacityReservations extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsIds($value)
+    {
+        $this->data['PrivatePoolOptionsIds'] = $value;
+        $this->options['query']['PrivatePoolOptions.Ids'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getPageNumber()
  * @method $this withPageNumber($value)
  * @method string getPageSize()
@@ -3922,6 +4325,57 @@ class DescribeCommands extends Rpc
  */
 class DescribeDedicatedHostAutoRenew extends Rpc
 {
+}
+
+/**
+ * @method string getDedicatedHostClusterName()
+ * @method $this withDedicatedHostClusterName($value)
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getDedicatedHostClusterIds()
+ * @method $this withDedicatedHostClusterIds($value)
+ * @method string getPageNumber()
+ * @method $this withPageNumber($value)
+ * @method string getResourceGroupId()
+ * @method $this withResourceGroupId($value)
+ * @method string getLockReason()
+ * @method $this withLockReason($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ * @method array getTag()
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getZoneId()
+ * @method $this withZoneId($value)
+ * @method string getStatus()
+ * @method $this withStatus($value)
+ */
+class DescribeDedicatedHostClusters extends Rpc
+{
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+		}
+
+		return $this;
+    }
 }
 
 /**
@@ -4097,6 +4551,20 @@ class DescribeDeploymentSets extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DescribeDeploymentSetSupportedInstanceTypeFamily extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getStartTime()
  * @method $this withStartTime($value)
  * @method string getDiskId()
@@ -4148,12 +4616,16 @@ class DescribeDiskMonitorData extends Rpc
  * @method $this withInstanceId($value)
  * @method string getZoneId()
  * @method $this withZoneId($value)
+ * @method string getMaxResults()
+ * @method $this withMaxResults($value)
  * @method string getStatus()
  * @method $this withStatus($value)
  * @method string getSnapshotId()
  * @method $this withSnapshotId($value)
  * @method string getPageNumber()
  * @method $this withPageNumber($value)
+ * @method string getNextToken()
+ * @method $this withNextToken($value)
  * @method string getPageSize()
  * @method $this withPageSize($value)
  * @method string getDiskIds()
@@ -4468,6 +4940,82 @@ class DescribeEipMonitorData extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getNextToken()
+ * @method $this withNextToken($value)
+ * @method string getPrivatePoolOptionsId()
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getMaxResults()
+ * @method $this withMaxResults($value)
+ * @method string getPackageType()
+ * @method $this withPackageType($value)
+ */
+class DescribeElasticityAssuranceInstances extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsId($value)
+    {
+        $this->data['PrivatePoolOptionsId'] = $value;
+        $this->options['query']['PrivatePoolOptions.Id'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getPlatform()
+ * @method $this withPlatform($value)
+ * @method string getNextToken()
+ * @method $this withNextToken($value)
+ * @method string getInstanceType()
+ * @method $this withInstanceType($value)
+ * @method string getInstanceChargeType()
+ * @method $this withInstanceChargeType($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getPrivatePoolOptionsIds()
+ * @method string getMaxResults()
+ * @method $this withMaxResults($value)
+ * @method string getZoneId()
+ * @method $this withZoneId($value)
+ * @method string getPackageType()
+ * @method $this withPackageType($value)
+ */
+class DescribeElasticityAssurances extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsIds($value)
+    {
+        $this->data['PrivatePoolOptionsIds'] = $value;
+        $this->options['query']['PrivatePoolOptions.Ids'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getStartTime()
  * @method $this withStartTime($value)
  * @method string getPeriod()
@@ -4740,6 +5288,26 @@ class DescribeImageSupportInstanceTypes extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getPageNumber()
+ * @method $this withPageNumber($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getInstanceIds()
+ * @method $this withInstanceIds($value)
+ */
+class DescribeInstanceAttachmentAttributes extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
@@ -4783,6 +5351,8 @@ class DescribeInstanceAutoRenewAttribute extends Rpc
  * @method $this withEventCycleStatus($value)
  * @method string getPageNumber()
  * @method $this withPageNumber($value)
+ * @method string getImpactLevel()
+ * @method $this withImpactLevel($value)
  * @method string getPageSize()
  * @method $this withPageSize($value)
  * @method array getInstanceEventCycleStatus()
@@ -5403,6 +5973,7 @@ class DescribeInstanceTypeFamilies extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method array getInstanceTypes()
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
@@ -5414,6 +5985,21 @@ class DescribeInstanceTypeFamilies extends Rpc
  */
 class DescribeInstanceTypes extends Rpc
 {
+
+    /**
+     * @param array $instanceTypes
+     *
+     * @return $this
+     */
+	public function withInstanceTypes(array $instanceTypes)
+	{
+	    $this->data['InstanceTypes'] = $instanceTypes;
+		foreach ($instanceTypes as $i => $iValue) {
+			$this->options['query']['InstanceTypes.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
 }
 
 /**
@@ -5455,6 +6041,8 @@ class DescribeInstanceVncUrl extends Rpc
  * @method $this withCommandId($value)
  * @method string getPageNumber()
  * @method $this withPageNumber($value)
+ * @method string getContentEncoding()
+ * @method $this withContentEncoding($value)
  * @method string getPageSize()
  * @method $this withPageSize($value)
  * @method string getInvokeId()
@@ -5715,6 +6303,45 @@ class DescribeNatGateways extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method array getTag()
+ * @method string getAttribute()
+ * @method $this withAttribute($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getNetworkInterfaceId()
+ * @method $this withNetworkInterfaceId($value)
+ */
+class DescribeNetworkInterfaceAttribute extends Rpc
+{
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+		}
+
+		return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getPageNumber()
  * @method $this withPageNumber($value)
  * @method string getPageSize()
@@ -5919,14 +6546,19 @@ class DescribePhysicalConnections extends Rpc
  * @method string getPeriod()
  * @method $this withPeriod($value)
  * @method string getDataDisk1PerformanceLevel()
+ * @method string getAssuranceTimes()
+ * @method $this withAssuranceTimes($value)
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
+ * @method string getInstanceCpuCoreCount()
+ * @method $this withInstanceCpuCoreCount($value)
  * @method string getInternetChargeType()
  * @method $this withInternetChargeType($value)
  * @method string getInstanceNetworkType()
  * @method $this withInstanceNetworkType($value)
  * @method string getInstanceAmount()
  * @method $this withInstanceAmount($value)
+ * @method array getInstanceTypeList()
  * @method string getDataDisk3PerformanceLevel()
  * @method string getImageId()
  * @method $this withImageId($value)
@@ -6016,6 +6648,21 @@ class DescribePrice extends Rpc
         $this->options['query']['DataDisk.1.PerformanceLevel'] = $value;
 
         return $this;
+    }
+
+    /**
+     * @param array $instanceTypeList
+     *
+     * @return $this
+     */
+	public function withInstanceTypeList(array $instanceTypeList)
+	{
+	    $this->data['InstanceTypeList'] = $instanceTypeList;
+		foreach ($instanceTypeList as $i => $iValue) {
+			$this->options['query']['InstanceTypeList.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
     }
 
     /**
@@ -6281,6 +6928,7 @@ class DescribeRenewalPrice extends Rpc
  * @method $this withPageSize($value)
  * @method string getInstanceType()
  * @method $this withInstanceType($value)
+ * @method array getTag()
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
@@ -6302,6 +6950,26 @@ class DescribeRenewalPrice extends Rpc
  */
 class DescribeReservedInstances extends Rpc
 {
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+		}
+
+		return $this;
+    }
 
     /**
      * @param array $reservedInstanceId
@@ -6546,6 +7214,8 @@ class DescribeSecurityGroupReferences extends Rpc
  * @method $this withOwnerId($value)
  * @method string getSecurityGroupIds()
  * @method $this withSecurityGroupIds($value)
+ * @method string getSecurityGroupType()
+ * @method $this withSecurityGroupType($value)
  * @method string getVpcId()
  * @method $this withVpcId($value)
  */
@@ -6571,6 +7241,30 @@ class DescribeSecurityGroups extends Rpc
 
 		return $this;
     }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getPageNumber()
+ * @method $this withPageNumber($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ * @method string getInvokeId()
+ * @method $this withInvokeId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getInstanceId()
+ * @method $this withInstanceId($value)
+ * @method string getName()
+ * @method $this withName($value)
+ */
+class DescribeSendFileResults extends Rpc
+{
 }
 
 /**
@@ -6679,6 +7373,8 @@ class DescribeSnapshotPackage extends Rpc
  * @method $this withSnapshotType($value)
  * @method string getKMSKeyId()
  * @method $this withKMSKeyId($value)
+ * @method string getCategory()
+ * @method $this withCategory($value)
  * @method string getStatus()
  * @method $this withStatus($value)
  */
@@ -6823,6 +7519,8 @@ class DescribeSpotPriceHistory extends Rpc
  * @method string getName()
  * @method $this withName($value)
  * @method array getStatus()
+ * @method string getAllocationType()
+ * @method $this withAllocationType($value)
  */
 class DescribeStorageCapacityUnits extends Rpc
 {
@@ -7274,6 +7972,8 @@ class DetachKeyPair extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getTrunkNetworkInstanceId()
+ * @method $this withTrunkNetworkInstanceId($value)
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
@@ -7489,8 +8189,13 @@ class GetInstanceScreenshot extends Rpc
  * @method $this withDescription($value)
  * @method string getPlatform()
  * @method $this withPlatform($value)
+ * @method string getResourceGroupId()
+ * @method $this withResourceGroupId($value)
+ * @method string getBootMode()
+ * @method $this withBootMode($value)
  * @method string getImageName()
  * @method $this withImageName($value)
+ * @method array getTag()
  * @method string getArchitecture()
  * @method $this withArchitecture($value)
  * @method string getLicenseType()
@@ -7533,6 +8238,26 @@ class ImportImage extends Rpc
 			}
 			if(isset($depth1Value['DiskImageSize'])){
 				$this->options['query']['DiskDeviceMapping.' . ($depth1 + 1) . '.DiskImageSize'] = $depth1Value['DiskImageSize'];
+			}
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
 			}
 		}
 
@@ -7865,14 +8590,20 @@ class ModifyAutoSnapshotPolicy extends Rpc
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
  * @method string getAutoSnapshotPolicyId()
+ * @method string getCopiedSnapshotsRetentionDays()
+ * @method $this withCopiedSnapshotsRetentionDays($value)
  * @method string getTimePoints()
  * @method string getRepeatWeekdays()
+ * @method string getEnableCrossRegionCopy()
+ * @method $this withEnableCrossRegionCopy($value)
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
  * @method string getAutoSnapshotPolicyName()
  * @method string getRetentionDays()
+ * @method string getTargetCopyRegions()
+ * @method $this withTargetCopyRegions($value)
  */
 class ModifyAutoSnapshotPolicyEx extends Rpc
 {
@@ -7992,8 +8723,12 @@ class ModifyCommand extends Rpc
  * @method $this withResourceOwnerId($value)
  * @method string getDescription()
  * @method $this withDescription($value)
+ * @method string getCpuOverCommitRatio()
+ * @method $this withCpuOverCommitRatio($value)
  * @method string getActionOnMaintenance()
  * @method $this withActionOnMaintenance($value)
+ * @method string getDedicatedHostClusterId()
+ * @method $this withDedicatedHostClusterId($value)
  * @method string getDedicatedHostName()
  * @method $this withDedicatedHostName($value)
  * @method string getResourceOwnerAccount()
@@ -8078,6 +8813,26 @@ class ModifyDedicatedHostAutoReleaseTime extends Rpc
  * @method $this withAutoRenew($value)
  */
 class ModifyDedicatedHostAutoRenewAttribute extends Rpc
+{
+}
+
+/**
+ * @method string getDedicatedHostClusterName()
+ * @method $this withDedicatedHostClusterName($value)
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getDescription()
+ * @method $this withDescription($value)
+ * @method string getDedicatedHostClusterId()
+ * @method $this withDedicatedHostClusterId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class ModifyDedicatedHostClusterAttribute extends Rpc
 {
 }
 
@@ -8238,8 +8993,12 @@ class ModifyDiskChargeType extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getDiskCategory()
+ * @method $this withDiskCategory($value)
  * @method string getDiskId()
  * @method $this withDiskId($value)
+ * @method string getDryRun()
+ * @method $this withDryRun($value)
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getPerformanceLevel()
@@ -8348,6 +9107,8 @@ class ModifyHpcClusterAttribute extends Rpc
  * @method $this withImageId($value)
  * @method string getDescription()
  * @method $this withDescription($value)
+ * @method string getBootMode()
+ * @method $this withBootMode($value)
  * @method string getImageName()
  * @method $this withImageName($value)
  * @method string getResourceOwnerAccount()
@@ -8414,6 +9175,8 @@ class ModifyImageShareGroupPermission extends Rpc
  * @method $this withResourceOwnerId($value)
  * @method string getImageId()
  * @method $this withImageId($value)
+ * @method string getLaunchPermission()
+ * @method $this withLaunchPermission($value)
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
@@ -8460,8 +9223,54 @@ class ModifyImageSharePermission extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getPrivatePoolOptionsMatchCriteria()
+ * @method string getPrivatePoolOptionsId()
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getInstanceId()
+ * @method $this withInstanceId($value)
+ */
+class ModifyInstanceAttachmentAttributes extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsMatchCriteria($value)
+    {
+        $this->data['PrivatePoolOptionsMatchCriteria'] = $value;
+        $this->options['query']['PrivatePoolOptions.MatchCriteria'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsId($value)
+    {
+        $this->data['PrivatePoolOptionsId'] = $value;
+        $this->options['query']['PrivatePoolOptions.Id'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getRecyclable()
  * @method $this withRecyclable($value)
+ * @method string getNetworkInterfaceQueueNumber()
+ * @method $this withNetworkInterfaceQueueNumber($value)
  * @method string getDescription()
  * @method $this withDescription($value)
  * @method string getDeletionProtection()
@@ -8582,6 +9391,10 @@ class ModifyInstanceChargeType extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getDeploymentSetGroupNo()
+ * @method $this withDeploymentSetGroupNo($value)
+ * @method string getDedicatedHostClusterId()
+ * @method $this withDedicatedHostClusterId($value)
  * @method string getInstanceType()
  * @method $this withInstanceType($value)
  * @method string getDeploymentSetId()
@@ -8819,6 +9632,7 @@ class ModifyInstanceVncPasswd extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method array getSecurityGroupId()
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
@@ -8831,9 +9645,26 @@ class ModifyInstanceVncPasswd extends Rpc
  * @method $this withPrivateIpAddress($value)
  * @method string getInstanceId()
  * @method $this withInstanceId($value)
+ * @method string getVpcId()
+ * @method $this withVpcId($value)
  */
 class ModifyInstanceVpcAttribute extends Rpc
 {
+
+    /**
+     * @param array $securityGroupId
+     *
+     * @return $this
+     */
+	public function withSecurityGroupId(array $securityGroupId)
+	{
+	    $this->data['SecurityGroupId'] = $securityGroupId;
+		foreach ($securityGroupId as $i => $iValue) {
+			$this->options['query']['SecurityGroupId.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
 }
 
 /**
@@ -9469,6 +10300,7 @@ class ModifyVSwitchAttribute extends Rpc
  * @method $this withScope($value)
  * @method string getInstanceType()
  * @method $this withInstanceType($value)
+ * @method array getTag()
  * @method string getPeriod()
  * @method $this withPeriod($value)
  * @method string getResourceOwnerAccount()
@@ -9490,6 +10322,26 @@ class ModifyVSwitchAttribute extends Rpc
  */
 class PurchaseReservedInstancesOffering extends Rpc
 {
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+		}
+
+		return $this;
+    }
 }
 
 /**
@@ -9672,6 +10524,36 @@ class RedeployInstance extends Rpc
  */
 class ReInitDisk extends Rpc
 {
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getPrivatePoolOptionsId()
+ * @method string getDryRun()
+ * @method $this withDryRun($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class ReleaseCapacityReservation extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsId($value)
+    {
+        $this->data['PrivatePoolOptionsId'] = $value;
+        $this->options['query']['PrivatePoolOptions.Id'] = $value;
+
+        return $this;
+    }
 }
 
 /**
@@ -10146,69 +11028,42 @@ class RunCommand extends Rpc
 }
 
 /**
- * @method string getLaunchTemplateName()
- * @method $this withLaunchTemplateName($value)
- * @method string getResourceOwnerId()
- * @method $this withResourceOwnerId($value)
  * @method string getUniqueSuffix()
  * @method $this withUniqueSuffix($value)
- * @method string getHpcClusterId()
- * @method $this withHpcClusterId($value)
- * @method string getHttpPutResponseHopLimit()
- * @method $this withHttpPutResponseHopLimit($value)
  * @method string getSecurityEnhancementStrategy()
  * @method $this withSecurityEnhancementStrategy($value)
- * @method string getKeyPairName()
- * @method $this withKeyPairName($value)
  * @method string getMinAmount()
  * @method $this withMinAmount($value)
- * @method string getSpotPriceLimit()
- * @method $this withSpotPriceLimit($value)
  * @method string getDeletionProtection()
  * @method $this withDeletionProtection($value)
  * @method string getResourceGroupId()
  * @method $this withResourceGroupId($value)
+ * @method string getPrivatePoolOptionsMatchCriteria()
  * @method string getHostName()
  * @method $this withHostName($value)
  * @method string getPassword()
  * @method $this withPassword($value)
- * @method string getStorageSetPartitionNumber()
- * @method $this withStorageSetPartitionNumber($value)
- * @method array getTag()
+ * @method string getDeploymentSetGroupNo()
+ * @method $this withDeploymentSetGroupNo($value)
  * @method string getSystemDiskAutoSnapshotPolicyId()
- * @method string getAutoRenewPeriod()
- * @method $this withAutoRenewPeriod($value)
  * @method string getCpuOptionsCore()
  * @method string getPeriod()
  * @method $this withPeriod($value)
  * @method string getDryRun()
  * @method $this withDryRun($value)
- * @method string getLaunchTemplateId()
- * @method $this withLaunchTemplateId($value)
- * @method string getIpv6AddressCount()
- * @method $this withIpv6AddressCount($value)
  * @method string getCpuOptionsNuma()
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
- * @method string getCapacityReservationPreference()
- * @method $this withCapacityReservationPreference($value)
- * @method string getVSwitchId()
- * @method $this withVSwitchId($value)
  * @method string getSpotStrategy()
  * @method $this withSpotStrategy($value)
  * @method string getPrivateIpAddress()
  * @method $this withPrivateIpAddress($value)
  * @method string getPeriodUnit()
  * @method $this withPeriodUnit($value)
- * @method string getInstanceName()
- * @method $this withInstanceName($value)
  * @method string getAutoRenew()
  * @method $this withAutoRenew($value)
  * @method string getInternetChargeType()
  * @method $this withInternetChargeType($value)
- * @method string getZoneId()
- * @method $this withZoneId($value)
- * @method array getIpv6Address()
  * @method string getInternetMaxBandwidthIn()
  * @method $this withInternetMaxBandwidthIn($value)
  * @method string getAffinity()
@@ -10217,12 +11072,66 @@ class RunCommand extends Rpc
  * @method $this withImageId($value)
  * @method string getSpotInterruptionBehavior()
  * @method $this withSpotInterruptionBehavior($value)
- * @method string getClientToken()
- * @method $this withClientToken($value)
+ * @method string getNetworkInterfaceQueueNumber()
+ * @method $this withNetworkInterfaceQueueNumber($value)
  * @method string getIoOptimized()
  * @method $this withIoOptimized($value)
  * @method string getSecurityGroupId()
  * @method $this withSecurityGroupId($value)
+ * @method string getSystemDiskPerformanceLevel()
+ * @method string getPasswordInherit()
+ * @method $this withPasswordInherit($value)
+ * @method string getInstanceType()
+ * @method $this withInstanceType($value)
+ * @method string getHibernationConfigured()
+ * @method $this withHibernationConfigured($value)
+ * @method array getArn()
+ * @method string getSchedulerOptions()
+ * @method $this withSchedulerOptions($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getSystemDiskDiskName()
+ * @method string getDedicatedHostId()
+ * @method $this withDedicatedHostId($value)
+ * @method array getSecurityGroupIds()
+ * @method string getSpotDuration()
+ * @method $this withSpotDuration($value)
+ * @method string getSystemDiskSize()
+ * @method string getImageFamily()
+ * @method $this withImageFamily($value)
+ * @method string getLaunchTemplateName()
+ * @method $this withLaunchTemplateName($value)
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getHpcClusterId()
+ * @method $this withHpcClusterId($value)
+ * @method string getHttpPutResponseHopLimit()
+ * @method $this withHttpPutResponseHopLimit($value)
+ * @method string getKeyPairName()
+ * @method $this withKeyPairName($value)
+ * @method string getSpotPriceLimit()
+ * @method $this withSpotPriceLimit($value)
+ * @method string getStorageSetPartitionNumber()
+ * @method $this withStorageSetPartitionNumber($value)
+ * @method array getTag()
+ * @method string getPrivatePoolOptionsId()
+ * @method string getAutoRenewPeriod()
+ * @method $this withAutoRenewPeriod($value)
+ * @method string getLaunchTemplateId()
+ * @method $this withLaunchTemplateId($value)
+ * @method string getIpv6AddressCount()
+ * @method $this withIpv6AddressCount($value)
+ * @method string getCapacityReservationPreference()
+ * @method $this withCapacityReservationPreference($value)
+ * @method string getVSwitchId()
+ * @method $this withVSwitchId($value)
+ * @method string getInstanceName()
+ * @method $this withInstanceName($value)
+ * @method string getZoneId()
+ * @method $this withZoneId($value)
+ * @method array getIpv6Address()
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
  * @method string getInternetMaxBandwidthOut()
  * @method $this withInternetMaxBandwidthOut($value)
  * @method string getDescription()
@@ -10231,17 +11140,10 @@ class RunCommand extends Rpc
  * @method string getSystemDiskCategory()
  * @method string getCapacityReservationId()
  * @method $this withCapacityReservationId($value)
- * @method string getSystemDiskPerformanceLevel()
  * @method string getUserData()
  * @method $this withUserData($value)
- * @method string getPasswordInherit()
- * @method $this withPasswordInherit($value)
  * @method string getHttpEndpoint()
  * @method $this withHttpEndpoint($value)
- * @method string getInstanceType()
- * @method $this withInstanceType($value)
- * @method string getHibernationConfigured()
- * @method $this withHibernationConfigured($value)
  * @method string getInstanceChargeType()
  * @method $this withInstanceChargeType($value)
  * @method array getNetworkInterface()
@@ -10249,32 +11151,22 @@ class RunCommand extends Rpc
  * @method $this withDeploymentSetId($value)
  * @method string getAmount()
  * @method $this withAmount($value)
- * @method string getResourceOwnerAccount()
- * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
  * @method $this withOwnerAccount($value)
  * @method string getTenancy()
  * @method $this withTenancy($value)
- * @method string getSystemDiskDiskName()
  * @method string getRamRoleName()
  * @method $this withRamRoleName($value)
  * @method string getAutoReleaseTime()
  * @method $this withAutoReleaseTime($value)
- * @method string getDedicatedHostId()
- * @method $this withDedicatedHostId($value)
  * @method string getCreditSpecification()
  * @method $this withCreditSpecification($value)
- * @method array getSecurityGroupIds()
- * @method string getSpotDuration()
- * @method $this withSpotDuration($value)
  * @method array getDataDisk()
  * @method string getLaunchTemplateVersion()
  * @method $this withLaunchTemplateVersion($value)
+ * @method string getSchedulerOptionsManagedPrivateSpaceId()
  * @method string getStorageSetId()
  * @method $this withStorageSetId($value)
- * @method string getSystemDiskSize()
- * @method string getImageFamily()
- * @method $this withImageFamily($value)
  * @method string getHttpTokens()
  * @method $this withHttpTokens($value)
  * @method string getSystemDiskDescription()
@@ -10283,23 +11175,16 @@ class RunInstances extends Rpc
 {
 
     /**
-     * @param array $tag
+     * @param string $value
      *
      * @return $this
      */
-	public function withTag(array $tag)
-	{
-	    $this->data['Tag'] = $tag;
-		foreach ($tag as $depth1 => $depth1Value) {
-			if(isset($depth1Value['Key'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
-			}
-			if(isset($depth1Value['Value'])){
-				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
-			}
-		}
+    public function withPrivatePoolOptionsMatchCriteria($value)
+    {
+        $this->data['PrivatePoolOptionsMatchCriteria'] = $value;
+        $this->options['query']['PrivatePoolOptions.MatchCriteria'] = $value;
 
-		return $this;
+        return $this;
     }
 
     /**
@@ -10337,6 +11222,116 @@ class RunInstances extends Rpc
     {
         $this->data['CpuOptionsNuma'] = $value;
         $this->options['query']['CpuOptions.Numa'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withSystemDiskPerformanceLevel($value)
+    {
+        $this->data['SystemDiskPerformanceLevel'] = $value;
+        $this->options['query']['SystemDisk.PerformanceLevel'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param array $arn
+     *
+     * @return $this
+     */
+	public function withArn(array $arn)
+	{
+	    $this->data['Arn'] = $arn;
+		foreach ($arn as $depth1 => $depth1Value) {
+			if(isset($depth1Value['AssumeRoleFor'])){
+				$this->options['query']['Arn.' . ($depth1 + 1) . '.AssumeRoleFor'] = $depth1Value['AssumeRoleFor'];
+			}
+			if(isset($depth1Value['Rolearn'])){
+				$this->options['query']['Arn.' . ($depth1 + 1) . '.Rolearn'] = $depth1Value['Rolearn'];
+			}
+			if(isset($depth1Value['RoleType'])){
+				$this->options['query']['Arn.' . ($depth1 + 1) . '.RoleType'] = $depth1Value['RoleType'];
+			}
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withSystemDiskDiskName($value)
+    {
+        $this->data['SystemDiskDiskName'] = $value;
+        $this->options['query']['SystemDisk.DiskName'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param array $securityGroupIds
+     *
+     * @return $this
+     */
+	public function withSecurityGroupIds(array $securityGroupIds)
+	{
+	    $this->data['SecurityGroupIds'] = $securityGroupIds;
+		foreach ($securityGroupIds as $i => $iValue) {
+			$this->options['query']['SecurityGroupIds.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withSystemDiskSize($value)
+    {
+        $this->data['SystemDiskSize'] = $value;
+        $this->options['query']['SystemDisk.Size'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsId($value)
+    {
+        $this->data['PrivatePoolOptionsId'] = $value;
+        $this->options['query']['PrivatePoolOptions.Id'] = $value;
 
         return $this;
     }
@@ -10383,19 +11378,6 @@ class RunInstances extends Rpc
     }
 
     /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function withSystemDiskPerformanceLevel($value)
-    {
-        $this->data['SystemDiskPerformanceLevel'] = $value;
-        $this->options['query']['SystemDisk.PerformanceLevel'] = $value;
-
-        return $this;
-    }
-
-    /**
      * @param array $networkInterface
      *
      * @return $this
@@ -10422,34 +11404,9 @@ class RunInstances extends Rpc
 			if(isset($depth1Value['Description'])){
 				$this->options['query']['NetworkInterface.' . ($depth1 + 1) . '.Description'] = $depth1Value['Description'];
 			}
-		}
-
-		return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function withSystemDiskDiskName($value)
-    {
-        $this->data['SystemDiskDiskName'] = $value;
-        $this->options['query']['SystemDisk.DiskName'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param array $securityGroupIds
-     *
-     * @return $this
-     */
-	public function withSecurityGroupIds(array $securityGroupIds)
-	{
-	    $this->data['SecurityGroupIds'] = $securityGroupIds;
-		foreach ($securityGroupIds as $i => $iValue) {
-			$this->options['query']['SecurityGroupIds.' . ($i + 1)] = $iValue;
+			if(isset($depth1Value['QueueNumber'])){
+				$this->options['query']['NetworkInterface.' . ($depth1 + 1) . '.QueueNumber'] = $depth1Value['QueueNumber'];
+			}
 		}
 
 		return $this;
@@ -10510,10 +11467,10 @@ class RunInstances extends Rpc
      *
      * @return $this
      */
-    public function withSystemDiskSize($value)
+    public function withSchedulerOptionsManagedPrivateSpaceId($value)
     {
-        $this->data['SystemDiskSize'] = $value;
-        $this->options['query']['SystemDisk.Size'] = $value;
+        $this->data['SchedulerOptionsManagedPrivateSpaceId'] = $value;
+        $this->options['query']['SchedulerOptions.ManagedPrivateSpaceId'] = $value;
 
         return $this;
     }
@@ -10527,6 +11484,84 @@ class RunInstances extends Rpc
     {
         $this->data['SystemDiskDescription'] = $value;
         $this->options['query']['SystemDisk.Description'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getDescription()
+ * @method $this withDescription($value)
+ * @method string getTimeout()
+ * @method $this withTimeout($value)
+ * @method string getContent()
+ * @method $this withContent($value)
+ * @method string getFileOwner()
+ * @method $this withFileOwner($value)
+ * @method string getOverwrite()
+ * @method $this withOverwrite($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getFileMode()
+ * @method $this withFileMode($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getContentType()
+ * @method $this withContentType($value)
+ * @method array getInstanceId()
+ * @method string getName()
+ * @method $this withName($value)
+ * @method string getFileGroup()
+ * @method $this withFileGroup($value)
+ * @method string getTargetDir()
+ * @method $this withTargetDir($value)
+ */
+class SendFile extends Rpc
+{
+
+    /**
+     * @param array $instanceId
+     *
+     * @return $this
+     */
+	public function withInstanceId(array $instanceId)
+	{
+	    $this->data['InstanceId'] = $instanceId;
+		foreach ($instanceId as $i => $iValue) {
+			$this->options['query']['InstanceId.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getPrivatePoolOptionsId()
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class StartElasticityAssurance extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPrivatePoolOptionsId($value)
+    {
+        $this->data['PrivatePoolOptionsId'] = $value;
+        $this->options['query']['PrivatePoolOptions.Id'] = $value;
 
         return $this;
     }

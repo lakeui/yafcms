@@ -14,7 +14,7 @@ class Sms {
    
     
     private static $config = [
-        'SignName'=>'小毛桃',
+        'SignName'=>'圆点技术',
         'TemplateCode'=>'SMS_56570394',
         'AccessKeyId'=>'LTAIcQqQ7PGFI9w3',
         'Secret'=>'fgc4e8bpkxA35AeCUCWFEn3reqhKph'

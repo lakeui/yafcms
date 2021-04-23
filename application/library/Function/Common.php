@@ -32,7 +32,10 @@ function error_code($error_num = null) {
         2004=>'你没有关注该用户',
         
         2005=>'你已经收藏过文章',
-        2006=>'你未收藏过文章',
+        2006=>'你未收藏过文章', 
+        2007=>'您已经点过赞啦',
+        2008=>'您未点赞，不能取消',
+        2009=>'文章已经不存在',
 
         
         3000=>'积分不够',
@@ -242,7 +245,7 @@ function handle_img($url = '', $type = 0, $w = 0, $h = 0) {
 }
 
 function crumb($curr, $data = []) {
-    $html = '<div class="wrap crumb">
+    $html = '<div class="container crumb">
 	<a href="/" class="home">首页</a><i class="fa fa-angle-right"></i>';
     if (!empty($data)) {
         foreach ($data as $key => $vo) {
@@ -458,6 +461,19 @@ function checkLogin() {
     return $userInfo;
 }
 
+//获取当前用户信息
+function getLoginInfo(){
+    $key = 'lakeui_login';
+    $session = \Yaf\Session::getInstance();
+    $res = $session->get($key);
+    if(!empty($res)){
+        return json_decode($res, true);;
+    }
+    return $res;
+}
+
+
+
 //手机
 function showPhoneStr($phone){
     return  preg_replace('/(\d{3})\d{4}(\d{4})/', '$1****$2', $phone);
@@ -480,6 +496,9 @@ function showImgStr($key,$type=1,$default=""){
     }
     if(empty($key)){
         return $default;
+    }
+    if(strpos($key,'http')===0){
+        return $key;
     }
     $url = \Yaf\Registry::get('config')->sys->imgurl;
     return $url.$key;

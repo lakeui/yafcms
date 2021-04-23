@@ -1,0 +1,70 @@
+<?php if(!empty($ulist)):?>
+<!-- <div class="item">
+	<p class="title"><i class="fa fa-user"></i> 最新加入</p>
+	<div class="user">
+		<?php 
+		foreach($ulist as $vo){
+			echo '<a href="/u/'.$vo["id"].'"><img src="'.handle_img($vo['id'],2,100,100).'" alt="'.$vo["nickname"].'"></a>';
+		}
+		?> 
+	</div>
+</div> -->
+<?php endif;?>
+
+
+
+
+
+<div class="widget sidebar-recommend">
+	<h3 class="widget-title">书籍推荐</h3>
+	<div class="cont">
+	    <ul class="book-recom">
+	        <li>
+				<a href=""  >
+					<div class="book-cover">
+						<img src="https://image.uisdc.com/wp-content/uploads/2018/04/uisdc-dktbanner-0501.png">
+					</div>
+					<dl class="book-infor">
+						<dt>优设零基础手绘特训班</dt>
+						<dd><strong>推荐：</strong>超人气课程！从入门到专业</dd>
+					</dl>
+				</a>
+		    </li> 
+			<li>
+				<a href="" >
+				<div class="book-cover">
+				<img src="https://image.uisdc.com/wp-content/uploads/2017/08/uiii2-862-site.jpg">
+				</div>
+				<dl class="book-infor">
+				<dt>优优教程网</dt>
+				<dd><strong>超赞：</strong>可能是国内最好的中文教程网</dd>
+				</dl>
+				</a>
+			</li>
+			<!--  line 3-->
+			<li>
+				<a href=""  data-label="left_sidebar_recom_3">
+				<div class="book-cover">
+				<img src="https://image.uisdc.com/wp-content/uploads/2017/10/uisdc-wechat-czpic50.png">
+				</div>
+				<dl class="book-infor">
+				<dt>优设资源打包免费下载</dt>
+				<dd><strong>推荐：</strong>设计干货合集，持续更新中</dd>
+				</dl>
+				</a>
+			</li>
+			<!--  line 4 -->
+			<li>
+				<a href=""  data-label="left_sidebar_recom_4">
+				<div class="book-cover">
+				<img src="https://image.uisdc.com/wp-content/uploads/2018/04/uisdc-lbanner-ljcok.jpg">
+				</div>
+				<dl class="book-infor">
+				<dt>优设PS、AI、AE零基础训练营</dt>
+				<dd><strong>推荐：</strong>30天从小白到软件高手</dd>
+				</dl>
+				</a>
+			</li>    
+		</ul>
+	</div>
+</div>

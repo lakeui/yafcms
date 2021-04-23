@@ -8,11 +8,17 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method ChangeImageSize changeImageSize(array $options = [])
  * @method CreateSegmentBodyJob createSegmentBodyJob(array $options = [])
  * @method DetectImageElements detectImageElements(array $options = [])
+ * @method EraseLogoInVideo eraseLogoInVideo(array $options = [])
  * @method ExtendImageStyle extendImageStyle(array $options = [])
+ * @method GetAsyncJobResult getAsyncJobResult(array $options = [])
+ * @method GetAsyncResult getAsyncResult(array $options = [])
  * @method GetJobResult getJobResult(array $options = [])
  * @method GetJobStatus getJobStatus(array $options = [])
  * @method GetRenderResult getRenderResult(array $options = [])
+ * @method GetUserBucketConfig getUserBucketConfig(array $options = [])
+ * @method HighlightGameVideo highlightGameVideo(array $options = [])
  * @method ListPackageDesignModelTypes listPackageDesignModelTypes(array $options = [])
+ * @method ListUserBuckets listUserBuckets(array $options = [])
  * @method MakeSuperResolutionImage makeSuperResolutionImage(array $options = [])
  * @method PreviewModelForPackageDesign previewModelForPackageDesign(array $options = [])
  * @method RecognizeImageColor recognizeImageColor(array $options = [])
@@ -21,6 +27,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method RenderImageForPackageDesign renderImageForPackageDesign(array $options = [])
  * @method SegmentBody segmentBody(array $options = [])
  * @method SegmentImage segmentImage(array $options = [])
+ * @method UpdateUserBucketConfig updateUserBucketConfig(array $options = [])
  */
 class IvpdApiResolver extends ApiResolver
 {
@@ -36,6 +43,9 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
 
     /** @var string */
     public $method = 'POST';
+
+    /** @var string */
+    public $serviceCode = 'ivpd';
 }
 
 /**
@@ -176,6 +186,81 @@ class DetectImageElements extends Rpc
 }
 
 /**
+ * @method array getBoxes()
+ * @method string getAsync()
+ * @method string getJobId()
+ * @method string getVideoUrl()
+ */
+class EraseLogoInVideo extends Rpc
+{
+
+    /**
+     * @param array $boxes
+     *
+     * @return $this
+     */
+	public function withBoxes(array $boxes)
+	{
+	    $this->data['Boxes'] = $boxes;
+		foreach ($boxes as $depth1 => $depth1Value) {
+			if(isset($depth1Value['W'])){
+				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.W'] = $depth1Value['W'];
+			}
+			if(isset($depth1Value['H'])){
+				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.H'] = $depth1Value['H'];
+			}
+			if(isset($depth1Value['X'])){
+				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.X'] = $depth1Value['X'];
+			}
+			if(isset($depth1Value['Y'])){
+				$this->options['form_params']['Boxes.' . ($depth1 + 1) . '.Y'] = $depth1Value['Y'];
+			}
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withAsync($value)
+    {
+        $this->data['Async'] = $value;
+        $this->options['form_params']['Async'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withJobId($value)
+    {
+        $this->data['JobId'] = $value;
+        $this->options['form_params']['JobId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withVideoUrl($value)
+    {
+        $this->data['VideoUrl'] = $value;
+        $this->options['form_params']['VideoUrl'] = $value;
+
+        return $this;
+    }
+}
+
+/**
  * @method string getMajorUrl()
  * @method string getStyleUrl()
  */
@@ -204,6 +289,60 @@ class ExtendImageStyle extends Rpc
     {
         $this->data['StyleUrl'] = $value;
         $this->options['form_params']['StyleUrl'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getAsync()
+ * @method string getJobId()
+ */
+class GetAsyncJobResult extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withAsync($value)
+    {
+        $this->data['Async'] = $value;
+        $this->options['form_params']['Async'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withJobId($value)
+    {
+        $this->data['JobId'] = $value;
+        $this->options['form_params']['JobId'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getJobId()
+ */
+class GetAsyncResult extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withJobId($value)
+    {
+        $this->data['JobId'] = $value;
+        $this->options['form_params']['JobId'] = $value;
 
         return $this;
     }
@@ -269,8 +408,70 @@ class GetRenderResult extends Rpc
     }
 }
 
+class GetUserBucketConfig extends Rpc
+{
+}
+
+/**
+ * @method string getAsync()
+ * @method string getVideoUrl()
+ */
+class HighlightGameVideo extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withAsync($value)
+    {
+        $this->data['Async'] = $value;
+        $this->options['form_params']['Async'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withVideoUrl($value)
+    {
+        $this->data['VideoUrl'] = $value;
+        $this->options['form_params']['VideoUrl'] = $value;
+
+        return $this;
+    }
+}
+
 class ListPackageDesignModelTypes extends Rpc
 {
+}
+
+/**
+ * @method array getData()
+ */
+class ListUserBuckets extends Rpc
+{
+
+    /**
+     * @param array $data
+     *
+     * @return $this
+     */
+	public function withData(array $data)
+	{
+	    $this->data['Data'] = $data;
+		foreach ($data as $depth1 => $depth1Value) {
+			if(isset($depth1Value['RegionId'])){
+				$this->options['form_params']['Data.' . ($depth1 + 1) . '.RegionId'] = $depth1Value['RegionId'];
+			}
+		}
+
+		return $this;
+    }
 }
 
 /**
@@ -700,5 +901,32 @@ class SegmentImage extends Rpc
         $this->options['form_params']['Url'] = $value;
 
         return $this;
+    }
+}
+
+/**
+ * @method array getData()
+ */
+class UpdateUserBucketConfig extends Rpc
+{
+
+    /**
+     * @param array $data
+     *
+     * @return $this
+     */
+	public function withData(array $data)
+	{
+	    $this->data['Data'] = $data;
+		foreach ($data as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Bucket'])){
+				$this->options['form_params']['Data.' . ($depth1 + 1) . '.Bucket'] = $depth1Value['Bucket'];
+			}
+			if(isset($depth1Value['Region'])){
+				$this->options['form_params']['Data.' . ($depth1 + 1) . '.Region'] = $depth1Value['Region'];
+			}
+		}
+
+		return $this;
     }
 }

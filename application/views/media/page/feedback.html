@@ -1,0 +1,76 @@
+<?php include $viewPath.'/header.html';?>
+
+
+<div class="wrap contain"> 
+	<div class="common" id="feedback"> 
+		<h3><b>留言版</b></h3> 
+		<div class="article">
+			<form action="" class="feedbackform">
+                <p class="linktitle">联系方式：</p>
+                <p>
+                    <input type="text" class="txt" v-model="contact" name="contact" value=""  placeholder="手机/QQ/邮箱/微信" />
+                </p>
+                <p class="linktitle">留言内容：</p>
+				<p><textarea name="content" id="content" v-model="content" required="true" class="textarea feedback" placeholder="您想和我说点什么..."></textarea></p>
+				<label>
+					<button type="button" id="submit" @click="reg($event)" v-bind:class="{'disabled': !correct}">提交</button>
+					<span class="msg" >{{ msg }}</span>
+				</label>
+			</form>
+		</div>
+	</div>
+	
+</div>
+<?php include $viewPath.'/footer.html';?>
+<script src="/libs/layer/layer.js"></script> 
+<script src="/libs/vue.min.js"></script>
+<script> 
+	
+var index ; 
+var Sign = new Vue({
+    el: '#feedback',
+    data:{
+        content: '',          //留言内容
+        contact:'',
+        msg:'',
+        correct: false,     //参数是否正确
+    },
+    watch:{
+        'content': function(){
+            this.correct = this.content.length && this.contact.length ; 
+        }, 
+        'contact':function(e){
+        	this.correct = this.content.length && this.contact.length ; 
+        }
+    },
+    methods:{
+        reg: function(e){
+        	var _self = this; 
+            if(e.target.classList.contains('disabled')) return false;
+            if(!_self.content) {  
+                layer.msg('请输入留言内容！');
+            	// _self.msg = '请输入留言内容！'; 
+            	return false;
+            } 
+            index = layer.load(2);
+            xz.ajaxPost(xz.api.feedback,{'content': _self.content,'contact':_self.contact},function(json){
+            	layer.close(index);
+                if(json.status==0){
+                	// _self.msg = '留言成功';
+                    layer.msg('留言成功');
+                	_self.correct = false;
+                    setTimeout(function(){
+                    	_self.msg  = '';
+                    	_self.content = '';
+                        _self.contact = '';
+                    },2000);
+                }else{
+                     layer.msg(json.info);
+                	// _self.msg = json.info;
+                }
+            })
+        }, 
+    }
+}); 
+</script>
+	

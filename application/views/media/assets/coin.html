@@ -1,0 +1,108 @@
+<?php include $viewPath.'/header.html';?>
+  
+
+<div class="member_main">
+	
+	<?php include $viewPath.'/setting/left.html';?>
+
+	<div class="member_content">
+		<div class="layui-row layui-col-space10 coin-area">
+		  <div class="layui-col-md4 coin">
+		      <h2>我的可用桃核（个）</h2>
+		      <b>1232</b>
+		  </div>
+		  <div class="layui-col-md4">
+		     <ul class="coin-sub">
+		     	<li>充值桃核：<b>200</b> 个</li>
+		     	<li>消费桃核：<b>200</b> 个</li>
+		     	<li>账户状态：&nbsp;正常</li>
+		     </ul>
+		  </div>
+		  <div class="layui-col-md4">
+		      <ul class="coin-recharge">
+		      	<li><button class="layui-btn layui-btn-fluid">桃核充值</button></li>
+		      	<li><span>桃核可用于兑换本站商品，文章，视频，源码</span></li>
+		      </ul>
+		  </div> 
+		</div> 
+		<hr>
+		<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this">充值记录</li>
+		    <li>消费记录</li>
+		  </ul>
+		  <div class="layui-tab-content" style="padding: 10px 0;">
+		  	<table cellpadding="1" cellspacing="1" class="layui-table">
+				<colgroup>
+				    <col> 
+				    <col width="250"> 
+				</colgroup>
+				<thead>
+					<tr>
+						<th>充值数量</th>
+						<th>充值时间</th> 
+					</tr>
+				</thead>
+				<tbody>
+					<tr> 
+						
+						<td>12</td>
+						<td>2018-10-12 12:01</td>
+						
+					</tr>
+					<tr> 
+						<td>12</td>
+						<td>2018-10-12 12:01</td>
+						
+					</tr>
+					<tr> 
+						<td>12</td>
+						<td>2018-10-12 12:01</td>
+						
+					</tr>
+					<tr> 
+						<td>12</td>
+						<td>2018-10-12 12:01</td>
+						
+					</tr>
+					<tr> 
+						<td>12</td>
+						<td>2018-10-12 12:01</td>
+						
+					</tr>
+				</tbody>
+			</table> 
+		  </div>
+		</div>  
+
+
+		<div id="page"></div>
+	</div>
+
+
+</div>
+ 
+	
+<?php include $viewPath.'/footer.html';?>
+<script>
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  //执行一个laypage实例
+  laypage.render({
+    elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: 50 //数据总数，从服务端得到
+    ,jump: function(obj, first){
+	    //obj包含了当前分页的所有参数，比如：
+	    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+	    console.log(obj.limit); //得到每页显示的条数
+	    
+	    //首次不执行
+	    if(!first){
+	      //do something
+	    }
+	 }
+  });
+});
+</script>
+
+

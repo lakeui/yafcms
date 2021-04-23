@@ -9,7 +9,9 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method AddLocalNodes addLocalNodes(array $options = [])
  * @method AddNodes addNodes(array $options = [])
  * @method AddQueue addQueue(array $options = [])
+ * @method AddSecurityGroup addSecurityGroup(array $options = [])
  * @method AddUsers addUsers(array $options = [])
+ * @method ApplyNodes applyNodes(array $options = [])
  * @method BindAccountToClusterUser bindAccountToClusterUser(array $options = [])
  * @method CreateCluster createCluster(array $options = [])
  * @method CreateGWSCluster createGWSCluster(array $options = [])
@@ -27,6 +29,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DeleteJobTemplates deleteJobTemplates(array $options = [])
  * @method DeleteNodes deleteNodes(array $options = [])
  * @method DeleteQueue deleteQueue(array $options = [])
+ * @method DeleteSecurityGroup deleteSecurityGroup(array $options = [])
  * @method DeleteUsers deleteUsers(array $options = [])
  * @method DescribeAutoScaleConfig describeAutoScaleConfig(array $options = [])
  * @method DescribeCluster describeCluster(array $options = [])
@@ -50,13 +53,8 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method GetGWSConnectTicket getGWSConnectTicket(array $options = [])
  * @method GetHybridClusterConfig getHybridClusterConfig(array $options = [])
  * @method GetIfEcsTypeSupportHtConfig getIfEcsTypeSupportHtConfig(array $options = [])
- * @method GetInstanceReport getInstanceReport(array $options = [])
- * @method GetJobReport getJobReport(array $options = [])
- * @method GetTotalQueueReport getTotalQueueReport(array $options = [])
- * @method GetTotalUserReport getTotalUserReport(array $options = [])
  * @method GetVisualServiceStatus getVisualServiceStatus(array $options = [])
  * @method GetWorkbenchToken getWorkbenchToken(array $options = [])
- * @method InstallNFSClient installNFSClient(array $options = [])
  * @method InstallSoftware installSoftware(array $options = [])
  * @method InvokeShellCommand invokeShellCommand(array $options = [])
  * @method ListAccountMapping listAccountMapping(array $options = [])
@@ -85,7 +83,9 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method ListPreferredEcsTypes listPreferredEcsTypes(array $options = [])
  * @method ListQueues listQueues(array $options = [])
  * @method ListRegions listRegions(array $options = [])
+ * @method ListSecurityGroups listSecurityGroups(array $options = [])
  * @method ListSoftwares listSoftwares(array $options = [])
+ * @method ListTasks listTasks(array $options = [])
  * @method ListUsers listUsers(array $options = [])
  * @method ListVolumes listVolumes(array $options = [])
  * @method ModifyClusterAttributes modifyClusterAttributes(array $options = [])
@@ -134,9 +134,6 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
 
     /** @var string */
     public $version = '2018-04-12';
-
-    /** @var string */
-    public $serviceCode = 'ehs';
 }
 
 /**
@@ -168,6 +165,12 @@ class AddLocalNodes extends Rpc
 /**
  * @method string getImageId()
  * @method $this withImageId($value)
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
+ * @method string getAllocatePublicAddress()
+ * @method $this withAllocatePublicAddress($value)
+ * @method string getInternetMaxBandWidthOut()
+ * @method $this withInternetMaxBandWidthOut($value)
  * @method string getJobQueue()
  * @method $this withJobQueue($value)
  * @method string getImageOwnerAlias()
@@ -204,10 +207,14 @@ class AddLocalNodes extends Rpc
  * @method $this withAutoRenew($value)
  * @method string getEcsChargeType()
  * @method $this withEcsChargeType($value)
+ * @method string getInternetChargeType()
+ * @method $this withInternetChargeType($value)
  * @method string getCreateMode()
  * @method $this withCreateMode($value)
  * @method string getZoneId()
  * @method $this withZoneId($value)
+ * @method string getInternetMaxBandWidthIn()
+ * @method $this withInternetMaxBandWidthIn($value)
  */
 class AddNodes extends Rpc
 {
@@ -220,6 +227,18 @@ class AddNodes extends Rpc
  * @method $this withClusterId($value)
  */
 class AddQueue extends Rpc
+{
+}
+
+/**
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
+ * @method string getSecurityGroupId()
+ * @method $this withSecurityGroupId($value)
+ * @method string getClusterId()
+ * @method $this withClusterId($value)
+ */
+class AddSecurityGroup extends Rpc
 {
 }
 
@@ -240,9 +259,104 @@ class AddUsers extends Rpc
 	{
 	    $this->data['User'] = $user;
 		foreach ($user as $depth1 => $depth1Value) {
-			$this->options['query']['User.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
-			$this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
-			$this->options['query']['User.' . ($depth1 + 1) . '.Group'] = $depth1Value['Group'];
+			if(isset($depth1Value['Password'])){
+				$this->options['query']['User.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
+			}
+			if(isset($depth1Value['Name'])){
+				$this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+			}
+			if(isset($depth1Value['Group'])){
+				$this->options['query']['User.' . ($depth1 + 1) . '.Group'] = $depth1Value['Group'];
+			}
+		}
+
+		return $this;
+    }
+}
+
+/**
+ * @method string getImageId()
+ * @method $this withImageId($value)
+ * @method string getMemory()
+ * @method $this withMemory($value)
+ * @method string getAllocatePublicAddress()
+ * @method $this withAllocatePublicAddress($value)
+ * @method string getInternetMaxBandWidthOut()
+ * @method $this withInternetMaxBandWidthOut($value)
+ * @method string getResourceAmountType()
+ * @method $this withResourceAmountType($value)
+ * @method string getSystemDiskType()
+ * @method $this withSystemDiskType($value)
+ * @method string getCores()
+ * @method $this withCores($value)
+ * @method string getSystemDiskSize()
+ * @method $this withSystemDiskSize($value)
+ * @method array getZoneInfos()
+ * @method string getHostNamePrefix()
+ * @method $this withHostNamePrefix($value)
+ * @method string getComputeSpotPriceLimit()
+ * @method $this withComputeSpotPriceLimit($value)
+ * @method string getClusterId()
+ * @method $this withClusterId($value)
+ * @method string getComputeSpotStrategy()
+ * @method $this withComputeSpotStrategy($value)
+ * @method string getHostNameSuffix()
+ * @method $this withHostNameSuffix($value)
+ * @method string getPriorityStrategy()
+ * @method $this withPriorityStrategy($value)
+ * @method string getInstanceFamilyLevel()
+ * @method $this withInstanceFamilyLevel($value)
+ * @method string getInternetChargeType()
+ * @method $this withInternetChargeType($value)
+ * @method array getInstanceTypeModel()
+ * @method string getInternetMaxBandWidthIn()
+ * @method $this withInternetMaxBandWidthIn($value)
+ * @method string getTargetCapacity()
+ * @method $this withTargetCapacity($value)
+ * @method string getStrictSatisfiedTargetCapacity()
+ * @method $this withStrictSatisfiedTargetCapacity($value)
+ */
+class ApplyNodes extends Rpc
+{
+
+    /**
+     * @param array $zoneInfos
+     *
+     * @return $this
+     */
+	public function withZoneInfos(array $zoneInfos)
+	{
+	    $this->data['ZoneInfos'] = $zoneInfos;
+		foreach ($zoneInfos as $depth1 => $depth1Value) {
+			if(isset($depth1Value['VSwitchId'])){
+				$this->options['query']['ZoneInfos.' . ($depth1 + 1) . '.VSwitchId'] = $depth1Value['VSwitchId'];
+			}
+			if(isset($depth1Value['ZoneId'])){
+				$this->options['query']['ZoneInfos.' . ($depth1 + 1) . '.ZoneId'] = $depth1Value['ZoneId'];
+			}
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param array $instanceTypeModel
+     *
+     * @return $this
+     */
+	public function withInstanceTypeModel(array $instanceTypeModel)
+	{
+	    $this->data['InstanceTypeModel'] = $instanceTypeModel;
+		foreach ($instanceTypeModel as $depth1 => $depth1Value) {
+			if(isset($depth1Value['MaxPrice'])){
+				$this->options['query']['InstanceTypeModel.' . ($depth1 + 1) . '.MaxPrice'] = $depth1Value['MaxPrice'];
+			}
+			if(isset($depth1Value['TargetImageId'])){
+				$this->options['query']['InstanceTypeModel.' . ($depth1 + 1) . '.TargetImageId'] = $depth1Value['TargetImageId'];
+			}
+			if(isset($depth1Value['InstanceType'])){
+				$this->options['query']['InstanceTypeModel.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
+			}
 		}
 
 		return $this;
@@ -282,6 +396,8 @@ class BindAccountToClusterUser extends Rpc
  * @method string getPassword()
  * @method $this withPassword($value)
  * @method string getEcsOrderLoginCount()
+ * @method string getWithoutElasticIp()
+ * @method $this withWithoutElasticIp($value)
  * @method string getRemoteVisEnable()
  * @method $this withRemoteVisEnable($value)
  * @method string getSystemDiskSize()
@@ -316,6 +432,8 @@ class BindAccountToClusterUser extends Rpc
  * @method $this withSccClusterId($value)
  * @method string getImageId()
  * @method $this withImageId($value)
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
  * @method string getEhpcVersion()
  * @method $this withEhpcVersion($value)
  * @method string getAccountType()
@@ -364,17 +482,35 @@ class CreateCluster extends Rpc
 	{
 	    $this->data['AdditionalVolumes'] = $additionalVolumes;
 		foreach ($additionalVolumes as $depth1 => $depth1Value) {
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeType'] = $depth1Value['VolumeType'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeProtocol'] = $depth1Value['VolumeProtocol'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.LocalDirectory'] = $depth1Value['LocalDirectory'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.RemoteDirectory'] = $depth1Value['RemoteDirectory'];
-			foreach ($depth1Value['Roles'] as $depth2 => $depth2Value) {
-				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.Roles.' . ($depth2 + 1) . '.Name'] = $depth2Value['Name'];
+			if(isset($depth1Value['VolumeType'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeType'] = $depth1Value['VolumeType'];
 			}
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeId'] = $depth1Value['VolumeId'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeMountpoint'] = $depth1Value['VolumeMountpoint'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.Location'] = $depth1Value['Location'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.JobQueue'] = $depth1Value['JobQueue'];
+			if(isset($depth1Value['VolumeProtocol'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeProtocol'] = $depth1Value['VolumeProtocol'];
+			}
+			if(isset($depth1Value['LocalDirectory'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.LocalDirectory'] = $depth1Value['LocalDirectory'];
+			}
+			if(isset($depth1Value['RemoteDirectory'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.RemoteDirectory'] = $depth1Value['RemoteDirectory'];
+			}
+			foreach ($depth1Value['Roles'] as $depth2 => $depth2Value) {
+				if(isset($depth2Value['Name'])){
+					$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.Roles.' . ($depth2 + 1) . '.Name'] = $depth2Value['Name'];
+				}
+			}
+			if(isset($depth1Value['VolumeId'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeId'] = $depth1Value['VolumeId'];
+			}
+			if(isset($depth1Value['VolumeMountpoint'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeMountpoint'] = $depth1Value['VolumeMountpoint'];
+			}
+			if(isset($depth1Value['Location'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.Location'] = $depth1Value['Location'];
+			}
+			if(isset($depth1Value['JobQueue'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.JobQueue'] = $depth1Value['JobQueue'];
+			}
 		}
 
 		return $this;
@@ -441,8 +577,12 @@ class CreateCluster extends Rpc
 	{
 	    $this->data['PostInstallScript'] = $postInstallScript;
 		foreach ($postInstallScript as $depth1 => $depth1Value) {
-			$this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Args'] = $depth1Value['Args'];
-			$this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Url'] = $depth1Value['Url'];
+			if(isset($depth1Value['Args'])){
+				$this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Args'] = $depth1Value['Args'];
+			}
+			if(isset($depth1Value['Url'])){
+				$this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Url'] = $depth1Value['Url'];
+			}
 		}
 
 		return $this;
@@ -470,7 +610,9 @@ class CreateCluster extends Rpc
 	{
 	    $this->data['Application'] = $application;
 		foreach ($application as $depth1 => $depth1Value) {
-			$this->options['query']['Application.' . ($depth1 + 1) . '.Tag'] = $depth1Value['Tag'];
+			if(isset($depth1Value['Tag'])){
+				$this->options['query']['Application.' . ($depth1 + 1) . '.Tag'] = $depth1Value['Tag'];
+			}
 		}
 
 		return $this;
@@ -493,6 +635,8 @@ class CreateCluster extends Rpc
 /**
  * @method string getClusterType()
  * @method $this withClusterType($value)
+ * @method string getVSwitchId()
+ * @method $this withVSwitchId($value)
  * @method string getVpcId()
  * @method $this withVpcId($value)
  * @method string getName()
@@ -535,6 +679,8 @@ class CreateGWSImage extends Rpc
  * @method $this withClusterId($value)
  * @method string getWorkMode()
  * @method $this withWorkMode($value)
+ * @method string getVSwitchId()
+ * @method $this withVSwitchId($value)
  * @method string getPeriodUnit()
  * @method $this withPeriodUnit($value)
  * @method string getAutoRenew()
@@ -551,58 +697,68 @@ class CreateGWSInstance extends Rpc
 }
 
 /**
+ * @method string getKeyPairName()
+ * @method $this withKeyPairName($value)
+ * @method string getSecurityGroupName()
+ * @method $this withSecurityGroupName($value)
+ * @method string getOnPremiseVolumeRemotePath()
+ * @method $this withOnPremiseVolumeRemotePath($value)
+ * @method string getImageOwnerAlias()
+ * @method $this withImageOwnerAlias($value)
+ * @method string getResourceGroupId()
+ * @method $this withResourceGroupId($value)
+ * @method string getPassword()
+ * @method $this withPassword($value)
+ * @method string getComputeSpotPriceLimit()
+ * @method $this withComputeSpotPriceLimit($value)
+ * @method string getOnPremiseVolumeLocalPath()
+ * @method $this withOnPremiseVolumeLocalPath($value)
+ * @method string getRemoteDirectory()
+ * @method $this withRemoteDirectory($value)
+ * @method string getComputeSpotStrategy()
+ * @method $this withComputeSpotStrategy($value)
+ * @method array getPostInstallScript()
+ * @method string getVSwitchId()
+ * @method $this withVSwitchId($value)
+ * @method string getDomain()
+ * @method $this withDomain($value)
+ * @method string getName()
+ * @method $this withName($value)
+ * @method string getVolumeId()
+ * @method $this withVolumeId($value)
+ * @method string getZoneId()
+ * @method $this withZoneId($value)
+ * @method string getImageId()
+ * @method $this withImageId($value)
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
  * @method string getEhpcVersion()
  * @method $this withEhpcVersion($value)
  * @method string getSecurityGroupId()
  * @method $this withSecurityGroupId($value)
  * @method string getDescription()
  * @method $this withDescription($value)
- * @method string getKeyPairName()
- * @method $this withKeyPairName($value)
- * @method string getSecurityGroupName()
- * @method $this withSecurityGroupName($value)
  * @method string getEcsOrderComputeInstanceType()
- * @method string getOnPremiseVolumeRemotePath()
- * @method $this withOnPremiseVolumeRemotePath($value)
  * @method string getJobQueue()
  * @method $this withJobQueue($value)
  * @method string getVolumeType()
  * @method $this withVolumeType($value)
- * @method string getResourceGroupId()
- * @method $this withResourceGroupId($value)
- * @method string getPassword()
- * @method $this withPassword($value)
  * @method string getOnPremiseVolumeMountPoint()
  * @method $this withOnPremiseVolumeMountPoint($value)
  * @method string getOnPremiseVolumeProtocol()
  * @method $this withOnPremiseVolumeProtocol($value)
  * @method string getVolumeProtocol()
  * @method $this withVolumeProtocol($value)
- * @method string getOnPremiseVolumeLocalPath()
- * @method $this withOnPremiseVolumeLocalPath($value)
  * @method string getClientVersion()
  * @method $this withClientVersion($value)
  * @method string getOsTag()
  * @method $this withOsTag($value)
- * @method string getRemoteDirectory()
- * @method $this withRemoteDirectory($value)
- * @method array getPostInstallScript()
- * @method string getVSwitchId()
- * @method $this withVSwitchId($value)
  * @method array getNodes()
  * @method array getApplication()
- * @method string getDomain()
- * @method $this withDomain($value)
  * @method string getVpcId()
  * @method $this withVpcId($value)
- * @method string getName()
- * @method $this withName($value)
- * @method string getVolumeId()
- * @method $this withVolumeId($value)
  * @method string getVolumeMountpoint()
  * @method $this withVolumeMountpoint($value)
- * @method string getZoneId()
- * @method $this withZoneId($value)
  * @method string getSchedulerPreInstall()
  * @method $this withSchedulerPreInstall($value)
  * @method string getLocation()
@@ -610,6 +766,26 @@ class CreateGWSInstance extends Rpc
  */
 class CreateHybridCluster extends Rpc
 {
+
+    /**
+     * @param array $postInstallScript
+     *
+     * @return $this
+     */
+	public function withPostInstallScript(array $postInstallScript)
+	{
+	    $this->data['PostInstallScript'] = $postInstallScript;
+		foreach ($postInstallScript as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Args'])){
+				$this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Args'] = $depth1Value['Args'];
+			}
+			if(isset($depth1Value['Url'])){
+				$this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Url'] = $depth1Value['Url'];
+			}
+		}
+
+		return $this;
+    }
 
     /**
      * @param string $value
@@ -625,22 +801,6 @@ class CreateHybridCluster extends Rpc
     }
 
     /**
-     * @param array $postInstallScript
-     *
-     * @return $this
-     */
-	public function withPostInstallScript(array $postInstallScript)
-	{
-	    $this->data['PostInstallScript'] = $postInstallScript;
-		foreach ($postInstallScript as $depth1 => $depth1Value) {
-			$this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Args'] = $depth1Value['Args'];
-			$this->options['query']['PostInstallScript.' . ($depth1 + 1) . '.Url'] = $depth1Value['Url'];
-		}
-
-		return $this;
-    }
-
-    /**
      * @param array $nodes
      *
      * @return $this
@@ -649,11 +809,21 @@ class CreateHybridCluster extends Rpc
 	{
 	    $this->data['Nodes'] = $nodes;
 		foreach ($nodes as $depth1 => $depth1Value) {
-			$this->options['query']['Nodes.' . ($depth1 + 1) . '.IpAddress'] = $depth1Value['IpAddress'];
-			$this->options['query']['Nodes.' . ($depth1 + 1) . '.HostName'] = $depth1Value['HostName'];
-			$this->options['query']['Nodes.' . ($depth1 + 1) . '.Role'] = $depth1Value['Role'];
-			$this->options['query']['Nodes.' . ($depth1 + 1) . '.AccountType'] = $depth1Value['AccountType'];
-			$this->options['query']['Nodes.' . ($depth1 + 1) . '.SchedulerType'] = $depth1Value['SchedulerType'];
+			if(isset($depth1Value['IpAddress'])){
+				$this->options['query']['Nodes.' . ($depth1 + 1) . '.IpAddress'] = $depth1Value['IpAddress'];
+			}
+			if(isset($depth1Value['HostName'])){
+				$this->options['query']['Nodes.' . ($depth1 + 1) . '.HostName'] = $depth1Value['HostName'];
+			}
+			if(isset($depth1Value['Role'])){
+				$this->options['query']['Nodes.' . ($depth1 + 1) . '.Role'] = $depth1Value['Role'];
+			}
+			if(isset($depth1Value['AccountType'])){
+				$this->options['query']['Nodes.' . ($depth1 + 1) . '.AccountType'] = $depth1Value['AccountType'];
+			}
+			if(isset($depth1Value['SchedulerType'])){
+				$this->options['query']['Nodes.' . ($depth1 + 1) . '.SchedulerType'] = $depth1Value['SchedulerType'];
+			}
 		}
 
 		return $this;
@@ -668,7 +838,9 @@ class CreateHybridCluster extends Rpc
 	{
 	    $this->data['Application'] = $application;
 		foreach ($application as $depth1 => $depth1Value) {
-			$this->options['query']['Application.' . ($depth1 + 1) . '.Tag'] = $depth1Value['Tag'];
+			if(isset($depth1Value['Tag'])){
+				$this->options['query']['Application.' . ($depth1 + 1) . '.Tag'] = $depth1Value['Tag'];
+			}
 		}
 
 		return $this;
@@ -742,7 +914,9 @@ class DeleteContainerApps extends Rpc
 	{
 	    $this->data['ContainerApp'] = $containerApp;
 		foreach ($containerApp as $depth1 => $depth1Value) {
-			$this->options['query']['ContainerApp.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			if(isset($depth1Value['Id'])){
+				$this->options['query']['ContainerApp.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			}
 		}
 
 		return $this;
@@ -816,7 +990,9 @@ class DeleteNodes extends Rpc
 	{
 	    $this->data['Instance'] = $instance;
 		foreach ($instance as $depth1 => $depth1Value) {
-			$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			if(isset($depth1Value['Id'])){
+				$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			}
 		}
 
 		return $this;
@@ -830,6 +1006,16 @@ class DeleteNodes extends Rpc
  * @method $this withClusterId($value)
  */
 class DeleteQueue extends Rpc
+{
+}
+
+/**
+ * @method string getSecurityGroupId()
+ * @method $this withSecurityGroupId($value)
+ * @method string getClusterId()
+ * @method $this withClusterId($value)
+ */
+class DeleteSecurityGroup extends Rpc
 {
 }
 
@@ -850,7 +1036,9 @@ class DeleteUsers extends Rpc
 	{
 	    $this->data['User'] = $user;
 		foreach ($user as $depth1 => $depth1Value) {
-			$this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+			if(isset($depth1Value['Name'])){
+				$this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+			}
 		}
 
 		return $this;
@@ -884,6 +1072,10 @@ class DescribeContainerApp extends Rpc
 /**
  * @method string getClusterId()
  * @method $this withClusterId($value)
+ * @method string getAsyncMode()
+ * @method $this withAsyncMode($value)
+ * @method string getTaskId()
+ * @method $this withTaskId($value)
  */
 class DescribeGWSClusterPolicy extends Rpc
 {
@@ -923,6 +1115,10 @@ class DescribeGWSImages extends Rpc
  * @method $this withInstanceId($value)
  * @method string getPageSize()
  * @method $this withPageSize($value)
+ * @method string getUserUid()
+ * @method $this withUserUid($value)
+ * @method string getUserName()
+ * @method $this withUserName($value)
  */
 class DescribeGWSInstances extends Rpc
 {
@@ -1007,13 +1203,33 @@ class DescribePrice extends Rpc
 	{
 	    $this->data['Commodities'] = $commodities;
 		foreach ($commodities as $depth1 => $depth1Value) {
-			$this->options['query']['Commodities.' . ($depth1 + 1) . '.Amount'] = $depth1Value['Amount'];
-			$this->options['query']['Commodities.' . ($depth1 + 1) . '.Period'] = $depth1Value['Period'];
-			$this->options['query']['Commodities.' . ($depth1 + 1) . '.NodeType'] = $depth1Value['NodeType'];
-			$this->options['query']['Commodities.' . ($depth1 + 1) . '.SystemDiskCategory'] = $depth1Value['SystemDiskCategory'];
-			$this->options['query']['Commodities.' . ($depth1 + 1) . '.SystemDiskSize'] = $depth1Value['SystemDiskSize'];
-			$this->options['query']['Commodities.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
-			$this->options['query']['Commodities.' . ($depth1 + 1) . '.NetworkType'] = $depth1Value['NetworkType'];
+			if(isset($depth1Value['Amount'])){
+				$this->options['query']['Commodities.' . ($depth1 + 1) . '.Amount'] = $depth1Value['Amount'];
+			}
+			if(isset($depth1Value['Period'])){
+				$this->options['query']['Commodities.' . ($depth1 + 1) . '.Period'] = $depth1Value['Period'];
+			}
+			if(isset($depth1Value['NodeType'])){
+				$this->options['query']['Commodities.' . ($depth1 + 1) . '.NodeType'] = $depth1Value['NodeType'];
+			}
+			if(isset($depth1Value['SystemDiskCategory'])){
+				$this->options['query']['Commodities.' . ($depth1 + 1) . '.SystemDiskCategory'] = $depth1Value['SystemDiskCategory'];
+			}
+			if(isset($depth1Value['InternetChargeType'])){
+				$this->options['query']['Commodities.' . ($depth1 + 1) . '.InternetChargeType'] = $depth1Value['InternetChargeType'];
+			}
+			if(isset($depth1Value['SystemDiskSize'])){
+				$this->options['query']['Commodities.' . ($depth1 + 1) . '.SystemDiskSize'] = $depth1Value['SystemDiskSize'];
+			}
+			if(isset($depth1Value['InternetMaxBandWidthOut'])){
+				$this->options['query']['Commodities.' . ($depth1 + 1) . '.InternetMaxBandWidthOut'] = $depth1Value['InternetMaxBandWidthOut'];
+			}
+			if(isset($depth1Value['InstanceType'])){
+				$this->options['query']['Commodities.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
+			}
+			if(isset($depth1Value['NetworkType'])){
+				$this->options['query']['Commodities.' . ($depth1 + 1) . '.NetworkType'] = $depth1Value['NetworkType'];
+			}
 		}
 
 		return $this;
@@ -1151,60 +1367,6 @@ class GetIfEcsTypeSupportHtConfig extends Rpc
 }
 
 /**
- * @method string getEndTime()
- * @method $this withEndTime($value)
- * @method string getFilterValue()
- * @method $this withFilterValue($value)
- * @method string getClusterId()
- * @method $this withClusterId($value)
- * @method string getStartTime()
- * @method $this withStartTime($value)
- */
-class GetInstanceReport extends Rpc
-{
-}
-
-/**
- * @method string getReportType()
- * @method $this withReportType($value)
- * @method string getEndTime()
- * @method $this withEndTime($value)
- * @method string getFilterValue()
- * @method $this withFilterValue($value)
- * @method string getClusterId()
- * @method $this withClusterId($value)
- * @method string getStartTime()
- * @method $this withStartTime($value)
- */
-class GetJobReport extends Rpc
-{
-}
-
-/**
- * @method string getEndTime()
- * @method $this withEndTime($value)
- * @method string getClusterId()
- * @method $this withClusterId($value)
- * @method string getStartTime()
- * @method $this withStartTime($value)
- */
-class GetTotalQueueReport extends Rpc
-{
-}
-
-/**
- * @method string getEndTime()
- * @method $this withEndTime($value)
- * @method string getClusterId()
- * @method $this withClusterId($value)
- * @method string getStartTime()
- * @method $this withStartTime($value)
- */
-class GetTotalUserReport extends Rpc
-{
-}
-
-/**
  * @method string getClusterId()
  * @method $this withClusterId($value)
  */
@@ -1229,14 +1391,6 @@ class GetVisualServiceStatus extends Rpc
  * @method $this withUserName($value)
  */
 class GetWorkbenchToken extends Rpc
-{
-}
-
-/**
- * @method string getInstanceId()
- * @method $this withInstanceId($value)
- */
-class InstallNFSClient extends Rpc
 {
 }
 
@@ -1273,7 +1427,9 @@ class InvokeShellCommand extends Rpc
 	{
 	    $this->data['Instance'] = $instance;
 		foreach ($instance as $depth1 => $depth1Value) {
-			$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			if(isset($depth1Value['Id'])){
+				$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			}
 		}
 
 		return $this;
@@ -1469,7 +1625,9 @@ class ListInvocationResults extends Rpc
 	{
 	    $this->data['Instance'] = $instance;
 		foreach ($instance as $depth1 => $depth1Value) {
-			$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			if(isset($depth1Value['Id'])){
+				$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			}
 		}
 
 		return $this;
@@ -1523,6 +1681,8 @@ class ListJobTemplates extends Rpc
  * @method $this withClusterId($value)
  * @method string getPageNumber()
  * @method $this withPageNumber($value)
+ * @method string getSequence()
+ * @method $this withSequence($value)
  * @method string getHostName()
  * @method $this withHostName($value)
  * @method string getPageSize()
@@ -1551,6 +1711,8 @@ class ListNodesByQueue extends Rpc
  * @method $this withRole($value)
  * @method string getClusterId()
  * @method $this withClusterId($value)
+ * @method string getSequence()
+ * @method $this withSequence($value)
  * @method string getHostName()
  * @method $this withHostName($value)
  * @method string getOnlyDetached()
@@ -1585,12 +1747,36 @@ class ListRegions extends Rpc
 }
 
 /**
+ * @method string getClusterId()
+ * @method $this withClusterId($value)
+ */
+class ListSecurityGroups extends Rpc
+{
+}
+
+/**
  * @method string getOsTag()
  * @method $this withOsTag($value)
  * @method string getEhpcVersion()
  * @method $this withEhpcVersion($value)
  */
 class ListSoftwares extends Rpc
+{
+}
+
+/**
+ * @method string getClusterId()
+ * @method $this withClusterId($value)
+ * @method string getPageNumber()
+ * @method $this withPageNumber($value)
+ * @method string getArchived()
+ * @method $this withArchived($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ * @method string getTaskId()
+ * @method $this withTaskId($value)
+ */
+class ListTasks extends Rpc
 {
 }
 
@@ -1617,10 +1803,14 @@ class ListVolumes extends Rpc
 }
 
 /**
+ * @method string getImageId()
+ * @method $this withImageId($value)
  * @method string getDescription()
  * @method $this withDescription($value)
  * @method string getClusterId()
  * @method $this withClusterId($value)
+ * @method string getImageOwnerAlias()
+ * @method $this withImageOwnerAlias($value)
  * @method string getName()
  * @method $this withName($value)
  */
@@ -1669,9 +1859,15 @@ class ModifyImageGatewayConfig extends Rpc
 	{
 	    $this->data['Repo'] = $repo;
 		foreach ($repo as $depth1 => $depth1Value) {
-			$this->options['query']['Repo.' . ($depth1 + 1) . '.Auth'] = $depth1Value['Auth'];
-			$this->options['query']['Repo.' . ($depth1 + 1) . '.Location'] = $depth1Value['Location'];
-			$this->options['query']['Repo.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
+			if(isset($depth1Value['Auth'])){
+				$this->options['query']['Repo.' . ($depth1 + 1) . '.Auth'] = $depth1Value['Auth'];
+			}
+			if(isset($depth1Value['Location'])){
+				$this->options['query']['Repo.' . ($depth1 + 1) . '.Location'] = $depth1Value['Location'];
+			}
+			if(isset($depth1Value['URL'])){
+				$this->options['query']['Repo.' . ($depth1 + 1) . '.URL'] = $depth1Value['URL'];
+			}
 		}
 
 		return $this;
@@ -1695,8 +1891,12 @@ class ModifyUserGroups extends Rpc
 	{
 	    $this->data['User'] = $user;
 		foreach ($user as $depth1 => $depth1Value) {
-			$this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
-			$this->options['query']['User.' . ($depth1 + 1) . '.Group'] = $depth1Value['Group'];
+			if(isset($depth1Value['Name'])){
+				$this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+			}
+			if(isset($depth1Value['Group'])){
+				$this->options['query']['User.' . ($depth1 + 1) . '.Group'] = $depth1Value['Group'];
+			}
 		}
 
 		return $this;
@@ -1720,8 +1920,12 @@ class ModifyUserPasswords extends Rpc
 	{
 	    $this->data['User'] = $user;
 		foreach ($user as $depth1 => $depth1Value) {
-			$this->options['query']['User.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
-			$this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+			if(isset($depth1Value['Password'])){
+				$this->options['query']['User.' . ($depth1 + 1) . '.Password'] = $depth1Value['Password'];
+			}
+			if(isset($depth1Value['Name'])){
+				$this->options['query']['User.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+			}
 		}
 
 		return $this;
@@ -1823,7 +2027,9 @@ class ResetNodes extends Rpc
 	{
 	    $this->data['Instance'] = $instance;
 		foreach ($instance as $depth1 => $depth1Value) {
-			$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			if(isset($depth1Value['Id'])){
+				$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			}
 		}
 
 		return $this;
@@ -1889,21 +2095,53 @@ class SetAutoScaleConfig extends Rpc
 	{
 	    $this->data['Queues'] = $queues;
 		foreach ($queues as $depth1 => $depth1Value) {
-			$this->options['query']['Queues.' . ($depth1 + 1) . '.SpotStrategy'] = $depth1Value['SpotStrategy'];
-			$this->options['query']['Queues.' . ($depth1 + 1) . '.QueueName'] = $depth1Value['QueueName'];
-			foreach ($depth1Value['InstanceTypes'] as $depth2 => $depth2Value) {
-				$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.SpotStrategy'] = $depth2Value['SpotStrategy'];
-				$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.VSwitchId'] = $depth2Value['VSwitchId'];
-				$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.InstanceType'] = $depth2Value['InstanceType'];
-				$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.ZoneId'] = $depth2Value['ZoneId'];
-				$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.HostNamePrefix'] = $depth2Value['HostNamePrefix'];
-				$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.SpotPriceLimit'] = $depth2Value['SpotPriceLimit'];
+			if(isset($depth1Value['SpotStrategy'])){
+				$this->options['query']['Queues.' . ($depth1 + 1) . '.SpotStrategy'] = $depth1Value['SpotStrategy'];
 			}
-			$this->options['query']['Queues.' . ($depth1 + 1) . '.MaxNodesInQueue'] = $depth1Value['MaxNodesInQueue'];
-			$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
-			$this->options['query']['Queues.' . ($depth1 + 1) . '.EnableAutoGrow'] = $depth1Value['EnableAutoGrow'];
-			$this->options['query']['Queues.' . ($depth1 + 1) . '.SpotPriceLimit'] = $depth1Value['SpotPriceLimit'];
-			$this->options['query']['Queues.' . ($depth1 + 1) . '.EnableAutoShrink'] = $depth1Value['EnableAutoShrink'];
+			if(isset($depth1Value['QueueName'])){
+				$this->options['query']['Queues.' . ($depth1 + 1) . '.QueueName'] = $depth1Value['QueueName'];
+			}
+			if(isset($depth1Value['MinNodesInQueue'])){
+				$this->options['query']['Queues.' . ($depth1 + 1) . '.MinNodesInQueue'] = $depth1Value['MinNodesInQueue'];
+			}
+			foreach ($depth1Value['InstanceTypes'] as $depth2 => $depth2Value) {
+				if(isset($depth2Value['SpotStrategy'])){
+					$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.SpotStrategy'] = $depth2Value['SpotStrategy'];
+				}
+				if(isset($depth2Value['VSwitchId'])){
+					$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.VSwitchId'] = $depth2Value['VSwitchId'];
+				}
+				if(isset($depth2Value['InstanceType'])){
+					$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.InstanceType'] = $depth2Value['InstanceType'];
+				}
+				if(isset($depth2Value['ZoneId'])){
+					$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.ZoneId'] = $depth2Value['ZoneId'];
+				}
+				if(isset($depth2Value['HostNamePrefix'])){
+					$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.HostNamePrefix'] = $depth2Value['HostNamePrefix'];
+				}
+				if(isset($depth2Value['SpotPriceLimit'])){
+					$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceTypes.' . ($depth2 + 1) . '.SpotPriceLimit'] = $depth2Value['SpotPriceLimit'];
+				}
+			}
+			if(isset($depth1Value['MaxNodesInQueue'])){
+				$this->options['query']['Queues.' . ($depth1 + 1) . '.MaxNodesInQueue'] = $depth1Value['MaxNodesInQueue'];
+			}
+			if(isset($depth1Value['InstanceType'])){
+				$this->options['query']['Queues.' . ($depth1 + 1) . '.InstanceType'] = $depth1Value['InstanceType'];
+			}
+			if(isset($depth1Value['QueueImageId'])){
+				$this->options['query']['Queues.' . ($depth1 + 1) . '.QueueImageId'] = $depth1Value['QueueImageId'];
+			}
+			if(isset($depth1Value['EnableAutoGrow'])){
+				$this->options['query']['Queues.' . ($depth1 + 1) . '.EnableAutoGrow'] = $depth1Value['EnableAutoGrow'];
+			}
+			if(isset($depth1Value['SpotPriceLimit'])){
+				$this->options['query']['Queues.' . ($depth1 + 1) . '.SpotPriceLimit'] = $depth1Value['SpotPriceLimit'];
+			}
+			if(isset($depth1Value['EnableAutoShrink'])){
+				$this->options['query']['Queues.' . ($depth1 + 1) . '.EnableAutoShrink'] = $depth1Value['EnableAutoShrink'];
+			}
 		}
 
 		return $this;
@@ -1921,6 +2159,10 @@ class SetAutoScaleConfig extends Rpc
  * @method $this withClipboard($value)
  * @method string getUsbRedirect()
  * @method $this withUsbRedirect($value)
+ * @method string getAsyncMode()
+ * @method $this withAsyncMode($value)
+ * @method string getUdpPort()
+ * @method $this withUdpPort($value)
  */
 class SetGWSClusterPolicy extends Rpc
 {
@@ -1982,7 +2224,9 @@ class SetQueue extends Rpc
 	{
 	    $this->data['Node'] = $node;
 		foreach ($node as $depth1 => $depth1Value) {
-			$this->options['query']['Node.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+			if(isset($depth1Value['Name'])){
+				$this->options['query']['Node.' . ($depth1 + 1) . '.Name'] = $depth1Value['Name'];
+			}
 		}
 
 		return $this;
@@ -2024,7 +2268,9 @@ class StartNodes extends Rpc
 	{
 	    $this->data['Instance'] = $instance;
 		foreach ($instance as $depth1 => $depth1Value) {
-			$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			if(isset($depth1Value['Id'])){
+				$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			}
 		}
 
 		return $this;
@@ -2088,7 +2334,9 @@ class StopNodes extends Rpc
 	{
 	    $this->data['Instance'] = $instance;
 		foreach ($instance as $depth1 => $depth1Value) {
-			$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			if(isset($depth1Value['Id'])){
+				$this->options['query']['Instance.' . ($depth1 + 1) . '.Id'] = $depth1Value['Id'];
+			}
 		}
 
 		return $this;
@@ -2186,17 +2434,35 @@ class UpdateClusterVolumes extends Rpc
 	{
 	    $this->data['AdditionalVolumes'] = $additionalVolumes;
 		foreach ($additionalVolumes as $depth1 => $depth1Value) {
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeType'] = $depth1Value['VolumeType'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeProtocol'] = $depth1Value['VolumeProtocol'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.LocalDirectory'] = $depth1Value['LocalDirectory'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.RemoteDirectory'] = $depth1Value['RemoteDirectory'];
-			foreach ($depth1Value['Roles'] as $depth2 => $depth2Value) {
-				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.Roles.' . ($depth2 + 1) . '.Name'] = $depth2Value['Name'];
+			if(isset($depth1Value['VolumeType'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeType'] = $depth1Value['VolumeType'];
 			}
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeId'] = $depth1Value['VolumeId'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeMountpoint'] = $depth1Value['VolumeMountpoint'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.Location'] = $depth1Value['Location'];
-			$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.JobQueue'] = $depth1Value['JobQueue'];
+			if(isset($depth1Value['VolumeProtocol'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeProtocol'] = $depth1Value['VolumeProtocol'];
+			}
+			if(isset($depth1Value['LocalDirectory'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.LocalDirectory'] = $depth1Value['LocalDirectory'];
+			}
+			if(isset($depth1Value['RemoteDirectory'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.RemoteDirectory'] = $depth1Value['RemoteDirectory'];
+			}
+			foreach ($depth1Value['Roles'] as $depth2 => $depth2Value) {
+				if(isset($depth2Value['Name'])){
+					$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.Roles.' . ($depth2 + 1) . '.Name'] = $depth2Value['Name'];
+				}
+			}
+			if(isset($depth1Value['VolumeId'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeId'] = $depth1Value['VolumeId'];
+			}
+			if(isset($depth1Value['VolumeMountpoint'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.VolumeMountpoint'] = $depth1Value['VolumeMountpoint'];
+			}
+			if(isset($depth1Value['Location'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.Location'] = $depth1Value['Location'];
+			}
+			if(isset($depth1Value['JobQueue'])){
+				$this->options['query']['AdditionalVolumes.' . ($depth1 + 1) . '.JobQueue'] = $depth1Value['JobQueue'];
+			}
 		}
 
 		return $this;

@@ -1,5 +1,1326 @@
 # CHANGELOG
 
+## 1.8.573 - 2020-10-28
+- Support GetParameters, GetParametersByPath, GetSecretParameters, GetSecretParametersByPath.
+
+
+## 1.8.572 - 2020-10-28
+- Supported all language sdk.
+- Fixed some bugs for polardbx.
+
+
+## 1.8.571 - 2020-10-28
+- Supported golang sdk.
+- Fixed some bugs for drds.
+
+
+## 1.8.570 - 2020-10-27
+- Generated 2020-05-18 for `dataworks-public`.
+
+
+## 1.8.569 - 2020-10-27
+- Support Sampling for jaeger.
+
+
+## 1.8.568 - 2020-10-27
+- Fix bug.
+
+
+## 1.8.567 - 2020-10-27
+- Add role authority management.
+
+
+## 1.8.566 - 2020-10-26
+- Generated 2014-05-26 for `Ecs`.
+
+
+## 1.8.565 - 2020-10-26
+- Generated 2016-11-01 for `live`.
+
+
+## 1.8.564 - 2020-10-26
+- Supported PaymentType for DescribeDnsProductInstance.
+
+
+## 1.8.563 - 2020-10-26
+- Update ScalingConfig parameters.
+
+
+## 1.8.562 - 2020-10-23
+- Change Configuration.
+
+
+## 1.8.561 - 2020-10-23
+- Support feedback.
+
+
+## 1.8.560 - 2020-10-22
+- Add Pipeline Member api.
+
+
+## 1.8.559 - 2020-10-22
+- Update data API.
+
+
+## 1.8.558 - 2020-10-22
+- Update data API.
+
+
+## 1.8.557 - 2020-10-22
+- Update cert API.
+
+
+## 1.8.556 - 2020-10-21
+- DescribeAvailableResource support AcceptLanguage.
+
+
+## 1.8.555 - 2020-10-21
+- Change Documentation configuration.
+
+
+## 1.8.554 - 2020-10-21
+- Cloud Storage Gateway openapi sdk is released.
+
+
+## 1.8.553 - 2020-10-21
+- Release latest features.
+
+
+## 1.8.552 - 2020-10-21
+- Change Documentation configuration.
+
+
+## 1.8.551 - 2020-10-21
+- Change Documentation configuration.
+
+
+## 1.8.550 - 2020-10-21
+- Add custom person interfaces, support registration, update etc.
+- Optimize updateSmarttagTemplate interface, set some parameters as optional.
+
+
+## 1.8.549 - 2020-10-21
+- Update cert API.
+
+
+## 1.8.548 - 2020-10-21
+- Add PHP sdk.
+
+
+## 1.8.547 - 2020-10-20
+- Add LivenessFaceVerify API.
+
+
+## 1.8.546 - 2020-10-20
+- Update Configuration.
+
+
+## 1.8.545 - 2020-10-20
+- Add isv interface.
+
+
+## 1.8.544 - 2020-10-20
+- AddDeleteSortScriptFileApi.
+
+
+## 1.8.543 - 2020-10-20
+- Generated 2016-11-01 for `live`.
+
+
+## 1.8.542 - 2020-10-19
+- Add a new interface for asynchronous image translation.
+
+
+## 1.8.541 - 2020-10-16
+- Update OTA API, including ListOTAModuleByProduct, DeleteOTAModule.
+
+
+## 1.8.540 - 2020-10-16
+- Supported AndroidNotificationNotifyId for Push and MassPush.
+- Supported iOSNotificationCollapseId for Push and MassPush.
+
+
+## 1.8.539 - 2020-10-16
+- Update cert API.
+
+
+## 1.8.538 - 2020-10-16
+- Update cert API.
+
+
+## 1.8.537 - 2020-10-15
+- Supported TAG APIs.
+
+
+## 1.8.536 - 2020-10-15
+- Add SaveTraceAppConfig api.
+
+
+## 1.8.535 - 2020-10-15
+- Generated 2018-06-01 for `dataworks-public`.
+
+
+## 1.8.534 - 2020-10-15
+- Generated 2018-06-01 for `dataworks-public`.
+
+
+## 1.8.533 - 2020-10-14
+- Generated 2014-05-26 for `Ecs`.
+
+
+## 1.8.532 - 2020-10-13
+- Add Content.
+
+
+## 1.8.531 - 2020-10-13
+- Add describe devices to return device status.
+
+
+## 1.8.530 - 2020-10-13
+- Update Scdn API.
+
+
+## 1.8.529 - 2020-10-13
+- Sync cdn APIs.
+
+
+## 1.8.528 - 2020-10-13
+- Update HasRenewChangeOrder type to Boolean in DescribeInstances.
+
+
+## 1.8.527 - 2020-10-13
+- Add describe devices to return device status.
+
+
+## 1.8.526 - 2020-10-13
+- Add spotDuration support.
+
+
+## 1.8.525 - 2020-10-13
+- GetTitleIntelligence add interface.
+
+
+## 1.8.524 - 2020-10-13
+- Generated 2018-01-11 for `rtc`.
+
+
+## 1.8.523 - 2020-10-13
+- Add DeviceCenter API, including QueryDeviceBySQL.
+- Add OTA API, including ListOTAModuleByProduct, DeleteOTAModule.
+- Update error message in response with InvokeThingService, SetDeviceProperty.
+- Update OTA API, including CreateOTAModule, QueryDeviceVersionCountByPkFromOTA, QueryFirmwareByUid.
+- Update thing model API, ImportThingModelTsl.
+
+
+## 1.8.522 - 2020-10-13
+- Generated 2016-11-01 for `live`.
+
+
+## 1.8.521 - 2020-10-13
+- Generated 2018-01-11 for `rtc`.
+
+
+## 1.8.520 - 2020-10-13
+- Generated 2018-12-12 for `vs`.
+
+
+## 1.8.519 - 2020-10-12
+- Support add webhook, get repository info via id or path.
+
+
+## 1.8.518 - 2020-10-12
+- Add list Organizations.
+
+
+## 1.8.517 - 2020-10-12
+- ChatApp third version.
+- Add contack check api.
+
+
+## 1.8.516 - 2020-10-9
+- Update Scdn API.
+
+
+## 1.8.515 - 2020-10-9
+- Update DescribeCdnUserBillHistory API.
+
+
+## 1.8.514 - 2020-10-9
+- Update SetVideoSeekConfig API.
+
+
+## 1.8.513 - 2020-9-29
+- Add API OpenOnsService which can active ons service.
+
+
+## 1.8.512 - 2020-9-29
+- Add API OpenOnsService which can active ons service.
+
+
+## 1.8.511 - 2020-9-29
+- Add API OpenOnsService which can active ons service.
+
+
+## 1.8.510 - 2020-9-29
+- Add API OpenOnsService which can active ons service.
+
+
+## 1.8.509 - 2020-9-28
+- Update Scdn API.
+
+
+## 1.8.508 - 2020-9-28
+- Support filtering keys and secrets.
+- Support opening KMS service and describing service status by API.
+- Add a prefix limitation for SecretName.
+
+
+## 1.8.507 - 2020-9-27
+- Update domain API.
+
+
+## 1.8.506 - 2020-9-27
+- Support Open Service API.
+
+
+## 1.8.505 - 2020-9-25
+- Support DescribeSuspEventQuaraFiles API.
+- Support RefreshContainerAsserts API.
+
+
+## 1.8.504 - 2020-9-24
+- ContrastFaceVerify API Add Model Parameter.
+
+
+## 1.8.503 - 2020-9-24
+- Add a new api named SubmitAIImageAuditJob to submit image ai detection job.
+- Add a new api named CreateDNADB to create a DNA analysis library.
+- Add a new api named ListDNADB to query the list of DNA analysis libraries.
+- Add a new api named GetDNADB to query specified DNA analysis library.
+- Add a new field DNADBId to the request parameter Config structure for SubmitAIJob api.
+
+
+## 1.8.502 - 2020-9-23
+- Add spotDuration support.
+
+
+## 1.8.501 - 2020-9-23
+- Some new parameters are supported.
+
+
+## 1.8.500 - 2020-9-23
+- Update domain API.
+
+
+## 1.8.499 - 2020-9-23
+- Update Scdn API.
+
+
+## 1.8.498 - 2020-9-23
+- Sync cdn APIs.
+
+
+## 1.8.497 - 2020-9-22
+- Generated 2019-03-08 for `ivision`.
+
+
+## 1.8.496 - 2020-9-22
+- Generated 2018-01-11 for `rtc`.
+
+
+## 1.8.495 - 2020-9-22
+- Generated 2018-12-12 for `vs`.
+
+
+## 1.8.494 - 2020-9-22
+- Generated 2016-11-01 for `live`.
+
+
+## 1.8.493 - 2020-9-21
+- Interface add column wordCount.
+
+
+## 1.8.492 - 2020-9-21
+- Add search object.
+
+
+## 1.8.491 - 2020-9-20
+- Add describe devices to return device status.
+
+
+## 1.8.490 - 2020-9-18
+- Add alarm notification language settings.
+
+
+## 1.8.489 - 2020-9-17
+- GetTitleIntelligence add interface.
+
+
+## 1.8.488 - 2020-9-16
+- Add Content.
+
+
+## 1.8.487 - 2020-9-15
+- Add describe devices to return device status.
+
+
+## 1.8.486 - 2020-9-11
+- Support execute database script via open api.
+
+
+## 1.8.485 - 2020-9-10
+- Add DisableBackupLog.
+- Add EnableBackupLog.
+- Add ReleaseBackupPlan.
+- Add ModifyStorageStrategy.
+- Modify ModifyBackupStrategy.
+- Modify ModifyBackupSetDownloadRules.
+
+
+## 1.8.484 - 2020-9-10
+- Update HasRenewChangeOrder type to Boolean in DescribeInstances.
+
+
+## 1.8.483 - 2020-9-9
+- Add support cn-beijing service region.
+- Add ai video cover interface,include submit and query.
+- Add dynamic image query interface.
+- Update SubmitMediaAuditJob support MediaAuditConfiguration to set ResourceType.
+
+
+## 1.8.482 - 2020-9-8
+- Supported backend interface for ICBU.
+
+
+## 1.8.481 - 2020-9-7
+- Support parameter APIs.
+
+
+## 1.8.480 - 2020-9-4
+- Sync cdn APIs.
+
+
+## 1.8.479 - 2020-9-4
+- Update Scdn API.
+
+
+## 1.8.478 - 2020-9-4
+- Update domain API.
+
+
+## 1.8.477 - 2020-9-4
+- Add GetImageQuality API.
+- Add more info as parameters to Images related APIs.
+
+
+## 1.8.476 - 2020-9-3
+- Generated 2020-07-02 for `scsp`.
+
+
+## 1.8.475 - 2020-9-3
+- Generated 2020-07-02 for `scsp`.
+
+
+## 1.8.474 - 2020-9-2
+- Support sg for ml region.
+
+
+## 1.8.473 - 2020-9-2
+- ChatApp second version.
+- Support new message fomat.
+
+
+## 1.8.472 - 2020-9-2
+- Meshstress.
+
+
+## 1.8.471 - 2020-9-2
+- Supported AndroidNotificationHuaweiChannel for Push and MassPush.
+
+
+## 1.8.470 - 2020-9-2
+- Supported AndroidNotificationHuaweiChannel for Push and MassPush.
+
+
+## 1.8.469 - 2020-9-1
+- Add Smart Verify API.
+
+
+## 1.8.468 - 2020-9-1
+- Generated 2020-07-02 for `scsp`.
+
+
+## 1.8.467 - 2020-9-1
+- Update Parameter.
+
+
+## 1.8.466 - 2020-8-31
+- Support PersonList.
+
+
+## 1.8.465 - 2020-8-31
+- Generated 2020-07-02 for `scsp`.
+
+
+## 1.8.464 - 2020-8-31
+- GetPersonList Support LastShotTime.
+
+
+## 1.8.463 - 2020-8-31
+- Supported AAA for BBB.
+- Fixed bugs for CCC.
+
+
+## 1.8.462 - 2020-8-31
+- Supported AAA for BBB.
+- Fixed bugs for CCC.
+
+
+## 1.8.461 - 2020-8-31
+- Supported AAA for BBB.
+- Fixed bugs for CCC.
+
+
+## 1.8.460 - 2020-8-31
+- Add list person visit count API.
+
+
+## 1.8.459 - 2020-8-28
+- Add name.
+
+
+## 1.8.458 - 2020-8-28
+- Support multiple security group for one ehpc cluster.
+- Update GWS apis.
+
+
+## 1.8.457 - 2020-8-28
+- Supported Add GetAlgorithmHistoryResult.
+
+
+## 1.8.456 - 2020-8-27
+- Update parameter.
+
+
+## 1.8.455 - 2020-8-26
+- Generated 2020-06-29 for `alinlp`.
+
+
+## 1.8.454 - 2020-8-26
+- Generated 2020-06-29 for `alinlp`.
+
+
+## 1.8.453 - 2020-8-25
+- Generated 2020-08-01 for `SmartHosting`.
+
+
+## 1.8.452 - 2020-8-25
+- Add list person visit count API.
+
+
+## 1.8.451 - 2020-8-25
+- Video Content analytics template introduced to this SDK.
+
+
+## 1.8.450 - 2020-8-24
+- Add project api.
+
+
+## 1.8.449 - 2020-8-24
+- Edit QueryMetricByPage api.
+
+
+## 1.8.448 - 2020-8-21
+- Add QueryMetricByPage api.
+- Add GetAppApiByPage api.
+
+
+## 1.8.447 - 2020-8-19
+- Add DescribeLiveDomainCertificateInfo.
+
+
+## 1.8.446 - 2020-8-19
+- Generated 2020-08-01 for `SmartHosting`.
+
+
+## 1.8.445 - 2020-8-18
+- Add API RenewAppGroup.
+
+
+## 1.8.444 - 2020-8-17
+- Add GetTrace api.
+- Edit Aler api.
+
+
+## 1.8.443 - 2020-8-17
+- Add pipeline status api.
+
+
+## 1.8.442 - 2020-8-17
+- Add Api HighlightGameVideo.
+
+
+## 1.8.441 - 2020-8-17
+- Add Api HighlightGameVideo.
+
+
+## 1.8.440 - 2020-8-17
+- Fix create project task.
+
+
+## 1.8.439 - 2020-8-14
+- Add POP-Model-related APIs.
+
+
+## 1.8.438 - 2020-8-14
+- Add sdk.
+
+
+## 1.8.437 - 2020-8-14
+- Supported Api DetectIPCPedestrian.
+
+
+## 1.8.436 - 2020-8-14
+- Supported CheckCloudResourceAuthorized API.
+
+
+## 1.8.435 - 2020-8-14
+- Add project Api.
+
+
+## 1.8.434 - 2020-8-13
+- Add PipCode and CommodityCode for QueryInstanceBill, QueryBillOverview, QueryBill, QuerySettleBill, QueryAccountBill, QuerySplitItemBill.
+- Support BillOwnerId filter for QueryInstanceBill, QueryBillOverview, QueryBill, QuerySettleBill, QueryAccountBill, QuerySplitItemBill.
+
+
+## 1.8.433 - 2020-8-13
+- Release DetectKneeXRay DetectSpineMRI TranslateMed.
+
+
+## 1.8.432 - 2020-8-13
+- Release DetectKneeXRay DetectSpineMRI TranslateMed.
+
+
+## 1.8.431 - 2020-8-13
+- DescribePrice update amount parameters type, float to string.
+- Add ResourceGroupId parameter to support resource group.
+
+
+## 1.8.430 - 2020-8-13
+- Release SegmentHalfBody.
+
+
+## 1.8.429 - 2020-8-12
+- Add pipeline status api.
+
+
+## 1.8.428 - 2020-8-11
+- Add ResourceGroup in resource snapshot.
+
+
+## 1.8.427 - 2020-8-10
+- Generated 2020-05-18 for `dataworks-public`.
+
+
+## 1.8.426 - 2020-8-8
+- Update SearchImage.
+
+
+## 1.8.425 - 2020-8-7
+- GetTitleDiagnose GetTitleGenerate GetImageTranslate supported.
+
+
+## 1.8.424 - 2020-8-7
+- Generated 2020-05-18 for `dataworks-public`.
+
+
+## 1.8.423 - 2020-8-7
+- GetTitleDiagnose GetTitleGenerate GetImageTranslate supported.
+
+
+## 1.8.422 - 2020-8-7
+- Add FindServiceList and GetService qps.
+
+
+## 1.8.421 - 2020-8-6
+- Update OTA API, including CreateOTAStaticUpgradeJob,CreateOTADynamicUpgradeJob and QueryOTAJob.
+
+
+## 1.8.420 - 2020-8-6
+- Add Smart Cloudauth API.
+
+
+## 1.8.419 - 2020-8-4
+- Update RecognizeTable.
+
+
+## 1.8.418 - 2020-8-4
+- Supported for deploy updateStrategy.
+
+
+## 1.8.417 - 2020-8-3
+- Fix Some API Response Define.
+
+
+## 1.8.416 - 2020-8-3
+- Add source picture url for Monitor.
+
+
+## 1.8.415 - 2020-8-3
+- Add Voice Synchronous Scan API.
+
+
+## 1.8.414 - 2020-8-3
+- Add ExtractPedestrianFeatureAttribute.
+
+
+## 1.8.413 - 2020-7-31
+- Edit GetStack api.
+
+
+## 1.8.412 - 2020-7-30
+- Update DetectCelebrity.
+
+
+## 1.8.411 - 2020-7-30
+- Add Smart Cloudauth API.
+
+
+## 1.8.410 - 2020-7-30
+- Add ABTest-related APIs.
+- Add UserAnalyzer-related APIs.
+- Add API ListSortExpressions.
+- Fix property tag_label of response of ListInterventionDictionaryEntries.
+
+
+## 1.8.409 - 2020-7-30
+- Add ChangeVideoSize.
+
+
+## 1.8.408 - 2020-7-30
+- Add SegmentLogo SegmentScene.
+
+
+## 1.8.407 - 2020-7-30
+- Add DetectCelebrity.
+
+
+## 1.8.406 - 2020-7-30
+- Supported ChatApp for SDK.
+
+
+## 1.8.405 - 2020-7-29
+- Add CreateGetDBListFromAgentTask.
+- Add GetDBListFromAgent.
+
+
+## 1.8.404 - 2020-7-29
+- API GetTaskStatus return task detail.
+
+
+## 1.8.403 - 2020-7-29
+- Generated 2020-05-18 for `dataworks-public`.
+
+
+## 1.8.402 - 2020-7-28
+- Generated 2018-10-12 for `Airec`.
+
+
+## 1.8.401 - 2020-7-27
+- Supported CheckCloudResourceAuthorized API.
+
+
+## 1.8.400 - 2020-7-27
+- Add HSF apis.
+
+
+## 1.8.399 - 2020-7-24
+- Edit ListTraceApp api with add tags.
+- Edit SearchTraceAppByName api with add tags.
+- Edut SearchTraceAppByPage api with add tags.
+
+
+## 1.8.398 - 2020-7-24
+- Support GetImageCroppingSuggestions API.
+- Add Remarks to face group related APIs.
+- Add Model parameter to blind watermark related APIs.
+
+
+## 1.8.397 - 2020-7-24
+- First build.
+
+
+## 1.8.396 - 2020-7-23
+- Supported CloudGame.
+
+
+## 1.8.395 - 2020-7-23
+- Supported AAA for BBB.
+- Fixed bugs for CCC.
+
+
+## 1.8.394 - 2020-7-23
+- Update OTA API, including GenerateOTAUploadURL.
+
+
+## 1.8.393 - 2020-7-23
+- Add AddSecretBlacklist and DeleteSecretBlacklist.
+- Suppoort ASR.
+
+
+## 1.8.392 - 2020-7-23
+- Add GenerateAndExportDataKey, ExportDataKey, ReEncrypt api.
+
+
+## 1.8.391 - 2020-7-23
+- Add GenerateAndExportDataKey, ExportDataKey, ReEncrypt api.
+
+
+## 1.8.390 - 2020-7-22
+- Generated 2015-01-01 for `R-kvstore`.
+- Add SyncDtsStatus API.
+
+
+## 1.8.389 - 2020-7-22
+- Add source id for file uploader.
+
+
+## 1.8.388 - 2020-7-22
+- Add source id for file uploader.
+
+
+## 1.8.387 - 2020-7-21
+- Support Tag API.
+
+
+## 1.8.386 - 2020-7-21
+- Add algorithm type for ListPerson.
+
+
+## 1.8.385 - 2020-7-20
+- Add actions.
+
+
+## 1.8.384 - 2020-7-17
+- Add DescribeRegions.
+- Modify DescribeFullBackupList.
+- Modify DescribeBackupPlanList.
+- Modify DescribeRestoreRangeInfo.
+
+
+## 1.8.383 - 2020-7-17
+- Add actions.
+
+
+## 1.8.382 - 2020-7-16
+- Add more OpenAPIs related to QueryProcessor, FirstRank, SecondRank, etc.
+
+
+## 1.8.381 - 2020-7-15
+- Edit ListTraceApp api.
+- Edit SearchTraceAppByName api.
+- Edut SearchTraceAppByPage api.
+
+
+## 1.8.380 - 2020-7-15
+- Support ModifyImageAttribute by LaunchPermission.
+- Support ImageFamily.
+
+
+## 1.8.379 - 2020-7-14
+- Add Dynamic Registration APIs, including TransformClientId, DeleteClientIds, QueryClientIds, etc.
+- Update OTA API, including CreateOTAStaticUpgradeJob and QueryOTAJob.
+- Update Device Shadow API UpdateDeviceShadow.
+
+
+## 1.8.378 - 2020-7-14
+- Support Web SDK.
+
+
+## 1.8.377 - 2020-7-14
+- Fixed bug for service code.
+
+
+## 1.8.376 - 2020-7-14
+- Supported API for DescribeDohUserInfo.
+- Supported API for DescribeDohAccountStatistics.
+- Supported API for DescribeDohDomainStatistics.
+- Supported API for DescribeDohDomainStatisticsSummary.
+- Supported API for DescribeDohSubDomainStatistics.
+- Supported API for DescribeDohSubDomainStatisticsSummary.
+
+
+## 1.8.375 - 2020-7-10
+- Sdk for 109.
+
+
+## 1.8.374 - 2020-7-9
+- Add accountType for customer service.
+
+
+## 1.8.373 - 2020-7-9
+- Add accountType for renderOrder.
+
+
+## 1.8.372 - 2020-7-9
+- Add Log Monitoring API.
+- Add and modify non Alibaba Cloud host name API.
+
+
+## 1.8.371 - 2020-7-8
+- Remove GetFootwearPosition PullTakeShoesEvent PullTryOnShoesEvent.
+- Add GetFootwearEvent.
+- Please ignore the pd s pot.
+
+
+## 1.8.370 - 2020-7-8
+- Add video compose api.
+
+
+## 1.8.369 - 2020-7-8
+- Generated 2020-05-18 for `dataworks-public`.
+
+
+## 1.8.368 - 2020-7-8
+- Support hotword and hint.
+
+
+## 1.8.367 - 2020-7-7
+- Generated 2020-05-18 for `dataworks-public`.
+
+
+## 1.8.366 - 2020-7-6
+- Sdk for 101.
+
+
+## 1.8.365 - 2020-7-3
+- Supported UpdateUserBucketConfig.
+
+
+## 1.8.364 - 2020-7-3
+- Add ListResourceExecutionStatus API.
+- ListExecutions API supports filtering by resource id.
+- TriggerExecution API supports TimerTrigger.
+
+
+## 1.8.363 - 2020-7-3
+- Supports tag management APIs.
+
+
+## 1.8.362 - 2020-7-2
+- Build sdk.
+
+
+## 1.8.361 - 2020-7-2
+- Generated 2020-05-18 for `dataworks-public`.
+
+
+## 1.8.360 - 2020-7-2
+- SDK version 102.
+
+
+## 1.8.359 - 2020-7-2
+- Add GetFootwearPosition.
+- Add PullTakeShoesEvent.
+- Add PullTryOnShoesEvent.
+
+
+## 1.8.358 - 2020-7-2
+- Update endpoint.
+
+
+## 1.8.357 - 2020-7-2
+- CreateShardingDBInstance add ProtocolType, to support DynamoDB.
+- DescribeDBInstances add return ResourceGroupId.
+
+
+## 1.8.356 - 2020-7-1
+- Added API for modifying non Alibaba Cloud host names.
+- Fix the required type adjustment of several parameters.
+
+
+## 1.8.355 - 2020-7-1
+- SDK version 109.
+
+
+## 1.8.354 - 2020-7-1
+- SDK version 109.
+
+
+## 1.8.353 - 2020-7-1
+- ImageProcess First Version.
+
+
+## 1.8.352 - 2020-7-1
+- Sdk version 111.
+
+
+## 1.8.351 - 2020-7-1
+- SDK version 108.
+
+
+## 1.8.350 - 2020-7-1
+- Add API for GetMetadataAmount.
+
+
+## 1.8.349 - 2020-7-1
+- Support Saf For ExecuteExtendService.
+
+
+## 1.8.348 - 2020-6-30
+- Generated 2018-10-12 for `Airec`.
+
+
+## 1.8.347 - 2020-6-29
+- Supported Rotate.
+
+
+## 1.8.346 - 2020-6-29
+- Generated 2019-12-26 for `OutboundBot`.
+
+
+## 1.8.345 - 2020-6-29
+- Generated 2019-12-26 for `OutboundBot`.
+
+
+## 1.8.344 - 2020-6-29
+- Supported Rotate.
+
+
+## 1.8.343 - 2020-6-29
+- Supported gb28181 parent platform.
+
+
+## 1.8.342 - 2020-6-29
+- Add Model Parameter For InitFaceVerify API.
+
+
+## 1.8.341 - 2020-6-26
+- Supported Api EraseLogoInVideo.
+
+
+## 1.8.340 - 2020-6-24
+- Add DescribeBackupPlanBilling.
+- Modify ConfigureBackupPlan.
+- Modify CreateBackupPlan.
+- Modify CreateRestoreTask.
+- Modify DescribeRestoreTaskList.
+- Modify DescribeBackupPlanList.
+- Modify ModifyBackupSourceEndpoint.
+- Modify ModifyBackupStrategy.
+
+
+## 1.8.339 - 2020-6-23
+- Generated 2015-12-15 for `CS`.
+
+
+## 1.8.338 - 2020-6-23
+- Support SubmitOperationAuditInfo for Support self-service submission of approval information.
+- Support SubmitOperationCredentials for self-service submission of certificate information.
+- Support CancelOperationAudit for cancel audit.
+- Support GetOperationOssUploadPolic for get oss policy.
+- Support QueryOperationAuditInfoLis for query audit list.
+- Support QueryOperationAuditInfoDetail for query audit details.
+
+
+## 1.8.337 - 2020-6-23
+- Generated 2018-08-28 for `Tag`.
+
+
+## 1.8.336 - 2020-6-22
+- Add support cn-shenzhen region.
+
+
+## 1.8.335 - 2020-6-22
+- Add GetMultipleTrace api.
+- Add SearchTracesByPage api.
+- Add GetStack api.
+
+
+## 1.8.334 - 2020-6-21
+- Add persons API.
+
+
+## 1.8.333 - 2020-6-18
+- Supported TransformDBInstancePayType API.
+
+
+## 1.8.332 - 2020-6-18
+- Add GetAuthToken OpenAPI.
+
+
+## 1.8.331 - 2020-6-17
+- Supported sync create eni and assign private ip.
+
+
+## 1.8.330 - 2020-6-16
+- Support TargetImageId in ApplyNodes Interface.
+
+
+## 1.8.329 - 2020-6-15
+- Generated 2019-09-10 for `waf-openapi`.
+
+
+## 1.8.328 - 2020-6-15
+- Generated 2019-09-10 for `waf-openapi`.
+
+
+## 1.8.327 - 2020-6-12
+- Add CreateProduct API ProductSecret in Response.
+- Add AMQP APIs, including CreateSubscribeRelation, CreateConsumerGroup, etc.
+- Add LinkIoTEdge CreateSceneRule API.
+- Add LinkIoTEdge DeleteSceneRule API.
+- Add LinkIoTEdge UpdateSceneRule API.
+- Add LinkIoTEdge GetSceneRule API.
+- Add LinkIoTEdge QuerySceneRule API.
+- Add LinkIoTEdge EnableSceneRule API.
+- Add LinkIoTEdge DisableSceneRule API.
+- Add LinkIoTEdge TriggerSceneRule API.
+- Add LinkIoTEdge QuerySummarySceneRuleLog API.
+- Add LinkIoTEdge QueryDetailSceneRuleLog API.
+- Add LinkIoTEdge BindSceneRuleToEdgeInstance API.
+- Add LinkIoTEdge UnbindSceneRuleFromEdgeInstance API.
+- Add LinkIoTEdge QueryEdgeInstanceSceneRule API.
+
+
+## 1.8.326 - 2020-6-12
+- Update monitor related API.
+
+
+## 1.8.325 - 2020-6-12
+- Generated 2018-10-12 for `Airec`.
+
+
+## 1.8.324 - 2020-6-11
+- Support ServicePeriodUnit in QueryInstanceBill.
+
+
+## 1.8.323 - 2020-6-11
+- Supported AndroidNotificationVivoChannel for Push and MassPush.
+
+
+## 1.8.322 - 2020-6-9
+- Changed ServiceCode from `cr` to `acr`.
+
+
+## 1.8.321 - 2020-6-8
+- Support offline instance.
+
+
+## 1.8.320 - 2020-6-4
+- Generated 2019-12-26 for `OutboundBot`.
+
+
+## 1.8.319 - 2020-6-4
+- Update monitor related API.
+
+
+## 1.8.318 - 2020-6-4
+- Add SubmitMediaDNADeleteJob and ListMediaDNADeleteJob.
+- Modify GetMediaAuditResult interface, support ad logo and live result.
+- Modify GetMediaAuditResultTimeline interface, support ad logo and live result.
+
+
+## 1.8.317 - 2020-6-4
+- Update monitor related API.
+
+
+## 1.8.316 - 2020-6-3
+- DescribeCameraStatistics add filed.
+
+
+## 1.8.315 - 2020-6-2
+- Edit SearchTraces api.
+
+
+## 1.8.314 - 2020-5-29
+- Sdk version 111.
+
+
+## 1.8.313 - 2020-5-29
+- SDK version 108.
+
+
+## 1.8.312 - 2020-5-28
+- Supported AndroidNotificationXiaomiChannel for Push and MassPush.
+
+
+## 1.8.311 - 2020-5-27
+- Add app-group-management and quota-updating APIs.
+- Add app management APIs.
+
+
+## 1.8.310 - 2020-5-26
+- Support DescribeAllEntity API.
+
+
+## 1.8.309 - 2020-5-26
+- Add smartcall service api.
+
+
+## 1.8.308 - 2020-5-26
+- Add smartcall service api.
+
+
+## 1.8.307 - 2020-5-25
+- Supported auvsp protocol changes.
+- Supported start vod streams.
+- Supported stop vod streams.
+- Supported gb28281 alarm on device.
+
+
+## 1.8.306 - 2020-5-23
+- Generated 2015-01-01 for `R-kvstore`.
+- Add ModifyResourceGroup API.
+- DescribeInstanceAttribute return ResourceGroupId.
+
+
+## 1.8.305 - 2020-5-22
+- Add schedule crud api.
+
+
+## 1.8.304 - 2020-5-21
+- Support more error Codes.
+
+
+## 1.8.303 - 2020-5-20
+- Generated 2019-09-10 for `waf-openapi`.
+
+
+## 1.8.302 - 2020-5-20
+- Edit GetTrace and SearchTraces api.
+
+
+## 1.8.301 - 2020-5-20
+- Public beta version.
+- Add Api Overseas.
+
+
+## 1.8.300 - 2020-5-19
+- Public beta version.
+- Add Api Overseas.
+
+
+## 1.8.299 - 2020-5-19
+- Initial version.
+
+
+## 1.8.298 - 2020-5-18
+- Support sequence for listNodes.
+- Support StrictSatisfiedTargetCapacity for applyNodes.
+
+
+
+## 1.8.297 - 2020-5-18
+- Fix DescribeIpcLiveAddress , add in params.
+
+
+## 1.8.296 - 2020-5-17
+- Open API publish.
+
+
+## 1.8.295 - 2020-5-17
+- Open API publish.
+
+
+## 1.8.294 - 2020-5-17
+- Open API publish.
+
+
+## 1.8.293 - 2020-5-17
+- Open API publish.
+
+
+## 1.8.292 - 2020-5-15
+- Add LinkIoTEdge CreateEdgeInstanceChannel, BatchDeleteEdgeInstanceChannel, UpdateEdgeInstanceChannel, BatchGetEdgeInstanceChannel, QueryEdgeInstanceChannel, QueryEdgeInstanceDeviceByDriver, BatchGetEdgeInstanceDeviceDriver, BatchSetEdgeInstanceDeviceChannel, BatchGetEdgeInstanceDeviceChannel API.
+- Add LinkIoTEdge BindApplicationToEdgeInstance, UnbindApplicationFromEdgeInstance API.
+- Add LinkIoTEdge ReplaceEdgeInstanceGateway, ReleaseEdgeDriverVersion, BatchGetDeviceBindStatus API.
+
+
+## 1.8.291 - 2020-5-14
+- Generated 2015-01-01 for `R-kvstore`.
+- Fix DescribeCacheAnalysisReport return empty BigKeys because of wrong type defination.
+
+
+## 1.8.290 - 2020-5-14
+- Supported Grant Permission.
+- Supported Revoke Permission.
+
+
+## 1.8.289 - 2020-5-14
+- Add demo edition auth.
+
+
+## 1.8.288 - 2020-5-13
+- Add ListDevicesImages DescribeIpcLiveAddress.
+- Modify DescribeDevices.
+
+
+## 1.8.287 - 2020-5-13
+- Add ExportTas apis.
+
+
+## 1.8.286 - 2020-5-13
+- Generated 2019-09-10 for `waf-openapi`.
+
+
+## 1.8.285 - 2020-5-13
+- Supported AAA for BBB.
+- Fixed bugs for CCC.
+
+
+## 1.8.284 - 2020-5-13
+- Add ExportTas apis.
+
+
+## 1.8.283 - 2020-5-13
+- About 2019-03-07 and 2018-09-16 Version.
+
+
+## 1.8.282 - 2020-5-13
+- Generated 2018-12-12, 2018-12-07 for `UniMkt`.
+
+
+## 1.8.281 - 2020-5-12
+- Sdk version 109.
+
+
+## 1.8.280 - 2020-5-12
+- BugFix for DescribeProjectMessages not returned the totalCount property.
+
+
+## 1.8.279 - 2020-5-12
+- BugFix for DescribeProjectMessages not returned the totalCount property.
+
+
+## 1.8.278 - 2020-5-12
+- Supported DRM.
+
+
+## 1.8.277 - 2020-5-11
+- Add new openapi ApplyNodes.
+
+
+## 1.8.276 - 2020-5-11
+- Bugfix for DescribeProjectAttachments Integer AttachmentType updated to String AttachmentType.
+
+
+## 1.8.275 - 2020-5-11
+- Support CreationCategory for CreateDBCluster.
+
+
+## 1.8.274 - 2020-5-9
+- DescribeCamerasStatistics add pvType.
+
+
+## 1.8.273 - 2020-5-8
+- Support sg for region.
+
+
+## 1.8.272 - 2020-5-6
+- Describe describeAvailableResource.
+
+
 ## 1.8.271 - 2020-4-30
 - Add prometheus ListDashboards api.
 

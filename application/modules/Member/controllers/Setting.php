@@ -59,16 +59,58 @@ class SettingController extends AuthController {
     
     //社交账号设置
     public function openAction() { 
+        
+        $data = [
+//            1=>[
+//                'title'=>'微信',
+//                'icon'=>'weixin',
+//                'isbind'=>0,
+//                'url'=>''
+//            ],
+            2=>[
+                'title'=>'Github',
+                'icon'=>'github',
+                'isbind'=>0,
+                'url'=> ''
+            ],
+            3=>[
+                'title'=>'微博',
+                'icon'=>'weibo',
+                'isbind'=>0,
+                'url'=>''
+            ],
+//            4=>[
+//                'title'=>'QQ',
+//                'icon'=>'qq',
+//                'isbind'=>0,
+//                'url'=>''
+//            ]
+        ];
+        
         $obj = new UserModel();
         $bind = $obj->getUserBindList($this->user['user_id']);
+        $html = '';
+        foreach ($data as $key => $vo) {
+            if(!empty($bind[$key])){
+                $html.="<li id='{$vo['icon']}' class='{$vo['icon']}-item binded'><a  href='javascript:'><i class='fa fa-{$vo['icon']}'></i><br/>
+	 		{$vo['title']} <br/> <span>{$bind[$key]['account']}</span>
+	 		</a></li>";
+            }else{
+                $vo['url'] = $this->getOpenLoginUrl($vo['icon'],'bind');
+                $html.="<li id='{$vo['icon']}' class='{$vo['icon']}-item'><a target='_blank' href='{$vo['url']}'><i class='fa fa-{$vo['icon']}'></i><br/>
+	 		{$vo['title']} <br/> <span>未绑定</span>
+	 		</a></li>";
+            }
+            
+        }
         $css = load('member', 'css');
         $params = [  
             'seo'=>[
-                'seo_title'=>'修改密码'
+                'seo_title'=>'第三方账号关联'
             ],
             'css'=>$css,
             'hideFooter'=>true,
-            'bind'=>$bind,
+            'html'=>$html,
             'leftMenu'=> $this->leftMenu
         ];
         $this->getView()->assign($params);

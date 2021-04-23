@@ -31,6 +31,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DetectFaceAttributes detectFaceAttributes(array $options = [])
  * @method InitDevice initDevice(array $options = [])
  * @method InitFaceVerify initFaceVerify(array $options = [])
+ * @method LivenessFaceVerify livenessFaceVerify(array $options = [])
  * @method ModifyDeviceInfo modifyDeviceInfo(array $options = [])
  * @method UpdateAppPackage updateAppPackage(array $options = [])
  * @method UpdateVerifySetting updateVerifySetting(array $options = [])
@@ -58,12 +59,9 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
 
 /**
  * @method string getSourceImageType()
- * @method string getResourceOwnerId()
- * @method $this withResourceOwnerId($value)
  * @method string getTargetImageType()
  * @method string getTargetImageValue()
- * @method string getSourceIp()
- * @method $this withSourceIp($value)
+ * @method string getBizType()
  * @method string getSourceImageValue()
  */
 class CompareFaces extends Rpc
@@ -107,6 +105,19 @@ class CompareFaces extends Rpc
     {
         $this->data['TargetImageValue'] = $value;
         $this->options['form_params']['TargetImageValue'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withBizType($value)
+    {
+        $this->data['BizType'] = $value;
+        $this->options['form_params']['BizType'] = $value;
 
         return $this;
     }
@@ -315,11 +326,7 @@ class CompareFaceVerify extends Rpc
 
 /**
  * @method string getProductCode()
- * @method string getOssObjectName()
  * @method string getFaceContrastPicture()
- * @method string getCertName()
- * @method string getIp()
- * @method string getMobile()
  * @method string getDeviceToken()
  * @method string getUserId()
  * @method string getCertifyId()
@@ -327,6 +334,12 @@ class CompareFaceVerify extends Rpc
  * @method string getOuterOrderNo()
  * @method string getCertType()
  * @method string getFaceContrastPictureUrl()
+ * @method string getModel()
+ * @method $this withModel($value)
+ * @method string getOssObjectName()
+ * @method string getCertName()
+ * @method string getIp()
+ * @method string getMobile()
  * @method string getSceneId()
  * @method string getOssBucketName()
  */
@@ -351,62 +364,10 @@ class ContrastFaceVerify extends Rpc
      *
      * @return $this
      */
-    public function withOssObjectName($value)
-    {
-        $this->data['OssObjectName'] = $value;
-        $this->options['form_params']['OssObjectName'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
     public function withFaceContrastPicture($value)
     {
         $this->data['FaceContrastPicture'] = $value;
         $this->options['form_params']['FaceContrastPicture'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function withCertName($value)
-    {
-        $this->data['CertName'] = $value;
-        $this->options['form_params']['CertName'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function withIp($value)
-    {
-        $this->data['Ip'] = $value;
-        $this->options['form_params']['Ip'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function withMobile($value)
-    {
-        $this->data['Mobile'] = $value;
-        $this->options['form_params']['Mobile'] = $value;
 
         return $this;
     }
@@ -498,6 +459,58 @@ class ContrastFaceVerify extends Rpc
     {
         $this->data['FaceContrastPictureUrl'] = $value;
         $this->options['form_params']['FaceContrastPictureUrl'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withOssObjectName($value)
+    {
+        $this->data['OssObjectName'] = $value;
+        $this->options['form_params']['OssObjectName'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withCertName($value)
+    {
+        $this->data['CertName'] = $value;
+        $this->options['form_params']['CertName'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withIp($value)
+    {
+        $this->data['Ip'] = $value;
+        $this->options['form_params']['Ip'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withMobile($value)
+    {
+        $this->data['Mobile'] = $value;
+        $this->options['form_params']['Mobile'] = $value;
 
         return $this;
     }
@@ -748,8 +761,6 @@ class DescribeVerifyRecords extends Rpc
 /**
  * @method string getBizType()
  * @method $this withBizType($value)
- * @method string getSourceIp()
- * @method $this withSourceIp($value)
  * @method string getBizId()
  * @method $this withBizId($value)
  */
@@ -782,8 +793,6 @@ class DescribeVerifySetting extends Rpc
  * @method $this withFaceRetainedImageUrl($value)
  * @method string getUserId()
  * @method $this withUserId($value)
- * @method string getSourceIp()
- * @method $this withSourceIp($value)
  * @method string getCallbackSeed()
  * @method $this withCallbackSeed($value)
  * @method string getUserIp()
@@ -830,71 +839,21 @@ class DescribeVerifyUsage extends Rpc
 }
 
 /**
- * @method string getMaxNumPhotosPerCategory()
- * @method string getMaxFaceNum()
- * @method string getResourceOwnerId()
- * @method $this withResourceOwnerId($value)
- * @method string getRetAttributes()
- * @method string getClientTag()
- * @method string getSourceIp()
- * @method $this withSourceIp($value)
+ * @method string getBizType()
  * @method string getMaterialValue()
- * @method string getDontSaveDB()
  */
 class DetectFaceAttributes extends Rpc
 {
 
-    /** @var string */
-    public $scheme = 'https';
-
     /**
      * @param string $value
      *
      * @return $this
      */
-    public function withMaxNumPhotosPerCategory($value)
+    public function withBizType($value)
     {
-        $this->data['MaxNumPhotosPerCategory'] = $value;
-        $this->options['form_params']['MaxNumPhotosPerCategory'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function withMaxFaceNum($value)
-    {
-        $this->data['MaxFaceNum'] = $value;
-        $this->options['form_params']['MaxFaceNum'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function withRetAttributes($value)
-    {
-        $this->data['RetAttributes'] = $value;
-        $this->options['form_params']['RetAttributes'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function withClientTag($value)
-    {
-        $this->data['ClientTag'] = $value;
-        $this->options['form_params']['ClientTag'] = $value;
+        $this->data['BizType'] = $value;
+        $this->options['form_params']['BizType'] = $value;
 
         return $this;
     }
@@ -908,19 +867,6 @@ class DetectFaceAttributes extends Rpc
     {
         $this->data['MaterialValue'] = $value;
         $this->options['form_params']['MaterialValue'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function withDontSaveDB($value)
-    {
-        $this->data['DontSaveDB'] = $value;
-        $this->options['form_params']['DontSaveDB'] = $value;
 
         return $this;
     }
@@ -939,10 +885,12 @@ class DetectFaceAttributes extends Rpc
  * @method $this withDeviceToken($value)
  * @method string getCertifyId()
  * @method $this withCertifyId($value)
+ * @method string getWebUmidToken()
  * @method string getOuterOrderNo()
  * @method $this withOuterOrderNo($value)
  * @method string getProduceNode()
  * @method $this withProduceNode($value)
+ * @method string getUaToken()
  * @method string getProductName()
  * @method $this withProductName($value)
  * @method string getCertifyPrincipal()
@@ -952,6 +900,32 @@ class DetectFaceAttributes extends Rpc
  */
 class InitDevice extends Rpc
 {
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withWebUmidToken($value)
+    {
+        $this->data['WebUmidToken'] = $value;
+        $this->options['form_params']['WebUmidToken'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withUaToken($value)
+    {
+        $this->data['UaToken'] = $value;
+        $this->options['form_params']['UaToken'] = $value;
+
+        return $this;
+    }
 }
 
 /**
@@ -970,6 +944,7 @@ class InitDevice extends Rpc
  * @method $this withCertType($value)
  * @method string getFaceContrastPictureUrl()
  * @method $this withFaceContrastPictureUrl($value)
+ * @method string getModel()
  * @method string getMetaInfo()
  * @method $this withMetaInfo($value)
  * @method string getOssObjectName()
@@ -984,8 +959,12 @@ class InitDevice extends Rpc
  * @method $this withSceneId($value)
  * @method string getOssBucketName()
  * @method $this withOssBucketName($value)
+ * @method string getCallbackToken()
+ * @method $this withCallbackToken($value)
  * @method string getReturnUrl()
  * @method $this withReturnUrl($value)
+ * @method string getCallbackUrl()
+ * @method $this withCallbackUrl($value)
  */
 class InitFaceVerify extends Rpc
 {
@@ -999,6 +978,195 @@ class InitFaceVerify extends Rpc
     {
         $this->data['FaceContrastPicture'] = $value;
         $this->options['form_params']['FaceContrastPicture'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withModel($value)
+    {
+        $this->data['Model'] = $value;
+        $this->options['form_params']['Model'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getProductCode()
+ * @method string getOssObjectName()
+ * @method string getFaceContrastPicture()
+ * @method string getIp()
+ * @method string getMobile()
+ * @method string getDeviceToken()
+ * @method string getUserId()
+ * @method string getCertifyId()
+ * @method string getOuterOrderNo()
+ * @method string getFaceContrastPictureUrl()
+ * @method string getSceneId()
+ * @method string getOssBucketName()
+ * @method string getModel()
+ * @method $this withModel($value)
+ */
+class LivenessFaceVerify extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withProductCode($value)
+    {
+        $this->data['ProductCode'] = $value;
+        $this->options['form_params']['ProductCode'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withOssObjectName($value)
+    {
+        $this->data['OssObjectName'] = $value;
+        $this->options['form_params']['OssObjectName'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withFaceContrastPicture($value)
+    {
+        $this->data['FaceContrastPicture'] = $value;
+        $this->options['form_params']['FaceContrastPicture'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withIp($value)
+    {
+        $this->data['Ip'] = $value;
+        $this->options['form_params']['Ip'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withMobile($value)
+    {
+        $this->data['Mobile'] = $value;
+        $this->options['form_params']['Mobile'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withDeviceToken($value)
+    {
+        $this->data['DeviceToken'] = $value;
+        $this->options['form_params']['DeviceToken'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withUserId($value)
+    {
+        $this->data['UserId'] = $value;
+        $this->options['form_params']['UserId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withCertifyId($value)
+    {
+        $this->data['CertifyId'] = $value;
+        $this->options['form_params']['CertifyId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withOuterOrderNo($value)
+    {
+        $this->data['OuterOrderNo'] = $value;
+        $this->options['form_params']['OuterOrderNo'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withFaceContrastPictureUrl($value)
+    {
+        $this->data['FaceContrastPictureUrl'] = $value;
+        $this->options['form_params']['FaceContrastPictureUrl'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withSceneId($value)
+    {
+        $this->data['SceneId'] = $value;
+        $this->options['form_params']['SceneId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withOssBucketName($value)
+    {
+        $this->data['OssBucketName'] = $value;
+        $this->options['form_params']['OssBucketName'] = $value;
 
         return $this;
     }
@@ -1091,8 +1259,6 @@ class VerifyDevice extends Rpc
  * @method $this withFaceImageUrl($value)
  * @method string getUserId()
  * @method $this withUserId($value)
- * @method string getSourceIp()
- * @method $this withSourceIp($value)
  * @method string getIdCardBackImageUrl()
  * @method $this withIdCardBackImageUrl($value)
  * @method string getIdCardNumber()

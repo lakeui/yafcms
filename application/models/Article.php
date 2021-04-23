@@ -26,7 +26,7 @@ class ArticleModel extends BaseModel{
             '[>]'.$this->type.'(b)'=>['a.type_id'=>'id'],
             '[>]'.$this->user.'(c)'=>['a.user_id'=>'id']
         ],[
-            'a.uuid','a.title','a.is_first','a.hot','a.create_time',
+            'a.uuid','a.from_url','a.img','a.title','a.is_first','a.hot','a.create_time',
             'a.tags','a.shortdesc','a.contents','a.user_id','a.original','a.index',
             'b.typename','b.url','c.nickname','a.fck','a.markdown','a.type_id'
         ],[
@@ -96,7 +96,7 @@ class ArticleModel extends BaseModel{
         }
         return $this->db->select($this->table.'(a)',[
             "[>]".$this->type."(b)"=>['a.type_id'=>'id'],
-            "[>]".$this->user."(c)"=>['a.user_id'=>'id'],
+            "[>]".$this->user."(c)"=>['a.user_id'=>'user_id'],
         ],[
             'a.id','a.uuid','a.title','a.img','a.shortdesc','a.create_time','a.tags','a.view_num',
             'a.type_id','a.original','a.index','a.user_id','b.typename','b.url','c.nickname','c.face'

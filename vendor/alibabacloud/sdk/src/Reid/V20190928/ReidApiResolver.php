@@ -12,15 +12,21 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DescribeDevices describeDevices(array $options = [])
  * @method DescribeHeatMap describeHeatMap(array $options = [])
  * @method DescribeImageUrls describeImageUrls(array $options = [])
+ * @method DescribeIpcLiveAddress describeIpcLiveAddress(array $options = [])
  * @method DescribeOverviewData describeOverviewData(array $options = [])
+ * @method GetFootwearEvent getFootwearEvent(array $options = [])
+ * @method GetFootwearPosition getFootwearPosition(array $options = [])
  * @method ImportSpecialPersonnel importSpecialPersonnel(array $options = [])
  * @method ListActionData listActionData(array $options = [])
+ * @method ListDevicesImages listDevicesImages(array $options = [])
  * @method ListEmap listEmap(array $options = [])
  * @method ListLocation listLocation(array $options = [])
  * @method ListMaskDetectionResults listMaskDetectionResults(array $options = [])
  * @method ListPersonByImage listPersonByImage(array $options = [])
  * @method ListStore listStore(array $options = [])
  * @method PullActionData pullActionData(array $options = [])
+ * @method PullTakeShoesEvent pullTakeShoesEvent(array $options = [])
+ * @method PullTryOnShoesEvent pullTryOnShoesEvent(array $options = [])
  */
 class ReidApiResolver extends ApiResolver
 {
@@ -38,7 +44,7 @@ class Rpc extends \AlibabaCloud\Client\Resolver\Rpc
     public $method = 'POST';
 
     /** @var string */
-    public $serviceCode = '1.1.2';
+    public $serviceCode = '1.1.8.2';
 }
 
 /**
@@ -434,6 +440,54 @@ class DescribeImageUrls extends Rpc
 }
 
 /**
+ * @method string getIpcId()
+ * @method string getStoreId()
+ * @method string getProtocolType()
+ */
+class DescribeIpcLiveAddress extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withIpcId($value)
+    {
+        $this->data['IpcId'] = $value;
+        $this->options['form_params']['IpcId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withStoreId($value)
+    {
+        $this->data['StoreId'] = $value;
+        $this->options['form_params']['StoreId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withProtocolType($value)
+    {
+        $this->data['ProtocolType'] = $value;
+        $this->options['form_params']['ProtocolType'] = $value;
+
+        return $this;
+    }
+}
+
+/**
  * @method string getDate()
  * @method string getStoreIds()
  */
@@ -462,6 +516,88 @@ class DescribeOverviewData extends Rpc
     {
         $this->data['StoreIds'] = $value;
         $this->options['form_params']['StoreIds'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getDate()
+ * @method string getStoreId()
+ */
+class GetFootwearEvent extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withDate($value)
+    {
+        $this->data['Date'] = $value;
+        $this->options['form_params']['Date'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withStoreId($value)
+    {
+        $this->data['StoreId'] = $value;
+        $this->options['form_params']['StoreId'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getDate()
+ * @method string getStoreId()
+ * @method string getSkuId()
+ */
+class GetFootwearPosition extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withDate($value)
+    {
+        $this->data['Date'] = $value;
+        $this->options['form_params']['Date'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withStoreId($value)
+    {
+        $this->data['StoreId'] = $value;
+        $this->options['form_params']['StoreId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withSkuId($value)
+    {
+        $this->data['SkuId'] = $value;
+        $this->options['form_params']['SkuId'] = $value;
 
         return $this;
     }
@@ -670,6 +806,40 @@ class ListActionData extends Rpc
     {
         $this->data['FilterInvalidData'] = $value;
         $this->options['form_params']['FilterInvalidData'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getIpcIdList()
+ * @method string getStoreId()
+ */
+class ListDevicesImages extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withIpcIdList($value)
+    {
+        $this->data['IpcIdList'] = $value;
+        $this->options['form_params']['IpcIdList'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withStoreId($value)
+    {
+        $this->data['StoreId'] = $value;
+        $this->options['form_params']['StoreId'] = $value;
 
         return $this;
     }
@@ -886,6 +1056,144 @@ class PullActionData extends Rpc
     {
         $this->data['StartMessageId'] = $value;
         $this->options['form_params']['StartMessageId'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getDate()
+ * @method string getStoreId()
+ * @method string getSkuId()
+ */
+class PullTakeShoesEvent extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withDate($value)
+    {
+        $this->data['Date'] = $value;
+        $this->options['form_params']['Date'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withStoreId($value)
+    {
+        $this->data['StoreId'] = $value;
+        $this->options['form_params']['StoreId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withSkuId($value)
+    {
+        $this->data['SkuId'] = $value;
+        $this->options['form_params']['SkuId'] = $value;
+
+        return $this;
+    }
+}
+
+/**
+ * @method string getDate()
+ * @method string getStoreId()
+ * @method string getPageNumber()
+ * @method string getPageSize()
+ * @method string getName()
+ * @method string getSkuId()
+ */
+class PullTryOnShoesEvent extends Rpc
+{
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withDate($value)
+    {
+        $this->data['Date'] = $value;
+        $this->options['form_params']['Date'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withStoreId($value)
+    {
+        $this->data['StoreId'] = $value;
+        $this->options['form_params']['StoreId'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPageNumber($value)
+    {
+        $this->data['PageNumber'] = $value;
+        $this->options['form_params']['PageNumber'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withPageSize($value)
+    {
+        $this->data['PageSize'] = $value;
+        $this->options['form_params']['PageSize'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withName($value)
+    {
+        $this->data['Name'] = $value;
+        $this->options['form_params']['Name'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function withSkuId($value)
+    {
+        $this->data['SkuId'] = $value;
+        $this->options['form_params']['SkuId'] = $value;
 
         return $this;
     }

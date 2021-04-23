@@ -65,16 +65,16 @@
             });  
             $(".userlist").hover(function(){
                 event.stopPropagation();
-                $('.dropdown-menu').show();
+                $('.usercon').show();
             },function(){
                 event.stopPropagation();
-                $('.dropdown-menu').hide();
+                $('.usercon').hide();
             });
 
             $(".logout").click(function(){
                 xz.ajaxPost(xz.api.logout,{},function(json){
                     if(json.status==0){
-                        top.window.location.href = "/";
+                        top.window.location.href = json.data;
                     }
                 });
             });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:wb="http://open.weibo.com/wb">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,17 +63,20 @@
                                 <?php echo showUserName($user);?>
                                 <?php if($user['status']==0){ echo  '<span>&nbsp;[待审核]</span>'; } ?>
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/u/ef4ca851669c" target="_blank"><i class="fa fa-user"></i> <span>我的主页</span></a></li>
+                            <div class="usercon">
+                                <span class="arrow"></span>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:" class="dev" target="_blank"><i class="fa fa-user"></i> <span>我的主页</span></a></li>
 
-                                <li><a  href="/bookmarks" target="_blank"><i class="fa fa-bookmark" ></i> <span>收藏的文章</span></a></li>
+                                    <li><a  href="/member/contents/fav" target="_blank"><i class="fa fa-bookmark" ></i> <span>收藏的文章</span></a></li>
 
-                                <li><a  href="/users/ef4ca851669c/liked_notes" ><i class="fa fa-heart"></i> <span>喜欢的文章</span></a></li>
+                                    <li><a  href="/member/contents/love" ><i class="fa fa-heart"></i> <span>喜欢的文章</span></a></li>
 
-                                <li><a  href="/member/setting/profile" ><i class="fa fa-cog"></i> <span>设置</span></a></li>
- 
-                                <li><a href="javascript:" class="logout"><i class="fa fa-sign-out" ></i><span>退出</span></a></li>
-                            </ul>
+                                    <li><a  href="/member/setting/profile" ><i class="fa fa-cog"></i> <span>设置</span></a></li>
+     
+                                    <li><a href="javascript:" class="logout"><i class="fa fa-sign-out" ></i><span>退出</span></a></li>
+                                </ul>
+                            </div>
                         </div>
                         <?php else:?>
                         <a href="<?php echo $loginUrl?>">登陆</a>·<a href="<?php echo $regUrl;?>">注册</a> 

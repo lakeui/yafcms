@@ -8,17 +8,27 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method AddGrafana addGrafana(array $options = [])
  * @method AddIntegration addIntegration(array $options = [])
  * @method CheckDataConsistency checkDataConsistency(array $options = [])
+ * @method CheckServiceLinkedRoleForDeleting checkServiceLinkedRoleForDeleting(array $options = [])
+ * @method ConfigApp configApp(array $options = [])
  * @method CreateAlertContact createAlertContact(array $options = [])
  * @method CreateAlertContactGroup createAlertContactGroup(array $options = [])
  * @method CreateRetcodeApp createRetcodeApp(array $options = [])
+ * @method CreateWehook createWehook(array $options = [])
  * @method DeleteAlertContact deleteAlertContact(array $options = [])
  * @method DeleteAlertContactGroup deleteAlertContactGroup(array $options = [])
  * @method DeleteAlertRules deleteAlertRules(array $options = [])
  * @method DeleteRetcodeApp deleteRetcodeApp(array $options = [])
+ * @method DeleteTraceApp deleteTraceApp(array $options = [])
+ * @method DescribeTraceLicenseKey describeTraceLicenseKey(array $options = [])
+ * @method DescribeTraceLocation describeTraceLocation(array $options = [])
+ * @method GetAppApiByPage getAppApiByPage(array $options = [])
  * @method GetConsistencySnapshot getConsistencySnapshot(array $options = [])
+ * @method GetMultipleTrace getMultipleTrace(array $options = [])
  * @method GetPrometheusApiToken getPrometheusApiToken(array $options = [])
  * @method GetRetcodeShareUrl getRetcodeShareUrl(array $options = [])
+ * @method GetStack getStack(array $options = [])
  * @method GetTrace getTrace(array $options = [])
+ * @method GetTraceApp getTraceApp(array $options = [])
  * @method ImportAppAlertRules importAppAlertRules(array $options = [])
  * @method ImportCustomAlertRules importCustomAlertRules(array $options = [])
  * @method ListClusterFromGrafana listClusterFromGrafana(array $options = [])
@@ -28,6 +38,8 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method ListTraceApps listTraceApps(array $options = [])
  * @method QueryDataset queryDataset(array $options = [])
  * @method QueryMetric queryMetric(array $options = [])
+ * @method QueryMetricByPage queryMetricByPage(array $options = [])
+ * @method SaveTraceAppConfig saveTraceAppConfig(array $options = [])
  * @method SearchAlertContact searchAlertContact(array $options = [])
  * @method SearchAlertContactGroup searchAlertContactGroup(array $options = [])
  * @method SearchAlertHistories searchAlertHistories(array $options = [])
@@ -37,12 +49,14 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method SearchTraceAppByName searchTraceAppByName(array $options = [])
  * @method SearchTraceAppByPage searchTraceAppByPage(array $options = [])
  * @method SearchTraces searchTraces(array $options = [])
+ * @method SearchTracesByPage searchTracesByPage(array $options = [])
  * @method SetRetcodeShareStatus setRetcodeShareStatus(array $options = [])
  * @method StartAlert startAlert(array $options = [])
  * @method StopAlert stopAlert(array $options = [])
  * @method UpdateAlertContact updateAlertContact(array $options = [])
  * @method UpdateAlertContactGroup updateAlertContactGroup(array $options = [])
  * @method UpdateAlertRule updateAlertRule(array $options = [])
+ * @method UpdateWebhook updateWebhook(array $options = [])
  */
 class ARMSApiResolver extends ApiResolver
 {
@@ -98,6 +112,30 @@ class CheckDataConsistency extends Rpc
 }
 
 /**
+ * @method string getSPIRegionId()
+ * @method $this withSPIRegionId($value)
+ * @method string getRoleArn()
+ * @method $this withRoleArn($value)
+ * @method string getDeletionTaskId()
+ * @method $this withDeletionTaskId($value)
+ * @method string getServiceName()
+ * @method $this withServiceName($value)
+ */
+class CheckServiceLinkedRoleForDeleting extends Rpc
+{
+}
+
+/**
+ * @method string getAppIds()
+ * @method $this withAppIds($value)
+ * @method string getEnable()
+ * @method $this withEnable($value)
+ */
+class ConfigApp extends Rpc
+{
+}
+
+/**
  * @method string getPhoneNum()
  * @method $this withPhoneNum($value)
  * @method string getProxyUserId()
@@ -134,6 +172,26 @@ class CreateAlertContactGroup extends Rpc
  * @method $this withRetcodeAppType($value)
  */
 class CreateRetcodeApp extends Rpc
+{
+}
+
+/**
+ * @method string getHeaders()
+ * @method $this withHeaders($value)
+ * @method string getMethod()
+ * @method $this withMethod($value)
+ * @method string getParams()
+ * @method $this withParams($value)
+ * @method string getProxyUserId()
+ * @method $this withProxyUserId($value)
+ * @method string getBody()
+ * @method $this withBody($value)
+ * @method string getUrl()
+ * @method $this withUrl($value)
+ * @method string getContactName()
+ * @method $this withContactName($value)
+ */
+class CreateWehook extends Rpc
 {
 }
 
@@ -176,6 +234,44 @@ class DeleteRetcodeApp extends Rpc
 }
 
 /**
+ * @method string getAppId()
+ * @method $this withAppId($value)
+ * @method string getPid()
+ * @method $this withPid($value)
+ * @method string getType()
+ * @method $this withType($value)
+ */
+class DeleteTraceApp extends Rpc
+{
+}
+
+class DescribeTraceLicenseKey extends Rpc
+{
+}
+
+class DescribeTraceLocation extends Rpc
+{
+}
+
+/**
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getCurrentPage()
+ * @method $this withCurrentPage($value)
+ * @method string getPId()
+ * @method $this withPId($value)
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ * @method string getIntervalMills()
+ * @method $this withIntervalMills($value)
+ */
+class GetAppApiByPage extends Rpc
+{
+}
+
+/**
  * @method string getCurrentTimestamp()
  * @method $this withCurrentTimestamp($value)
  * @method string getAppType()
@@ -187,6 +283,28 @@ class DeleteRetcodeApp extends Rpc
  */
 class GetConsistencySnapshot extends Rpc
 {
+}
+
+/**
+ * @method array getTraceIDs()
+ */
+class GetMultipleTrace extends Rpc
+{
+
+    /**
+     * @param array $traceIDs
+     *
+     * @return $this
+     */
+	public function withTraceIDs(array $traceIDs)
+	{
+	    $this->data['TraceIDs'] = $traceIDs;
+		foreach ($traceIDs as $i => $iValue) {
+			$this->options['query']['TraceIDs.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
 }
 
 class GetPrometheusApiToken extends Rpc
@@ -204,8 +322,28 @@ class GetRetcodeShareUrl extends Rpc
 /**
  * @method string getTraceID()
  * @method $this withTraceID($value)
+ * @method string getRpcID()
+ * @method $this withRpcID($value)
+ * @method string getPid()
+ * @method $this withPid($value)
+ */
+class GetStack extends Rpc
+{
+}
+
+/**
+ * @method string getTraceID()
+ * @method $this withTraceID($value)
  */
 class GetTrace extends Rpc
+{
+}
+
+/**
+ * @method string getPid()
+ * @method $this withPid($value)
+ */
+class GetTraceApp extends Rpc
 {
 }
 
@@ -230,10 +368,12 @@ class ImportAppAlertRules extends Rpc
 /**
  * @method string getIsAutoStart()
  * @method $this withIsAutoStart($value)
- * @method string getContactGroupIds()
- * @method $this withContactGroupIds($value)
  * @method string getProxyUserId()
  * @method $this withProxyUserId($value)
+ * @method string getContactGroupIds()
+ * @method $this withContactGroupIds($value)
+ * @method string getTemplateAlertConfig()
+ * @method $this withTemplateAlertConfig($value)
  * @method string getTemplageAlertConfig()
  * @method $this withTemplageAlertConfig($value)
  */
@@ -465,10 +605,122 @@ class QueryMetric extends Rpc
 }
 
 /**
+ * @method string getConsistencyQueryStrategy()
+ * @method $this withConsistencyQueryStrategy($value)
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getOrderBy()
+ * @method $this withOrderBy($value)
+ * @method string getCurrentPage()
+ * @method $this withCurrentPage($value)
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method array getFilters()
+ * @method string getConsistencyDataKey()
+ * @method $this withConsistencyDataKey($value)
+ * @method string getProxyUserId()
+ * @method $this withProxyUserId($value)
+ * @method array getMeasures()
+ * @method string getIntervalInSec()
+ * @method $this withIntervalInSec($value)
+ * @method string getMetric()
+ * @method $this withMetric($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ * @method array getDimensions()
+ * @method string getOrder()
+ * @method $this withOrder($value)
+ */
+class QueryMetricByPage extends Rpc
+{
+
+    /**
+     * @param array $filters
+     *
+     * @return $this
+     */
+	public function withFilters(array $filters)
+	{
+	    $this->data['Filters'] = $filters;
+		foreach ($filters as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Filters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Filters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param array $measures
+     *
+     * @return $this
+     */
+	public function withMeasures(array $measures)
+	{
+	    $this->data['Measures'] = $measures;
+		foreach ($measures as $i => $iValue) {
+			$this->options['query']['Measures.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param array $dimensions
+     *
+     * @return $this
+     */
+	public function withDimensions(array $dimensions)
+	{
+	    $this->data['Dimensions'] = $dimensions;
+		foreach ($dimensions as $i => $iValue) {
+			$this->options['query']['Dimensions.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
+}
+
+/**
+ * @method array getSettings()
+ * @method string getPid()
+ * @method $this withPid($value)
+ */
+class SaveTraceAppConfig extends Rpc
+{
+
+    /**
+     * @param array $settings
+     *
+     * @return $this
+     */
+	public function withSettings(array $settings)
+	{
+	    $this->data['Settings'] = $settings;
+		foreach ($settings as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Settings.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Settings.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+		}
+
+		return $this;
+    }
+}
+
+/**
  * @method string getCurrentPage()
  * @method $this withCurrentPage($value)
  * @method string getProxyUserId()
  * @method $this withProxyUserId($value)
+ * @method string getContactIds()
+ * @method $this withContactIds($value)
  * @method string getContactName()
  * @method $this withContactName($value)
  * @method string getPhone()
@@ -483,14 +735,18 @@ class SearchAlertContact extends Rpc
 }
 
 /**
- * @method string getContactName()
- * @method $this withContactName($value)
  * @method string getContactId()
  * @method $this withContactId($value)
+ * @method string getIsDetail()
+ * @method $this withIsDetail($value)
  * @method string getContactGroupName()
  * @method $this withContactGroupName($value)
  * @method string getProxyUserId()
  * @method $this withProxyUserId($value)
+ * @method string getContactName()
+ * @method $this withContactName($value)
+ * @method string getContactGroupIds()
+ * @method $this withContactGroupIds($value)
  */
 class SearchAlertContactGroup extends Rpc
 {
@@ -605,6 +861,7 @@ class SearchTraceAppByPage extends Rpc
  * @method $this withMinDuration($value)
  * @method string getServiceIp()
  * @method $this withServiceIp($value)
+ * @method array getExclusionFilters()
  * @method string getOperationName()
  * @method $this withOperationName($value)
  * @method string getServiceName()
@@ -613,6 +870,26 @@ class SearchTraceAppByPage extends Rpc
  */
 class SearchTraces extends Rpc
 {
+
+    /**
+     * @param array $exclusionFilters
+     *
+     * @return $this
+     */
+	public function withExclusionFilters(array $exclusionFilters)
+	{
+	    $this->data['ExclusionFilters'] = $exclusionFilters;
+		foreach ($exclusionFilters as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+		}
+
+		return $this;
+    }
 
     /**
      * @param array $tag
@@ -628,6 +905,51 @@ class SearchTraces extends Rpc
 			}
 			if(isset($depth1Value['Key'])){
 				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+		}
+
+		return $this;
+    }
+}
+
+/**
+ * @method string getEndTime()
+ * @method $this withEndTime($value)
+ * @method string getStartTime()
+ * @method $this withStartTime($value)
+ * @method string getReverse()
+ * @method $this withReverse($value)
+ * @method string getMinDuration()
+ * @method $this withMinDuration($value)
+ * @method string getPageNumber()
+ * @method $this withPageNumber($value)
+ * @method string getServiceIp()
+ * @method $this withServiceIp($value)
+ * @method array getExclusionFilters()
+ * @method string getOperationName()
+ * @method $this withOperationName($value)
+ * @method string getPageSize()
+ * @method $this withPageSize($value)
+ * @method string getServiceName()
+ * @method $this withServiceName($value)
+ */
+class SearchTracesByPage extends Rpc
+{
+
+    /**
+     * @param array $exclusionFilters
+     *
+     * @return $this
+     */
+	public function withExclusionFilters(array $exclusionFilters)
+	{
+	    $this->data['ExclusionFilters'] = $exclusionFilters;
+		foreach ($exclusionFilters as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['ExclusionFilters.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
 			}
 		}
 
@@ -712,5 +1034,27 @@ class UpdateAlertContactGroup extends Rpc
  * @method $this withTemplageAlertConfig($value)
  */
 class UpdateAlertRule extends Rpc
+{
+}
+
+/**
+ * @method string getHeaders()
+ * @method $this withHeaders($value)
+ * @method string getMethod()
+ * @method $this withMethod($value)
+ * @method string getContactId()
+ * @method $this withContactId($value)
+ * @method string getParams()
+ * @method $this withParams($value)
+ * @method string getProxyUserId()
+ * @method $this withProxyUserId($value)
+ * @method string getBody()
+ * @method $this withBody($value)
+ * @method string getUrl()
+ * @method $this withUrl($value)
+ * @method string getContactName()
+ * @method $this withContactName($value)
+ */
+class UpdateWebhook extends Rpc
 {
 }

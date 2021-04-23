@@ -1,0 +1,93 @@
+<?php include $viewPath.'/header.html';?>
+
+<div class="container tagtitle">
+	<h2><?php echo $row['tagname'];?></h2>
+	<p><?php echo $row['num'];?> 文章</p>
+</div>
+
+
+<div class="container contain">
+	
+	 
+
+	<div class="contents"> 
+		<div class="mid">
+			<div class="main1">
+				
+
+				<div class="article"> 
+					<?php if($list):?>
+					<?php foreach($list as $vo):?>
+					<article>
+						<div class="title"> 
+							<h3><a href="/p/<?php echo $vo['uuid'];?>"><?php echo $vo['title'];?></a></h3>
+							<p>
+								In <a href="/<?php echo $vo['url'];?>" class="tag"><?php echo $vo['typename'];?></a> By <a href="/u/<?php echo $vo['user_id'];?>" class="b-author" rel="nofollow"><?php echo $vo['nickname'];?></a> / <span class="posttime"><?php echo date('M d, Y',$vo['create_time']);?></span>   View: <span class="view"><?php echo number_format($vo['view_num']);?></span>
+							</p>
+						</div>
+						<div class="content">
+							<a href="/p/<?php echo $vo['uuid'];?>" class="cover"><img src="<?php echo handle_img($vo['img'],1);?>"  alt=""></a>
+							<div class="detail">
+								<p><?php echo $vo['shortdesc'];?></p>
+								<div class=" tags">
+									<?php echo handle_tag($vo['tags']);?> 
+								</div>
+							</div>
+						</div>
+					</article> 
+					<?php endforeach;?>
+
+					<?php else:?>
+					<div class="empty">暂无文章</div>
+					<?php endif;?> 
+				</div>
+
+				 
+
+			</div>
+		</div>
+		<div class="right">
+			<div class="slide"> 
+				
+				<div class="adv" id="rightAdv">
+					<!-- <script type="text/javascript">
+					    (function() {
+					        var s = "_" + Math.random().toString(36).slice(2);
+					        document.write('<div style="" id="' + s + '"></div>');
+					        (window.slotbydup = window.slotbydup || []).push({
+					            id: "u3545712",
+					            container:  s
+					        });
+					    })();
+					</script> -->
+				</div>
+
+			
+	 
+				<?php if(!empty($topArticle)):?>
+				<div class="widget sidebar-dubao">
+					<h3 class="widget-title">阅读排行</h3>
+					<div class="cont">
+					    <ul>
+					    	<?php  foreach($topArticle as $key=>$vo):?>
+					      	<li><a href="/p/<?php echo $vo['uuid'];?>"><strong><?php echo str_pad($key+1, 2,0,STR_PAD_LEFT);?></strong><span><?php echo $vo['title'];?></span></a></li>
+					      	<?php endforeach;?>   
+					  	</ul>
+					</div>
+	  			</div>
+				<?php endif;?>
+
+
+				 
+
+				 
+			</div>
+		</div>
+
+
+	</div>
+
+	
+</div>
+<?php include $viewPath.'/footer.html';?>
+	

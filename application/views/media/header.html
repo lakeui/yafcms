@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:wb="http://open.weibo.com/wb">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?php echo $seo['seo_title'];?></title>
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/layui-v1.0.9/css/layui.css">
+    <?php echo load('bootstrap.min','css','libs/bootstrapv4.6/css');?>
+    <?php echo load('home','css');?>
+    <?php echo isset($css)?$css:"";?>
+    <meta name="keywords" content="<?php echo !empty($seo['seo_key'])?$seo['seo_key']:'';?>">
+    <meta name="description" content="<?php echo !empty($seo['seo_desc'])?$seo['seo_desc']:'';?>">
+</head>
+<body>
+
+
+
+
+<header class="header">
+    <div class="container">
+        <div class="top">
+            <div class="wrap">
+                <?php if($menu):?>
+                <ul class="nav-item">
+                    <?php  
+                    foreach($menu as $key=>$vo){
+                        $css = '';
+                        if($vo['hot']==1){
+                            $css="active";
+                        }
+                        echo '<li><a  class="'.$css.'" href="'.$vo['url'].'">'.$vo['title'].'</a></li>';
+                    }
+                    ?> 
+                </ul>
+                <?php endif;?>
+            </div>
+        </div>
+
+
+        <div class="row mheader">
+            <div class="col-sm-12 col-md-3 col-lg-2">
+                <a href="/" class="logo"><img src="/<?php echo $theme;?>/images/logo@2x.png" alt="" ></a> 
+            </div>
+            <div class="col-sm-12 menucon col-md-6 col-lg-8">
+                <div class="navmenu">
+                    <a href="javascript:" class="toggle d-block  d-lg-none">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                    <ul class="menu">
+                        <li class="angle d-block  d-lg-none"></li>
+                        <li><a  class="" href="/">首页</a></li>
+                        <li><a  class="new dev" href="javascript:">实战视频 <i>Hot</i></a></li>
+                        <li><a  class="active" href="/zhuanti">专题</a></li>
+                        <li><a  class="hot dev" href="javascript:">源码</a></li>
+                        <li><a  class="new dev" href="javascript:">商城 <i>New</i></a></li>
+                        <li><a  class="dev" href="javascript:">文档</a></li>
+                        <li class="topsearch d-none  d-lg-block">
+                            <form class="header-search" action="/search"  method="get"> 
+                                <input type="text" name="q" id="search-query" value="" placeholder="关键词搜索">
+                                <button class="search_btn" type="submit"><i class="fa fa-search"></i> </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-2 d-none d-lg-block">
+                <div class="header-right">
+                    <?php if(!empty($config['cfg_login'])):?>
+                    <?php if(!empty($user)):?>
+                    <div class="userlist">
+                        <a title="进入个人空间" class="login-info"  href="/u/<?php echo $user['user_id'];?>">
+                            <img width="25" src="<?php echo showImgStr($user['face']);?>">
+                            <?php echo showUserName($user);?>
+                            <?php if($user['status']==0){ echo  '<span>&nbsp;[待审核]</span>'; } ?>
+                        </a>
+                        <div class="usercon">
+                            <span class="arrow"></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:" class="dev" target="_blank"><i class="fa fa-user"></i> <span>我的主页</span></a></li>
+
+                                <li><a  href="/member/contents/fav" target="_blank"><i class="fa fa-bookmark" ></i> <span>收藏的文章</span></a></li>
+
+                                <li><a  href="/member/contents/love" ><i class="fa fa-heart"></i> <span>喜欢的文章</span></a></li>
+
+                                <li><a  href="/member/setting/profile" ><i class="fa fa-cog"></i> <span>设置</span></a></li>
+
+                                <li><a href="javascript:" class="logout"><i class="fa fa-sign-out" ></i><span>退出</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <?php else:?>
+                    <a class="header-a d-none  d-lg-block" href="<?php echo $loginUrl?>">登陆</a>·<a class="header-a d-none  d-lg-block" href="<?php echo $regUrl;?>">注册</a> 
+                    <?php endif;?>
+                    <?php endif;?>
+
+                    <?php if(!empty($config['cfg_tougao'])):?>
+                    <a class="reg-btn d-none  d-lg-block" href="/writing"><i class="fa fa-pencil-square-o"></i> 发文章</a><?php endif;?>
+                </div>
+            </div>
+        </div> 
+    </div>
+</header>
+
+
+
+<?php if(!empty($notice)):?>
+<div class="container ">
+    <p class="tips">
+        <?php foreach($notice as $vo):?>
+        <a href="/notice/{$vo.id}" target="_blank"><i class="fa fa-volume-down"></i> <?php echo $vo['title'];?></a>
+        <?php endforeach;?>
+    </p>
+</div>
+<?php endif;?>
+
+
+    
+
+    

@@ -18,13 +18,17 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method BatchStopVodDomain batchStopVodDomain(array $options = [])
  * @method CreateAppInfo createAppInfo(array $options = [])
  * @method CreateAudit createAudit(array $options = [])
+ * @method CreateDNADB createDNADB(array $options = [])
+ * @method CreateMediaDNALib createMediaDNALib(array $options = [])
  * @method CreateUploadAttachedMedia createUploadAttachedMedia(array $options = [])
  * @method CreateUploadImage createUploadImage(array $options = [])
  * @method CreateUploadVideo createUploadVideo(array $options = [])
+ * @method DeleteAIImageInfos deleteAIImageInfos(array $options = [])
  * @method DeleteAITemplate deleteAITemplate(array $options = [])
  * @method DeleteAppInfo deleteAppInfo(array $options = [])
  * @method DeleteAttachedMedia deleteAttachedMedia(array $options = [])
  * @method DeleteCategory deleteCategory(array $options = [])
+ * @method DeleteDynamicImage deleteDynamicImage(array $options = [])
  * @method DeleteEditingProject deleteEditingProject(array $options = [])
  * @method DeleteImage deleteImage(array $options = [])
  * @method DeleteMessageCallback deleteMessageCallback(array $options = [])
@@ -53,9 +57,12 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DescribeVodRefreshQuota describeVodRefreshQuota(array $options = [])
  * @method DescribeVodRefreshTasks describeVodRefreshTasks(array $options = [])
  * @method DescribeVodStorageData describeVodStorageData(array $options = [])
+ * @method DescribeVodTagResources describeVodTagResources(array $options = [])
  * @method DescribeVodTranscodeData describeVodTranscodeData(array $options = [])
  * @method DescribeVodUserDomains describeVodUserDomains(array $options = [])
+ * @method DescribeVodUserTags describeVodUserTags(array $options = [])
  * @method DetachAppPolicyFromIdentity detachAppPolicyFromIdentity(array $options = [])
+ * @method GetAIImageJobs getAIImageJobs(array $options = [])
  * @method GetAIMediaAuditJob getAIMediaAuditJob(array $options = [])
  * @method GetAITemplate getAITemplate(array $options = [])
  * @method GetAIVideoTagResult getAIVideoTagResult(array $options = [])
@@ -64,9 +71,13 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method GetAuditHistory getAuditHistory(array $options = [])
  * @method GetCategories getCategories(array $options = [])
  * @method GetDefaultAITemplate getDefaultAITemplate(array $options = [])
+ * @method GetDNADB getDNADB(array $options = [])
+ * @method GetDRMCertInfo getDRMCertInfo(array $options = [])
+ * @method GetDRMLicense getDRMLicense(array $options = [])
  * @method GetEditingProject getEditingProject(array $options = [])
  * @method GetEditingProjectMaterials getEditingProjectMaterials(array $options = [])
  * @method GetImageInfo getImageInfo(array $options = [])
+ * @method GetMediaAuditAudioResultDetail getMediaAuditAudioResultDetail(array $options = [])
  * @method GetMediaAuditResult getMediaAuditResult(array $options = [])
  * @method GetMediaAuditResultDetail getMediaAuditResultDetail(array $options = [])
  * @method GetMediaAuditResultTimeline getMediaAuditResultTimeline(array $options = [])
@@ -85,12 +96,17 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method GetVideoPlayAuth getVideoPlayAuth(array $options = [])
  * @method GetVodTemplate getVodTemplate(array $options = [])
  * @method GetWatermark getWatermark(array $options = [])
+ * @method ListAIImageInfo listAIImageInfo(array $options = [])
  * @method ListAIJob listAIJob(array $options = [])
  * @method ListAITemplate listAITemplate(array $options = [])
  * @method ListAppInfo listAppInfo(array $options = [])
  * @method ListAppPoliciesForIdentity listAppPoliciesForIdentity(array $options = [])
  * @method ListAuditSecurityIp listAuditSecurityIp(array $options = [])
+ * @method ListDNADB listDNADB(array $options = [])
+ * @method ListDynamicImage listDynamicImage(array $options = [])
  * @method ListLiveRecordVideo listLiveRecordVideo(array $options = [])
+ * @method ListMediaDNADeleteJob listMediaDNADeleteJob(array $options = [])
+ * @method ListMediaDNALibs listMediaDNALibs(array $options = [])
  * @method ListSnapshots listSnapshots(array $options = [])
  * @method ListTranscodeTask listTranscodeTask(array $options = [])
  * @method ListTranscodeTemplateGroup listTranscodeTemplateGroup(array $options = [])
@@ -111,13 +127,18 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method SetEditingProjectMaterials setEditingProjectMaterials(array $options = [])
  * @method SetMessageCallback setMessageCallback(array $options = [])
  * @method SetVodDomainCertificate setVodDomainCertificate(array $options = [])
+ * @method SubmitAIImageAuditJob submitAIImageAuditJob(array $options = [])
+ * @method SubmitAIImageJob submitAIImageJob(array $options = [])
  * @method SubmitAIJob submitAIJob(array $options = [])
  * @method SubmitAIMediaAuditJob submitAIMediaAuditJob(array $options = [])
  * @method SubmitDynamicImageJob submitDynamicImageJob(array $options = [])
+ * @method SubmitMediaDNADeleteJob submitMediaDNADeleteJob(array $options = [])
  * @method SubmitPreprocessJobs submitPreprocessJobs(array $options = [])
  * @method SubmitSnapshotJob submitSnapshotJob(array $options = [])
  * @method SubmitTranscodeJobs submitTranscodeJobs(array $options = [])
  * @method SubmitWorkflowJob submitWorkflowJob(array $options = [])
+ * @method TagVodResources tagVodResources(array $options = [])
+ * @method UnTagVodResources unTagVodResources(array $options = [])
  * @method UpdateAITemplate updateAITemplate(array $options = [])
  * @method UpdateAppInfo updateAppInfo(array $options = [])
  * @method UpdateAttachedMediaInfos updateAttachedMediaInfos(array $options = [])
@@ -238,6 +259,8 @@ class AddTranscodeTemplateGroup extends Rpc
  * @method $this withSecurityToken($value)
  * @method string getScope()
  * @method $this withScope($value)
+ * @method string getTopLevelDomain()
+ * @method $this withTopLevelDomain($value)
  * @method string getOwnerAccount()
  * @method $this withOwnerAccount($value)
  * @method string getDomainName()
@@ -386,6 +409,46 @@ class CreateAudit extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
+ * @method string getDBRegion()
+ * @method $this withDBRegion($value)
+ * @method string getDBDescription()
+ * @method $this withDBDescription($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getDBName()
+ * @method $this withDBName($value)
+ * @method string getDBType()
+ * @method $this withDBType($value)
+ */
+class CreateDNADB extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getModelType()
+ * @method $this withModelType($value)
+ * @method string getLibRegion()
+ * @method $this withLibRegion($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class CreateMediaDNALib extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getIcon()
  * @method $this withIcon($value)
  * @method string getDescription()
@@ -502,6 +565,20 @@ class CreateUploadVideo extends Rpc
  * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
+ * @method string getAIImageInfoIds()
+ * @method $this withAIImageInfoIds($value)
+ */
+class DeleteAIImageInfos extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
  * @method string getTemplateId()
  * @method $this withTemplateId($value)
  */
@@ -550,6 +627,22 @@ class DeleteAttachedMedia extends Rpc
  * @method $this withCateId($value)
  */
 class DeleteCategory extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getVideoId()
+ * @method $this withVideoId($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getDynamicImageIds()
+ * @method $this withDynamicImageIds($value)
+ */
+class DeleteDynamicImage extends Rpc
 {
 }
 
@@ -994,11 +1087,62 @@ class DescribeVodRefreshTasks extends Rpc
  * @method $this withEndTime($value)
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
+ * @method string getInterval()
+ * @method $this withInterval($value)
  * @method string getRegion()
  * @method $this withRegion($value)
  */
 class DescribeVodStorageData extends Rpc
 {
+}
+
+/**
+ * @method string getScope()
+ * @method $this withScope($value)
+ * @method array getTag()
+ * @method array getResourceId()
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getResourceType()
+ * @method $this withResourceType($value)
+ */
+class DescribeVodTagResources extends Rpc
+{
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param array $resourceId
+     *
+     * @return $this
+     */
+	public function withResourceId(array $resourceId)
+	{
+	    $this->data['ResourceId'] = $resourceId;
+		foreach ($resourceId as $i => $iValue) {
+			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
 }
 
 /**
@@ -1012,6 +1156,8 @@ class DescribeVodStorageData extends Rpc
  * @method $this withSpecification($value)
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
+ * @method string getInterval()
+ * @method $this withInterval($value)
  * @method string getRegion()
  * @method $this withRegion($value)
  */
@@ -1030,6 +1176,7 @@ class DescribeVodTranscodeData extends Rpc
  * @method $this withCdnType($value)
  * @method string getPageSize()
  * @method $this withPageSize($value)
+ * @method array getTag()
  * @method string getFuncFilter()
  * @method $this withFuncFilter($value)
  * @method string getDomainName()
@@ -1044,6 +1191,34 @@ class DescribeVodTranscodeData extends Rpc
  * @method $this withDomainSearchType($value)
  */
 class DescribeVodUserDomains extends Rpc
+{
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+		}
+
+		return $this;
+    }
+}
+
+/**
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class DescribeVodUserTags extends Rpc
 {
 }
 
@@ -1064,6 +1239,22 @@ class DescribeVodUserDomains extends Rpc
  * @method $this withAppId($value)
  */
 class DetachAppPolicyFromIdentity extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getJobIds()
+ * @method $this withJobIds($value)
+ */
+class GetAIImageJobs extends Rpc
 {
 }
 
@@ -1206,6 +1397,54 @@ class GetDefaultAITemplate extends Rpc
  * @method $this withOwnerAccount($value)
  * @method string getOwnerId()
  * @method $this withOwnerId($value)
+ * @method string getDBId()
+ * @method $this withDBId($value)
+ */
+class GetDNADB extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getVideoId()
+ * @method $this withVideoId($value)
+ * @method string getCertId()
+ * @method $this withCertId($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class GetDRMCertInfo extends Rpc
+{
+}
+
+/**
+ * @method string getCDMData()
+ * @method $this withCDMData($value)
+ * @method string getCertId()
+ * @method $this withCertId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getVideoId()
+ * @method $this withVideoId($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getDRMType()
+ * @method $this withDRMType($value)
+ */
+class GetDRMLicense extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
  * @method string getProjectId()
  * @method $this withProjectId($value)
  */
@@ -1248,6 +1487,24 @@ class GetEditingProjectMaterials extends Rpc
  * @method $this withOwnerId($value)
  */
 class GetImageInfo extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getMediaId()
+ * @method $this withMediaId($value)
+ * @method string getPageNo()
+ * @method $this withPageNo($value)
+ */
+class GetMediaAuditAudioResultDetail extends Rpc
 {
 }
 
@@ -1582,6 +1839,20 @@ class GetWatermark extends Rpc
  * @method $this withResourceOwnerId($value)
  * @method string getResourceOwnerAccount()
  * @method $this withResourceOwnerAccount($value)
+ * @method string getVideoId()
+ * @method $this withVideoId($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class ListAIImageInfo extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
  * @method string getOwnerAccount()
  * @method $this withOwnerAccount($value)
  * @method string getOwnerId()
@@ -1656,6 +1927,34 @@ class ListAuditSecurityIp extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class ListDNADB extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getVideoId()
+ * @method $this withVideoId($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class ListDynamicImage extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getStartTime()
  * @method $this withStartTime($value)
  * @method string getAppName()
@@ -1680,6 +1979,38 @@ class ListAuditSecurityIp extends Rpc
  * @method $this withSortBy($value)
  */
 class ListLiveRecordVideo extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getJobIds()
+ * @method $this withJobIds($value)
+ */
+class ListMediaDNADeleteJob extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getLibRegion()
+ * @method $this withLibRegion($value)
+ */
+class ListMediaDNALibs extends Rpc
 {
 }
 
@@ -2076,6 +2407,48 @@ class SetVodDomainCertificate extends Rpc
 /**
  * @method string getResourceOwnerId()
  * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getMediaId()
+ * @method $this withMediaId($value)
+ * @method string getTemplateId()
+ * @method $this withTemplateId($value)
+ * @method string getMediaAuditConfiguration()
+ * @method $this withMediaAuditConfiguration($value)
+ */
+class SubmitAIImageAuditJob extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getAIPipelineId()
+ * @method $this withAIPipelineId($value)
+ * @method string getUserData()
+ * @method $this withUserData($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getVideoId()
+ * @method $this withVideoId($value)
+ * @method string getAITemplateId()
+ * @method $this withAITemplateId($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ */
+class SubmitAIImageJob extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
  * @method string getUserData()
  * @method $this withUserData($value)
  * @method string getTypes()
@@ -2110,6 +2483,8 @@ class SubmitAIJob extends Rpc
  * @method $this withMediaId($value)
  * @method string getTemplateId()
  * @method $this withTemplateId($value)
+ * @method string getMediaAuditConfiguration()
+ * @method $this withMediaAuditConfiguration($value)
  * @method string getMediaType()
  * @method $this withMediaType($value)
  */
@@ -2132,6 +2507,24 @@ class SubmitAIMediaAuditJob extends Rpc
  * @method $this withOwnerId($value)
  */
 class SubmitDynamicImageJob extends Rpc
+{
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getFpDBId()
+ * @method $this withFpDBId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getMediaId()
+ * @method $this withMediaId($value)
+ */
+class SubmitMediaDNADeleteJob extends Rpc
 {
 }
 
@@ -2227,6 +2620,95 @@ class SubmitTranscodeJobs extends Rpc
  */
 class SubmitWorkflowJob extends Rpc
 {
+}
+
+/**
+ * @method array getTag()
+ * @method array getResourceId()
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getResourceType()
+ * @method $this withResourceType($value)
+ */
+class TagVodResources extends Rpc
+{
+
+    /**
+     * @param array $tag
+     *
+     * @return $this
+     */
+	public function withTag(array $tag)
+	{
+	    $this->data['Tag'] = $tag;
+		foreach ($tag as $depth1 => $depth1Value) {
+			if(isset($depth1Value['Key'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
+			}
+			if(isset($depth1Value['Value'])){
+				$this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+			}
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param array $resourceId
+     *
+     * @return $this
+     */
+	public function withResourceId(array $resourceId)
+	{
+	    $this->data['ResourceId'] = $resourceId;
+		foreach ($resourceId as $i => $iValue) {
+			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
+}
+
+/**
+ * @method array getResourceId()
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method string getResourceType()
+ * @method $this withResourceType($value)
+ * @method array getTagKey()
+ */
+class UnTagVodResources extends Rpc
+{
+
+    /**
+     * @param array $resourceId
+     *
+     * @return $this
+     */
+	public function withResourceId(array $resourceId)
+	{
+	    $this->data['ResourceId'] = $resourceId;
+		foreach ($resourceId as $i => $iValue) {
+			$this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
+
+    /**
+     * @param array $tagKey
+     *
+     * @return $this
+     */
+	public function withTagKey(array $tagKey)
+	{
+	    $this->data['TagKey'] = $tagKey;
+		foreach ($tagKey as $i => $iValue) {
+			$this->options['query']['TagKey.' . ($i + 1)] = $iValue;
+		}
+
+		return $this;
+    }
 }
 
 /**

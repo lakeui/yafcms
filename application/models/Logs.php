@@ -21,8 +21,7 @@ class LogsModel extends BaseModel {
                 'add_time[>=]'=>$times['s'],
                 'add_time[<=]'=>$times['e'],
             ]
-        ]); 
-        dump($list);
+        ]);  
         if($list && count($list)>=self::SEND_MAX_TIMES){
             return false;
         }  

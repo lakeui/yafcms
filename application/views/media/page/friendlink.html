@@ -1,0 +1,110 @@
+<?php include $viewPath.'/header.html';?>
+
+
+<div class="wrap contain"> 
+	<div class="common">
+
+		<?php if(!empty($list)):?>
+		<h3><b>友情链接</b></h3>
+		<div class="article">
+			<div class="list_item">
+                <ul class="lists clearfix">
+                	<?php foreach($list as $vo):?>
+                    <li class="item">
+                        <a href="<?php echo $vo['url'];?>" target="_blank" class="clearfix">
+                            <div class="image">
+                                <img src="<?php echo handle_img($vo['logo']);?>" alt="<?php echo $vo['title'];?>">
+                            </div>
+                            <div class="info">
+                                <p class="ellipsis">
+                                    <span><?php echo $vo['title'];?></span> 
+                                </p> 
+                            </div>
+                        </a>
+                    </li> 
+                	<?php endforeach;?>
+                </ul>
+            </div>
+		</div>
+		<?php endif;?>
+
+
+		<h3><b>申请交换友链</b></h3>
+		<div class="article" id='link'>
+			<form action="" class="feedbackform">
+				<p class="linktitle">联系方式：</p>
+				<p>
+					<input type="text" class="txt" v-model="contact" name="contact" value=""  placeholder="手机/QQ/邮箱/微信" />
+				</p>
+				<p class="linktitle">网站名称：</p>
+				<p>
+					<input type="text" class="txt" v-model="website" name="website" value=""  placeholder="百度" />
+				</p>
+				<p class="linktitle">网站Url：</p>
+				<p>
+					<input type="text" class="txt" v-model="url" name="url" value=""  placeholder="http://" />
+				</p> 
+				<label class="linkbtn">
+					<button type="button" id="submit" @click="reg($event)" v-bind:class="{'disabled': !correct}">提交</button>
+					<span class="msg " >{{ msg }}</span>
+				</label>
+			</form>
+		</div> 
+		
+		<div class="ad-list-a"> 
+		</div>
+	</div>
+	
+</div>
+<?php include $viewPath.'/footer.html';?>
+<script src="/libs/layer/layer.js"></script> 
+<script src="/libs/vue.min.js"></script>
+<script src="/js/xz.js"></script>
+<script> 
+	
+var index ;
+var Sign = new Vue({
+    el: '#link',
+    data:{
+        contact: '',          //留言内容
+        website:'',
+        url:'',
+        msg:'',
+        correct: false,     //参数是否正确
+    },
+    watch:{
+        'contact': function(){ 
+            this.correct = this.contact.length && this.website.length && this.url.length; 
+        }, 
+        'url': function(){
+            this.correct = this.contact.length && this.website.length && this.url.length; 
+        }, 
+        'website': function(){
+            this.correct = this.contact.length && this.website.length && this.url.length; 
+        }, 
+    },
+    methods:{
+        reg: function(e){
+        	var _self = this; 
+            if(e.target.classList.contains('disabled') || !_self.correct) return false;
+            index = layer.load(2);
+            xz.ajaxPost(xz.api.link,{'contact': _self.contact,'url': _self.url,'website': _self.website},function(json){
+            	layer.close(index);
+                if(json.status==0){
+                	_self.msg = '提交成功，稍后会主动联系您！';
+                	_self.correct = false;
+                    setTimeout(function(){
+                    	_self.msg  = '';
+                    	_self.contact = '';
+                    	_self.url = '';
+                    	_self.website = '';
+                    },2000);
+                }else{
+                	_self.msg = json.info;
+                }
+            })
+        }, 
+    }
+}); 
+</script>
+	

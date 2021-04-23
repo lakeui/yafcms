@@ -51,30 +51,8 @@ class AjaxController extends BaseController{
         
     }
 
-    public function goodAction(){
-        $uuid =  $this->getRequest()->getPost('uuid');
-        if(empty($uuid)){
-            finish(1,'参数错误');
-        }
-        $obj = new ArticleModel();
-        $row = $obj->get([
-            'uuid'=>$uuid
-        ], [
-            'id','good_num'
-        ]);
-        if(empty($row)){
-            finish(1,'操作失败');
-        }
-        $flag = $obj->update([
-            'good_num[+]'=>1
-        ], [
-            'id'=>$row['id']
-        ]);
-        if(!empty($flag)){
-            finish(0);
-        }
-        finish(1,'操作失败');
-    }
+    
+   
     
    
     
@@ -188,7 +166,6 @@ class AjaxController extends BaseController{
         $passwd =  $this->getRequest()->getPost('passwd');
         $remember =  $this->getRequest()->getPost('remember',0);
         $sn = $this->getRequest()->getPost('sn');
-        $ip = get_client_ip(); 
        
         if(empty($passwd) || strlen($passwd)!=32){
             finish(1005);
@@ -214,29 +191,10 @@ class AjaxController extends BaseController{
             finish(1008);
         }
         
-        //更新登录信息
-        $res = $user->updateUser($row['id'], [
-            'last_login_time'=>time(),
-            'last_login_ip'=>$ip,
-            'errnum'=>0
-        ]);
+        $res = $this->handleLogin($row['user_id'], $remember);
         if(empty($res)){
             finish(4);
         }
-       
-        //今日是否存在登录奖励积分
-        if(!UserAssetsModel::getInstance()->checkIsPrizeScore($row['user_id'],'login')){
-            //奖励积分
-            UserAssetsModel::getInstance()->prizeScore('login', $row['user_id'],'登录奖励积分',1);
-        }
-        
-        setLogin([
-            'user_id'=>$row['user_id'],
-            'nickname'=>$row['nickname'],
-            'phone'=>$row['phone'],
-            'face'=>$row['face'],
-            'status'=>$row['status']
-        ],$remember);
         finish(0);
     }
     
@@ -283,8 +241,9 @@ class AjaxController extends BaseController{
     
     //退出
     public function logoutAction() {
+        //获取当前url
         logout();
-        finish(0);
+        finish(0,'', $this->url);
     }
 
 
@@ -363,4 +322,6 @@ class AjaxController extends BaseController{
         
         
     }
+   
+    
 }

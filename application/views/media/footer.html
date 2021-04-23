@@ -1,0 +1,118 @@
+    
+    <?php if(empty($hideFooter)):?>
+    <footer id="master-footer " class="footerarea">
+        <div class="container d-none  d-lg-block">
+            <div class="row">
+                <div class="col-md-4 social">
+                    <a href="" class="logo">
+                        <img src="/<?php echo $theme;?>/images/logo@2x.png" alt="" width="144">
+                    </a>
+                    <p class="introduce">
+                        <?php echo $config['cfg_slogan'];?><br>
+                        <small><?php echo $config['cfg_slogan_en'];?></small>
+                    </p> 
+                </div>
+                <div class="col-md-6 links">
+                    <ul>
+                        <?php 
+                        if($fmenu){
+                            foreach($fmenu as $vo){                 
+                                echo '<li><a href="/page/'.$vo['flag'].'"><i class="fa '.$vo["css"].'"></i> '.$vo["title"].'</a></li>';
+                            }
+                        }
+                        ?> 
+                    </ul>
+                </div>
+    
+                <div class="col-md-2 contact">
+                    <ul>
+                        <?php if(!empty($config['cfg_wxcode'])): ?>
+                        <li><img src="<?php echo handle_img($config['cfg_wxcode']);?>" alt="微信二维码"><br>扫码关注微信</li>
+                        <?php endif;?>
+    
+                        <?php if(!empty($config['cfg_qqcode'])): ?>
+                        <li><img src="<?php echo handle_img($config['cfg_qqcode']);?>" alt="QQ二维码"><br>扫码加QQ群</li>
+                        <?php endif;?>
+                    </ul>
+                </div>  
+            </div>
+        </div>  
+        <div class="copyright"> 
+            <p class="wrap">建议使用 Safari, Chrome 浏览器访问本站  
+                <?php if(!empty($config['cfg_qqs'])):?>
+                <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=9c16723d27cd07a9938bd34cf495febbc96279621b94850aaa07a0765747f195">PHP实战开发QQ群 :<?php echo $config['cfg_qqs'];?></a> 
+                <?php endif;?>
+            </p>
+            <p class="wrap"><?php echo $config['cfg_copyright'];?></p>
+        </div> 
+    </footer>
+    <?php endif;?>
+
+
+    <script src="/libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="/libs/bootstrapv4.6/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="/libs/layui-v1.0.9/layui.js" type="text/javascript"></script>
+    <script src="/libs/scrollfix.js" type="text/javascript"></script>
+    <script src="/<?php echo $theme;?>/js/xz.js" type="text/javascript"></script>
+    <?php echo isset($js)?$js:'';?>
+    <script>
+
+        $(function(){
+
+            $(".toggle").on("click",function(){
+                if($(".menu").css("display")=="block"){
+                    $(".menu").hide();
+                }else{
+                    $(".menu").show();
+                }
+                
+            })
+
+            $('.header').scrollFix({
+                zIndex: 998
+            });
+
+            layui.use('util', function(){
+                var util = layui.util; 
+                util.fixbar();
+            });  
+            $(".userlist").hover(function(){
+                event.stopPropagation();
+                $('.usercon').show();
+            },function(){
+                event.stopPropagation();
+                $('.usercon').hide();
+            });
+
+            $(".logout").click(function(){
+                xz.ajaxPost(xz.api.logout,{},function(json){
+                    if(json.status==0){
+                        top.window.location.href = json.data;
+                    }
+                });
+            });
+
+
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                $(".dev").on('click',function(){
+                    layer.msg('小哥在努力加班中...');
+                });
+            });  
+            
+        });
+
+
+    </script>
+</body>
+</html>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4549f3e9e510379eff4af8373eedfe25";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+

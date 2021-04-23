@@ -19,6 +19,14 @@ class ZhuantiController extends BaseController {
             'ORDER'=>$order
         ], ['url','title','shortdesc','viewnum','num','img']);
         $seo = $this->getSeo('zhuanti');  
+        
+        
+        foreach ($list as &$vo) {
+            if(empty($vo['viewnum']) && !empty($vo['num'])){
+                $vo['viewnum'] = rand(100,9999);
+            }
+        }
+        
         $params = [
             'list'=>$list,
             'seo'=>$seo,

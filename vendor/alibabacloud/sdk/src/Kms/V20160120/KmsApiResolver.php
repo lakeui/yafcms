@@ -18,6 +18,7 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DeleteAlias deleteAlias(array $options = [])
  * @method DeleteKeyMaterial deleteKeyMaterial(array $options = [])
  * @method DeleteSecret deleteSecret(array $options = [])
+ * @method DescribeAccountKmsStatus describeAccountKmsStatus(array $options = [])
  * @method DescribeKey describeKey(array $options = [])
  * @method DescribeKeyVersion describeKeyVersion(array $options = [])
  * @method DescribeRegions describeRegions(array $options = [])
@@ -26,6 +27,8 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method DisableKey disableKey(array $options = [])
  * @method EnableKey enableKey(array $options = [])
  * @method Encrypt encrypt(array $options = [])
+ * @method ExportDataKey exportDataKey(array $options = [])
+ * @method GenerateAndExportDataKey generateAndExportDataKey(array $options = [])
  * @method GenerateDataKey generateDataKey(array $options = [])
  * @method GenerateDataKeyWithoutPlaintext generateDataKeyWithoutPlaintext(array $options = [])
  * @method GetParametersForImport getParametersForImport(array $options = [])
@@ -40,7 +43,9 @@ use AlibabaCloud\Client\Resolver\ApiResolver;
  * @method ListResourceTags listResourceTags(array $options = [])
  * @method ListSecrets listSecrets(array $options = [])
  * @method ListSecretVersionIds listSecretVersionIds(array $options = [])
+ * @method OpenKmsService openKmsService(array $options = [])
  * @method PutSecretValue putSecretValue(array $options = [])
+ * @method ReEncrypt reEncrypt(array $options = [])
  * @method RestoreSecret restoreSecret(array $options = [])
  * @method ScheduleKeyDeletion scheduleKeyDeletion(array $options = [])
  * @method TagResource tagResource(array $options = [])
@@ -235,6 +240,10 @@ class DeleteSecret extends Rpc
 {
 }
 
+class DescribeAccountKmsStatus extends Rpc
+{
+}
+
 /**
  * @method string getKeyId()
  * @method $this withKeyId($value)
@@ -296,6 +305,42 @@ class EnableKey extends Rpc
  * @method $this withPlaintext($value)
  */
 class Encrypt extends Rpc
+{
+}
+
+/**
+ * @method string getEncryptionContext()
+ * @method $this withEncryptionContext($value)
+ * @method string getWrappingAlgorithm()
+ * @method $this withWrappingAlgorithm($value)
+ * @method string getCiphertextBlob()
+ * @method $this withCiphertextBlob($value)
+ * @method string getPublicKeyBlob()
+ * @method $this withPublicKeyBlob($value)
+ * @method string getWrappingKeySpec()
+ * @method $this withWrappingKeySpec($value)
+ */
+class ExportDataKey extends Rpc
+{
+}
+
+/**
+ * @method string getEncryptionContext()
+ * @method $this withEncryptionContext($value)
+ * @method string getKeyId()
+ * @method $this withKeyId($value)
+ * @method string getKeySpec()
+ * @method $this withKeySpec($value)
+ * @method string getNumberOfBytes()
+ * @method $this withNumberOfBytes($value)
+ * @method string getWrappingAlgorithm()
+ * @method $this withWrappingAlgorithm($value)
+ * @method string getPublicKeyBlob()
+ * @method $this withPublicKeyBlob($value)
+ * @method string getWrappingKeySpec()
+ * @method $this withWrappingKeySpec($value)
+ */
+class GenerateAndExportDataKey extends Rpc
 {
 }
 
@@ -420,6 +465,8 @@ class ListAliasesByKeyId extends Rpc
 /**
  * @method string getPageSize()
  * @method $this withPageSize($value)
+ * @method string getFilters()
+ * @method $this withFilters($value)
  * @method string getPageNumber()
  * @method $this withPageNumber($value)
  */
@@ -450,6 +497,8 @@ class ListResourceTags extends Rpc
 /**
  * @method string getPageSize()
  * @method $this withPageSize($value)
+ * @method string getFilters()
+ * @method $this withFilters($value)
  * @method string getFetchTags()
  * @method $this withFetchTags($value)
  * @method string getPageNumber()
@@ -473,6 +522,10 @@ class ListSecretVersionIds extends Rpc
 {
 }
 
+class OpenKmsService extends Rpc
+{
+}
+
 /**
  * @method string getVersionId()
  * @method $this withVersionId($value)
@@ -486,6 +539,26 @@ class ListSecretVersionIds extends Rpc
  * @method $this withSecretDataType($value)
  */
 class PutSecretValue extends Rpc
+{
+}
+
+/**
+ * @method string getDestinationEncryptionContext()
+ * @method $this withDestinationEncryptionContext($value)
+ * @method string getSourceEncryptionAlgorithm()
+ * @method $this withSourceEncryptionAlgorithm($value)
+ * @method string getSourceKeyVersionId()
+ * @method $this withSourceKeyVersionId($value)
+ * @method string getDestinationKeyId()
+ * @method $this withDestinationKeyId($value)
+ * @method string getSourceKeyId()
+ * @method $this withSourceKeyId($value)
+ * @method string getSourceEncryptionContext()
+ * @method $this withSourceEncryptionContext($value)
+ * @method string getCiphertextBlob()
+ * @method $this withCiphertextBlob($value)
+ */
+class ReEncrypt extends Rpc
 {
 }
 
