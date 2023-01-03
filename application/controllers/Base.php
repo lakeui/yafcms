@@ -19,7 +19,7 @@ class BaseController extends Yaf\Controller_Abstract {
         $loginUrl =  \Yaf\Registry::get('config')->ucenter.'login?backurl='. urlencode($this->url); 
         $regUrl =  \Yaf\Registry::get('config')->ucenter.'reg?backurl='. urlencode($this->url);
         if(!empty($this->isMobile)){
-            $this->theme = 'mobile';
+            // $this->theme = 'mobile';
         }
         $this->setViewPath(APP_PATH."/application/views/".$this->theme);
         $menu = $this->getMenu();

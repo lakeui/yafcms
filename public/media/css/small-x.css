@@ -72,6 +72,9 @@
     height: auto;
     border: 0;
   }
+  .phoneHide{
+    display: none;
+  }
   .txt {
     background: rgba(0, 0, 0, 0.04);
     border-radius: 4px;
@@ -671,6 +674,7 @@
   .aside {
   }
   .aside1 {
+    margin-top: 20px;
     flex-basis: 25%;
     min-width: 280px;
   }
@@ -678,7 +682,7 @@
     padding-left: 30px;
   }
   .pdl15 {
-    padding-left: 15px;
+    padding-left: 0;
   }
   .pdr15 {
     padding-right: 0;
@@ -688,8 +692,8 @@
   }
   
   .main {
-    padding: 25px 30px;
-    max-width: 850px;
+    padding: 15px 10px;
+    /* max-width: 850px; */
   }
   .main1 {
     padding: 10px 20px;
@@ -901,12 +905,14 @@
     line-height: 25px;
   }
   .copyright {
+    color: #868686;
+    padding: 10px 0;
     margin-top: 30px;
     text-align: center;
     background-color: #ffffff;
     font-size: 1.2rem;
     line-height: 25px;
-    padding-top: 15px;
+    /* padding-top: 15px; */
   }
   .copyright a {
     color: #333;
@@ -1037,7 +1043,7 @@
     vertical-align: text-bottom;
     text-align: center;
     font-size: 16px;
-    line-height: 29px;
+    line-height: 24px;
     float: left;
     margin-top: 5px;
     margin-right: 15px;
@@ -1179,7 +1185,9 @@
     color: #999;
   }
   .share-to {
-    float: right;
+    float: none;
+    padding: 15px 0 0 0;
+    text-align: center;
   }
   .share-to dt {
     padding-right: 10px;
@@ -1191,8 +1199,8 @@
   .share-to i {
     background-color: #999;
     float: left;
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
     font-size: 20px;
     color: #fff;
     padding: 5px;
@@ -1647,13 +1655,13 @@
     margin-bottom: 40px;
   }
   .zt-main .zt-l {
-    padding-left: 10px;
-    width: 390px;
-    float: left;
+    padding: 0 10px;
+    width: 100%;
+    float: none;
   }
   .zt-main .zt-l .thumb {
     background: #fff;
-    padding: 10px;
+    /* padding: 10px; */
     border: 1px dotted #eee;
     display: block;
   }
@@ -1661,9 +1669,9 @@
     display: block;
   }
   .zt-main .zt-r {
-    width: 760px;
-    float: left;
-    padding: 0 20px;
+    width: 100%;
+    float: none;
+    padding: 0 15px;
   }
   .zt-main .zt-r h2 {
     font-size: 24px;
@@ -1804,7 +1812,7 @@
     color: #ff5a00;
   }
   .tuwen {
-    padding-top: 30px;
+    padding-top: 0;
   }
   .tuwen_item {
     list-style: none;
@@ -1812,7 +1820,7 @@
     width: 33.33333%;
     box-sizing: border-box;
     padding: 0 25px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     font-size: 14px;
     line-height: 1.5;
   }

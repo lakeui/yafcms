@@ -159,6 +159,7 @@ class ArticleController extends BaseController {
             'crumb'=>$crumb,
             'css'=>$css,
             'js'=>$js,
+            'phone'=>$this->isMobile,
             'face'=>$face,
             'author'=>$author,
             'authorAritcle'=>$authorAritcle,

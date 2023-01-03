@@ -11,7 +11,7 @@ class QrcodeController extends BaseController {
       
     public function indexAction(){
         $uuid = $this->getRequest()->getParam('uuid'); 
-        $url = 'http://m.lakeui.com/p/'.$uuid;
+        $url = 'https://www.lakeui.com/p/'.$uuid;
         $file = WEB_PATH.'upload/'.$uuid.'.png';
         if(!is_file($file)){
             QRcode::png($url,$file,QR_ECLEVEL_H,8,2);

@@ -27,10 +27,10 @@
 				    
 				    <span class="b-time">By <a href="/u/<?php echo $author['url']?$author['url']:$row['user_id'];?>" class="b-author" rel="nofollow"><?php echo $author['nickname'];?></a> / <?php echo date('M n, Y',$row['create_time']);?></span> 
 				    <span class="b-watch">阅读 <i id="view_num">0</i></span>
-				    <span class="b-comment">评论 <i class="cmt_num">0</i></span> 
-				    <span class="b-comment">发表于 <a href="/<?php echo $row['url'];?>"><?php echo $row['typename'];?></a></span> 
-				    <span class="b-watch">字数：<i id="view_num"><?php echo $txt_num;?></i></span>
-				    <span class="b-watch">阅读时间：<i id="view_num"><?php echo $read_time;?></i></span>
+				    <span class="b-comment phoneHide">评论 <i class="cmt_num">0</i></span> 
+				    <span class="b-comment phoneHide">发表于 <a href="/<?php echo $row['url'];?>"><?php echo $row['typename'];?></a></span> 
+				    <span class="b-watch phoneHide">字数：<i id="view_num"><?php echo $txt_num;?></i></span>
+				    <span class="b-watch phoneHide">阅读时间：<i id="view_num"><?php echo $read_time;?></i></span>
 				</div> 
 		        <?php if($row['from_url']):?>
 		        <p class="url">
@@ -66,10 +66,12 @@
 			</div> 
 			<?php endif;?>
 
-	<!-- 		<div class="code">
-				<img src="/qrcode/index/<?php echo $row['uuid'];?>" style="width: 144px; height:144px">
+			<?php if(!$phone): ?>
+			<div class="code">
+				<img src="/qrcode/<?php echo $row['uuid'];?>" style="width: 144px; height:144px">
 				<p>手机扫码阅读，舒服~</p>
-			</div> -->
+			</div>
+			<?php endif;?>
 
 		
 
